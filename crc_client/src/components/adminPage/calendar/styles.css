@@ -1,0 +1,83 @@
+.parent {
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.sticky-header {
+    position: sticky;
+    top: 0;
+    background-color: white; /* O el color de fondo deseado */
+    z-index: 2; /* Asegurar que el encabezado esté sobre las celdas */
+}
+
+th:first-child,
+td:first-child {
+    position: sticky;
+    left: 0;
+    background-color: white; /* O el color de fondo deseado */
+    z-index: 1; /* Asegurar que esté encima del resto del contenido */
+}
+
+/* Estilo para la barra de desplazamiento horizontal */
+::-webkit-scrollbar {
+    height: 16px; /* Altura de la barra */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color de fondo de la barra */
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; /* Color del pulgar de la barra */
+    border-radius: 4px; /* Radio de borde del pulgar */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color del pulgar al pasar el ratón */
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+    font-size: 12px !important;
+}
+
+table button {
+    font-size: 10px !important;
+}
+
+table button {
+    border-radius: 2px !important;
+}
+
+th {
+    font-size: 16px !important;
+}
+
+th,
+td {
+    padding: 2px;
+    text-align: left;
+    vertical-align: top;
+}
+
+th {
+    background-color: #f2f2f2; /* Color de fondo para las celdas del encabezado */
+}
+
+tr:not(:last-child) {
+    border-bottom: 2px solid black; /* Color del borde */
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo para filas pares */
+}
+
+tr:hover {
+    background-color: #ddd; /* Cambio de color al pasar el mouse sobre una fila */
+}
+
+td {
+    border-bottom: 1px solid #ddd; /* Borde inferior para las celdas */
+}
