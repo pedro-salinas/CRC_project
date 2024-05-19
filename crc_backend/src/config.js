@@ -3,4 +3,4 @@ export const MAIL_USER = "contacto@psalinas.cl";
 export const MAIL_PASSWORD = "Pedro90@salinas";
 export const HOST = "smtp.hostinger.com";
 export const PORT = 465;
-export const URL_FRONTEND = "http://http://84.46.239.60/";
+export const URL_FRONTEND = "http://84.46.239.60/";
