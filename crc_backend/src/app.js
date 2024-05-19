@@ -11,12 +11,12 @@ import { URL_FRONTEND } from "./config.js";
 
 const app = express();
 
-app.use(
-    cors({
-        origin: [URL_FRONTEND],
-        credentials: true,
-    })
-);
+// app.use(
+//     cors({
+//         origin: [URL_FRONTEND],
+//         credentials: true,
+//     })
+// );
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(cookieParser());
