@@ -10,8 +10,8 @@ import { EndPage } from "../../components/indexPage/EndPage";
 export function Index() {
     return (
         <div>
-            <CustomNavbar />
-            <HeadIcons />
+            {/* <CustomNavbar />
+            <HeadIcons /> */}
             <HomeSection />
             <InfoSection />
             {/* <PricesSection /> */}
