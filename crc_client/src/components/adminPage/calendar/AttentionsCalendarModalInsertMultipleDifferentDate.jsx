@@ -199,7 +199,7 @@ export function AttentionsCalendarModalInsertMultipleDifferentDate({
         };
         setTimeout(() => {
             backendValidation();
-        }, 500);
+        }, 50);
     });
 
     const onSearchClient = (searchTerm, _id) => {

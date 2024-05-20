@@ -220,7 +220,7 @@ export function Calendar() {
 
         setTimeout(() => {
             getAttentionsBackend();
-        }, 500);
+        }, 50);
     }
 
     useEffect(() => {
@@ -452,6 +452,7 @@ export function Calendar() {
             setAlertType("danger");
             setAlertText("No existe programa, kinesiólogo o paciente");
             setShowAlert(true);
+            handleReload();
         }
     };
 

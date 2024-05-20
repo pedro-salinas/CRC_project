@@ -167,7 +167,7 @@ export function AttentionsCalendarModalModify({
         };
         setTimeout(() => {
             backendValidation();
-        }, 500);
+        }, 50);
     });
 
     const onSearchClient = (searchTerm, _id) => {
