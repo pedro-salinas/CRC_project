@@ -268,7 +268,8 @@ export function Calendar() {
 
     const handleCloseVer = () => {
         setShowVer(false);
-        handleReload();
+        // Recargar al salir para que
+        // handleReload();
     };
 
     const handleShowVer = (data) => {
