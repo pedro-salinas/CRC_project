@@ -418,6 +418,8 @@ export function Calendar() {
     };
 
     const blockDay = async (data) => {
+        setLoadingCalendar(true);
+
         let year = currentDate.getFullYear();
         let month = currentDate.getMonth() + 1; //Parte del 1 esta baina
         let day = Number(data);
@@ -441,11 +443,12 @@ export function Calendar() {
                 const res = await insertAttentionRequest(newData);
             }
 
-            setLoading(false);
+            setLoadingCalendar(false);
             setAlertType("success");
             setAlertText("Día bloqueado correctamente");
             handleReload();
         } catch (error) {
+            setLoadingCalendar(false);
             setAlertType("danger");
             setAlertText("No existe programa, kinesiólogo o paciente");
             setShowAlert(true);
@@ -453,15 +456,17 @@ export function Calendar() {
     };
 
     const unblockDay = async (data) => {
+        setLoadingCalendar(true);
         try {
             for (const d of data) {
                 const res = await deleteAttention(d._id);
             }
-            setLoading(false);
+            setLoadingCalendar(false);
             setAlertType("success");
             setAlertText("Día desbloqueado correctamente");
             handleReload();
         } catch (error) {
+            setLoadingCalendar(false);
             setAlertType("danger");
             setAlertText("Algo salió mal en la base de datos");
             setShowAlert(true);
@@ -584,6 +589,7 @@ export function Calendar() {
                                                             day.split(" ")[1]
                                                         )
                                                     }
+                                                    disabled={loadingCalendar}
                                                 >
                                                     Bloquear día
                                                 </Button>
@@ -604,6 +610,7 @@ export function Calendar() {
                                                             matchingBlockedItems
                                                         )
                                                     }
+                                                    disabled={loadingCalendar}
                                                 >
                                                     Desbloquear día
                                                 </Button>
