@@ -489,6 +489,21 @@ export function AttentionsCalendarModalModify({
                             {errors.state && errors.state.message}
                         </span>
                     </Form.Group>
+                    <Form.Group className="mb-3" controlId="description">
+                        <Form.Label>Descripción (opcional)</Form.Label>
+                        <textarea
+                            style={{ borderRadius: "2px" }}
+                            className={
+                                errors.description
+                                    ? "form-control is-invalid"
+                                    : "form-control"
+                            }
+                            {...register("description")}
+                        ></textarea>
+                        <span className="text-danger">
+                            {errors.description && errors.description.message}
+                        </span>
+                    </Form.Group>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button

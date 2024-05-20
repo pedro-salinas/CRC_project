@@ -43,6 +43,13 @@ export const columns = [
         wrap: true,
     },
     {
+        name: "Descripción",
+        selector: (row) => row.description,
+        sortable: true,
+        allowOverflow: true,
+        wrap: true,
+    },
+    {
         name: "Última actualización",
         selector: (row) =>
             row.updatedAt

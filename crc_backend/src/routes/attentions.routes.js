@@ -14,10 +14,7 @@ import {
     authAdmin,
 } from "../middlewares/validateUtils.js";
 import { validateSchema } from "../middlewares/validateSchema.js";
-import {
-    createAttentionSchema,
-    updateAttentionSchema,
-} from "../schemas/attention.schema.js";
+import { createAttentionSchema } from "../schemas/attention.schema.js";
 
 const router = Router();
 

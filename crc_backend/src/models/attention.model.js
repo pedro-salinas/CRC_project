@@ -48,6 +48,9 @@ const userSchema = new mongoose.Schema(
             type: Boolean,
             required: true,
         },
+        description: {
+            type: String,
+        },
     },
     {
         timestamps: true,

@@ -42,6 +42,7 @@ export const createAttention = async (req, res) => {
             token,
             state,
             blocked,
+            description,
         } = req.body;
 
         const existingAttention = await Attention.findOne({
@@ -69,6 +70,7 @@ export const createAttention = async (req, res) => {
             token,
             state,
             blocked,
+            description,
         });
 
         const savedAttention = await newAttention.save();
@@ -88,6 +90,7 @@ export const createMultiplesAttentions = async (req, res) => {
             token,
             state,
             blocked,
+            description,
             allDates,
         } = req.body;
 
@@ -128,6 +131,7 @@ export const createMultiplesAttentions = async (req, res) => {
                 token,
                 state,
                 blocked,
+                description,
             });
 
             const savedAttention = await newAttention.save();
@@ -139,6 +143,7 @@ export const createMultiplesAttentions = async (req, res) => {
     }
 };
 
+// DESACTUALIZADO
 export const createAttentionByWeb = async (req, res) => {
     try {
         const {

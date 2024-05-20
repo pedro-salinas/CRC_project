@@ -15,8 +15,6 @@ export const createClient = async (req, res) => {
     try {
         const { name, rut, email, phone } = req.body;
 
-        const existingClient = await Client.findOne({ rut });
-
         const newClient = new Client({
             name,
             rut,
@@ -27,9 +25,7 @@ export const createClient = async (req, res) => {
         const savedClient = await newClient.save();
         return res.json(savedClient);
     } catch (error) {
-        return res
-            .status(500)
-            .json({ message: error, clientID: existingClient._id });
+        return res.status(500).json({ message: error });
     }
 };
 

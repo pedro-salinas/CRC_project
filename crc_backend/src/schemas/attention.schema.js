@@ -116,56 +116,14 @@ export const createAttentionSchema = z.object({
             "Se requiere saber si la hora esta bloqueada o no",
         ],
     }),
-});
-
-export const updateAttentionSchema = z.object({
-    program: z
+    description: z
         .string({
-            required_error: "Se requiere un programa",
+            required_error: "Se requiere una descripción",
         })
-        .max(100, {
+        .max(500, {
             message: [
-                "program",
-                "Programa debe contener un máximo de 100 caracteres",
-            ],
-        })
-        .min(5, {
-            message: [
-                "program",
-                "Programa debe contener un mínimo de 5 caracteres",
+                "description",
+                "Descripción debe tener un máximo de 500 caracteres",
             ],
         }),
-    kine: z
-        .string({
-            required_error: "Se requiere un kinesiólogo",
-        })
-        .max(100, {
-            message: [
-                "kine",
-                "Kinesiólogo debe contener un máximo de 100 caracteres",
-            ],
-        })
-        .min(5, {
-            message: [
-                "kine",
-                "Kinesiólogo debe contener un mínimo de 5 caracteres",
-            ],
-        }),
-    client: z
-        .string({
-            required_error: "Se requiere un cliente",
-        })
-        .max(100, {
-            message: [
-                "client",
-                "Cliente debe contener un máximo de 100 caracteres",
-            ],
-        })
-        .min(5, {
-            message: [
-                "client",
-                "Cliente debe contener un mínimo de 5 caracteres",
-            ],
-        }),
-    state: validState,
 });

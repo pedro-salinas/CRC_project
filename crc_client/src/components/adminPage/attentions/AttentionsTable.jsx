@@ -158,6 +158,7 @@ export function AttentionsTable() {
                 date: date,
                 hour: hour,
                 state: selectedRows[0].state,
+                description: selectedRows[0].description,
             };
 
             setDefaultValues(data);
@@ -214,6 +215,7 @@ export function AttentionsTable() {
                 date: date,
                 hour: hour,
                 state: selectedRows[0].state,
+                description: selectedRows[0].description,
             };
 
             setDefaultValues(data);

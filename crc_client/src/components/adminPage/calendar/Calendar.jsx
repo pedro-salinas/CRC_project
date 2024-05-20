@@ -301,6 +301,7 @@ export function Calendar() {
             _id: data._id,
             date: date,
             hour: hour,
+            description: data.description,
         };
         setDefaultValues(newData);
         setShowVer(true);
@@ -342,6 +343,7 @@ export function Calendar() {
             _id: data._id,
             date: date,
             hour: hour,
+            description: data.description,
         };
         setDefaultValues(newData);
         setShowModify(true);
@@ -383,6 +385,7 @@ export function Calendar() {
             _id: data._id,
             date: date,
             hour: hour,
+            description: data.description,
         };
         setDefaultValues(newData);
         setShowDelete(true);
@@ -431,6 +434,7 @@ export function Calendar() {
                     kine: kines[0]._id,
                     state: "bloqueado",
                     blocked: true,
+                    description: "",
                 };
 
                 const res = await insertAttentionRequest(newData);
