@@ -28,9 +28,9 @@ import { ProtectedRoute } from "./ProtectedRoute";
 
 function App() {
     useEffect(() => {
-        if (window.location.hostname === "www.crckinesiologia.cl") {
+        if (window.location.hostname === "wwww.crckinesiologia.cl") {
             window.location.href =
-                "crckinesiologia.cl" + window.location.pathname;
+                "https://crckinesiologia.cl" + window.location.pathname;
         }
     }, []);
     return (
