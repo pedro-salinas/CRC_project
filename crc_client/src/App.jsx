@@ -28,6 +28,7 @@ import { ProtectedRoute } from "./ProtectedRoute";
 
 function App() {
     useEffect(() => {
+        console.log(window.location.hostname);
         if (window.location.hostname === "wwww.crckinesiologia.cl") {
             window.location.href =
                 "https://crckinesiologia.cl" + window.location.pathname;
