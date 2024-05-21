@@ -30,10 +30,10 @@ function App() {
     const [redirected, setRedirected] = useState(false);
 
     useEffect(() => {
-        if (window.location.hostname === "www.crckinesiologia.cl") {
+        if (window.location.hostname === "crckinesiologia.cl") {
             setRedirected(true);
             window.location.href =
-                "https://crckinesiologia.cl" + window.location.pathname;
+                "https://www.crckinesiologia.cl" + window.location.pathname;
         }
     }, []);
 
