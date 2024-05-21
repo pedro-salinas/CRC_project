@@ -47,7 +47,7 @@ export const columns = [
         wrap: true,
     },
     {
-        name: "Disponible par agendar",
+        name: "Disponible para agendar",
         selector: (row) => (row.agenda ? "Sí" : "No"),
         sortable: true,
         allowOverflow: true,
