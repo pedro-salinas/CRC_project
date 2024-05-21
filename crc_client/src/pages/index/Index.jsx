@@ -6,12 +6,10 @@ import { PricesSection } from "../../components/indexPage/PricesSection";
 import { ContactSection } from "../../components/indexPage/ContactSection";
 import { FooterSection } from "../../components/indexPage/FooterSection";
 import { EndPage } from "../../components/indexPage/EndPage";
-import { MetaPixel } from "../../components/indexPage/MetaPixel";
 
 export function Index() {
     return (
         <div>
-            <MetaPixel />
             <CustomNavbar />
             <HeadIcons />
             <HomeSection />
