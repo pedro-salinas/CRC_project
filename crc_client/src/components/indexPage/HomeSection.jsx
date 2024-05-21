@@ -1,6 +1,3 @@
-// React
-import { useEffect } from "react";
-
 // Bootstrap
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
@@ -14,9 +11,6 @@ import { MobileHandler } from "../../utils/MobileHandler";
 // Imagenes locales
 import image1 from "../../assets/home_image.jpg";
 
-// React meta pixel
-import ReactPixel from "react-facebook-pixel";
-
 export function HomeSection() {
     const { isMobile } = MobileHandler();
 
@@ -27,15 +21,6 @@ export function HomeSection() {
     const dynamicStyle = {
         paddingTop: isMobile ? "20px" : "0px",
     };
-
-    // useEffect(() => {
-    //     const options = {
-    //         autoConfig: true, // set pixel's autoConfig. More info: https://developers.facebook.com/docs/facebook-pixel/advanced/
-    //         debug: false, // enable logs
-    //     };
-    //     ReactPixel.init("1333188473917527", options);
-    //     ReactPixel.pageView();
-    // }, []);
 
     return (
         <Container>
