@@ -29,8 +29,6 @@ export const getCurrentUser = async (req, res) => {
 
 export const insertUser = async (req, res) => {
     try {
-        console.log("hol soy goku");
-
         const { email, rut, name, password, phone, staff } = req.body;
 
         const hash = await bcrypt.hash(password, 10);
