@@ -1,5 +1,5 @@
 // React
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // Navegacion
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -27,13 +27,19 @@ import "./App.css";
 import { ProtectedRoute } from "./ProtectedRoute";
 
 function App() {
+    const [redirected, setRedirected] = useState(false);
+
     useEffect(() => {
-        console.log(window.location.hostname);
         if (window.location.hostname === "www.crckinesiologia.cl") {
+            setRedirected(true);
             window.location.href =
                 "https://crckinesiologia.cl" + window.location.pathname;
         }
     }, []);
+
+    if (redirected) {
+        return null; // Evita que los componentes se carguen dos veces
+    }
     return (
         <UserProvider>
             <BrowserRouter>
