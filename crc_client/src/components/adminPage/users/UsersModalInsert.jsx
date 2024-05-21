@@ -51,7 +51,6 @@ export function UsersModalInsert({
 
                 handleClose();
             } catch (error) {
-                console.log(error);
                 if (error.response.status === 400) {
                     // Fallo anterior al controlador
                     let backendErrors;
