@@ -47,6 +47,13 @@ export const columns = [
         wrap: true,
     },
     {
+        name: "Disponible par agendar",
+        selector: (row) => (row.agenda ? "Sí" : "No"),
+        sortable: true,
+        allowOverflow: true,
+        wrap: true,
+    },
+    {
         name: "Última actualización",
         selector: (row) =>
             row.updatedAt
