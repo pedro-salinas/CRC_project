@@ -22,7 +22,8 @@ import { useNavigate } from "react-router-dom";
 // Importar API
 import { logout } from "../../../api/user";
 import {
-    getAttentions,
+    // getAttentions,
+    getAttentionsByDate,
     insertAttentionRequest,
     deleteAttention,
 } from "../../../api/attention";
@@ -177,7 +178,35 @@ export function Calendar() {
     // Obtener las atenciones
     const getAttentionsBackend = async () => {
         try {
-            const res = await getAttentions();
+            console.log(weekDaysTitle);
+
+            const startYear = weekDaysTitle[0].split(" ")[3];
+            const endYear =
+                weekDaysTitle[weekDaysTitle.length - 1].split(" ")[3];
+
+            const startMonth = weekDaysTitle[0].split(" ")[2];
+            const endMonth =
+                weekDaysTitle[weekDaysTitle.length - 1].split(" ")[2];
+
+            const startDay = weekDaysTitle[0].split(" ")[1];
+            const endDay =
+                weekDaysTitle[weekDaysTitle.length - 1].split(" ")[1];
+
+            const resData = {
+                startYear: Number(startYear),
+                endYear: Number(endYear),
+                startMonth: Number(startMonth),
+                endMonth: Number(endMonth),
+                startDay: Number(startDay),
+                endDay: Number(endDay),
+            };
+
+            console.log(resData);
+
+            const res = await getAttentionsByDate(resData);
+
+            console.log(res);
+
             const res2 = await getPrograms();
             const res3 = await getKines();
             const res4 = await getClients();
@@ -224,8 +253,11 @@ export function Calendar() {
     }
 
     useEffect(() => {
-        setWeekDaysTitle(getWeekDaysTitle(currentDate));
         handleReload();
+    }, [weekDaysTitle]);
+
+    useEffect(() => {
+        setWeekDaysTitle(getWeekDaysTitle(currentDate));
     }, [currentDate]);
 
     // Valores default para cada atención

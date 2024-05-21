@@ -127,3 +127,85 @@ export const createAttentionSchema = z.object({
             ],
         }),
 });
+
+export const getAttentionsByDateSchema = z.object({
+    startDay: z
+        .number({
+            required_error: "Se requiere un día de inicio",
+        })
+        .int({
+            message: ["day", "Día debe ser un valor entero"],
+        })
+        .gte(1, {
+            message: ["day", "Día debe ser mayor o igual a 1"],
+        })
+        .lte(31, {
+            message: ["day", "Día debe ser menos o igual a 31"],
+        }),
+
+    endDay: z
+        .number({
+            required_error: "Se requiere un día final",
+        })
+        .int({
+            message: ["day", "Día debe ser un valor entero"],
+        })
+        .gte(1, {
+            message: ["day", "Día debe ser mayor o igual a 1"],
+        })
+        .lte(31, {
+            message: ["day", "Día debe ser menos o igual a 31"],
+        }),
+    startMonth: z
+        .number({
+            required_error: "Se requiere un mes",
+        })
+        .int({
+            message: ["month", "Mes debe ser un valor entero"],
+        })
+        .gte(1, {
+            message: ["month", "Mes debe ser un valor mayor o igual a 1"],
+        })
+        .lte(12, {
+            message: ["month", "Mes debe ser un valor menos o igual a 12"],
+        }),
+    endMonth: z
+        .number({
+            required_error: "Se requiere un mes",
+        })
+        .int({
+            message: ["month", "Mes debe ser un valor entero"],
+        })
+        .gte(1, {
+            message: ["month", "Mes debe ser un valor mayor o igual a 1"],
+        })
+        .lte(12, {
+            message: ["month", "Mes debe ser un valor menos o igual a 12"],
+        }),
+    startYear: z
+        .number({
+            required_error: "Se equiere un año",
+        })
+        .int({
+            message: ["year", "Año debe ser un valor entero"],
+        })
+        .gte(0, {
+            message: ["year", "Año debe ser un valor mayor o igual a 0"],
+        })
+        .lte(9999, {
+            message: ["year", "Año debe ser un valor menor o igual a 9999"],
+        }),
+    endYear: z
+        .number({
+            required_error: "Se equiere un año",
+        })
+        .int({
+            message: ["year", "Año debe ser un valor entero"],
+        })
+        .gte(0, {
+            message: ["year", "Año debe ser un valor mayor o igual a 0"],
+        })
+        .lte(9999, {
+            message: ["year", "Año debe ser un valor menor o igual a 9999"],
+        }),
+});

@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {
     getAttentions,
+    getAttentionsByDate,
     getAttention,
     createAttention,
     createMultiplesAttentions,
@@ -10,12 +11,21 @@ import {
 } from "../controllers/attentions.controller.js";
 import { authRequired, authStaff } from "../middlewares/validateUtils.js";
 import { validateSchema } from "../middlewares/validateSchema.js";
-import { createAttentionSchema } from "../schemas/attention.schema.js";
+import {
+    createAttentionSchema,
+    getAttentionsByDateSchema,
+} from "../schemas/attention.schema.js";
 
 const router = Router();
 
 // Obtener todas las atenciones
 router.get("/attentions", getAttentions);
+// Obtener atenciones para una fecha en concreto
+router.post(
+    "/attentions_date",
+    validateSchema(getAttentionsByDateSchema),
+    getAttentionsByDate
+);
 // Obtener una atencion (En este caso es importante para poder obtener horas puntuales que interfieran tomar ciertas horas)
 router.get("/attention/:_id", getAttention);
 // Ingresar una atencion

@@ -5,6 +5,10 @@ export function getAttentions() {
     return instance.get("/attentions");
 }
 
+export function getAttentionsByDate(data) {
+    return instance.post("/attentions_date", data);
+}
+
 export function insertAttentionRequest(data) {
     return instance.post("/attention", data);
 }

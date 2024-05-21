@@ -13,6 +13,83 @@ export const getAttentions = async (req, res) => {
     }
 };
 
+export const getAttentionsByDate = async (req, res) => {
+    try {
+        const { startYear, endYear, startMonth, endMonth, startDay, endDay } =
+            req.body;
+
+        const query = {
+            $and: [
+                { year: { $gte: startYear, $lte: endYear } },
+                { month: { $gte: startMonth, $lte: endMonth } },
+                { day: { $gte: startDay, $lte: endDay } },
+            ],
+        };
+
+        // Ajustar el rango para cubrir la lógica correctamente:
+        // Si el rango de años incluye años completos, los meses y días no deben restringir esos años completos
+        if (startYear === endYear) {
+            // Dentro del mismo año
+            if (startMonth === endMonth) {
+                // Dentro del mismo mes
+                query.year = startYear;
+                query.month = startMonth;
+                query.day = { $gte: startDay, $lte: endDay };
+            } else {
+                // Meses diferentes dentro del mismo año
+                query.year = startYear;
+                query.$and = [
+                    {
+                        $or: [
+                            { month: { $gte: startMonth } },
+                            { month: { $lte: endMonth } },
+                        ],
+                    },
+                    {
+                        $or: [
+                            { day: { $gte: startDay } },
+                            { day: { $lte: endDay } },
+                        ],
+                    },
+                ];
+            }
+        } else {
+            // Años diferentes
+            query.$and = [
+                {
+                    $or: [
+                        { year: { $eq: startYear } },
+                        { year: { $eq: endYear } },
+                        { year: { $gte: startYear, $lte: endYear } },
+                    ],
+                },
+                {
+                    $or: [
+                        { month: { $gte: startMonth } },
+                        { month: { $lte: endMonth } },
+                    ],
+                },
+                {
+                    $or: [
+                        { day: { $gte: startDay } },
+                        { day: { $lte: endDay } },
+                    ],
+                },
+            ];
+        }
+
+        const attentions = await Attention.find(query).populate([
+            "program",
+            "kine",
+            "client",
+        ]);
+
+        res.json(attentions);
+    } catch (error) {
+        res.status(500).json({ message: error });
+    }
+};
+
 export const getAttention = async (req, res) => {
     try {
         const attention = await Attention.findById(req.params._id).populate([
