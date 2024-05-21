@@ -28,14 +28,14 @@ export function HomeSection() {
         paddingTop: isMobile ? "20px" : "0px",
     };
 
-    useEffect(() => {
-        const options = {
-            autoConfig: true, // set pixel's autoConfig. More info: https://developers.facebook.com/docs/facebook-pixel/advanced/
-            debug: false, // enable logs
-        };
-        ReactPixel.init("1333188473917527", options);
-        ReactPixel.pageView();
-    }, []);
+    // useEffect(() => {
+    //     const options = {
+    //         autoConfig: true, // set pixel's autoConfig. More info: https://developers.facebook.com/docs/facebook-pixel/advanced/
+    //         debug: false, // enable logs
+    //     };
+    //     ReactPixel.init("1333188473917527", options);
+    //     ReactPixel.pageView();
+    // }, []);
 
     return (
         <Container>
