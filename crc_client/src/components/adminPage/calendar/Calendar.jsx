@@ -178,8 +178,6 @@ export function Calendar() {
     // Obtener las atenciones
     const getAttentionsBackend = async () => {
         try {
-            console.log(weekDaysTitle);
-
             const startYear = weekDaysTitle[0].split(" ")[3];
             const endYear =
                 weekDaysTitle[weekDaysTitle.length - 1].split(" ")[3];
@@ -201,12 +199,7 @@ export function Calendar() {
                 endDay: Number(endDay),
             };
 
-            console.log(resData);
-
             const res = await getAttentionsByDate(resData);
-
-            console.log(res);
-
             const res2 = await getPrograms();
             const res3 = await getKines();
             const res4 = await getClients();
