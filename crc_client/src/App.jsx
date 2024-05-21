@@ -1,3 +1,6 @@
+// React
+import { useEffect } from "react";
+
 // Navegacion
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
@@ -24,6 +27,12 @@ import "./App.css";
 import { ProtectedRoute } from "./ProtectedRoute";
 
 function App() {
+    useEffect(() => {
+        if (window.location.hostname === "www.crckinesiologia.cl") {
+            window.location.href =
+                "crckinesiologia.cl" + window.location.pathname;
+        }
+    }, []);
     return (
         <UserProvider>
             <BrowserRouter>
