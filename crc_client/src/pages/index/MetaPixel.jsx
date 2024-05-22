@@ -15,10 +15,6 @@ fbq('init', '818883853621692');
 fbq('track', 'PageView');`}</script>
             <noscript id="facebook-pixel-image">{`<img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=818883853621692&ev=PageView&noscript=1" />`}</noscript>
-            <meta
-                name="facebook-domain-verification"
-                content="ettnrqmf1nsv6cnwc3eyik10ouh3i5"
-            />
         </Helmet>
     );
 }
