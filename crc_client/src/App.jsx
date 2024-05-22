@@ -45,10 +45,9 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     {/* Ruta que no exista dirige a index */}
-                    <Route path="*" element={<Navigate to="" />} />
+                    <Route path="*" element={<Navigate to="/" />} />
                     {/* Ruta por defecto vacia dirige a index */}
-                    <Route path="/" element={<Navigate to="" />} />
-                    <Route path="" element={<Index />} />
+                    <Route path="/" element={<Index />} />
                     {/* <Route path="/attention" element={<Attention />} /> */}
                     <Route path="/confirm" element={<ConfirmEmail />} />
 
