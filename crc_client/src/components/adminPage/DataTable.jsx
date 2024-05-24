@@ -160,7 +160,7 @@ export function Table({
             subHeaderComponent={subHeaderComponentMemo}
             persistTableHead={true}
             selectableRows={true}
-            selectableRowsNoSelectAll={true}
+            selectableRowsNoSelectAll={singleSelection}
             selectableRowsSingle={singleSelection}
             paginationComponentOptions={{
                 rowsPerPageText: "Filas por página:",

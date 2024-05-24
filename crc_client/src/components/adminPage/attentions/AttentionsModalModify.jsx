@@ -29,13 +29,13 @@ export function AttentionsModalModify({
     // Botones se cambian en cargando
     const [loading, setLoading] = useState(false);
 
-    // Seleccion de cliente
+    // Seleccion de paciente
     const [clientSelected, setClientSelected] = useState(false);
 
-    // Deshabilitar cliente
+    // Deshabilitar paciente
     const [disableClient, setDisableClient] = useState(false);
 
-    // ID del cliente (valor real del cliente)
+    // ID del paciente (valor real del paciente)
     const [clientID, setClientID] = useState("");
 
     // ID del kine (valor real del kine)
@@ -56,7 +56,6 @@ export function AttentionsModalModify({
     } = useForm();
 
     useEffect(() => {
-        console.log(defaultValues);
         reset(defaultValues);
         setDisableClient(true);
         setClientSelected(true);
@@ -76,11 +75,11 @@ export function AttentionsModalModify({
     const onSubmit = handleSubmit(async (values) => {
         setLoading(true);
 
-        // Asegurar que existe un cliente válido escogido
+        // Asegurar que existe un paciente válido escogido
         if (clientID == "") {
             setError("client", {
                 type: "custom",
-                message: "Escoja un cliente válido",
+                message: "Escoja un paciente válido",
             });
             setLoading(false);
             return;
@@ -277,7 +276,7 @@ export function AttentionsModalModify({
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="client">
                         <div>
-                            <Form.Label>Cliente</Form.Label>
+                            <Form.Label>Pacientes</Form.Label>
                         </div>
                         <div
                             style={{
@@ -288,7 +287,7 @@ export function AttentionsModalModify({
                         >
                             <input
                                 type="text"
-                                placeholder="Buscar cliente..."
+                                placeholder="Buscar paciente..."
                                 disabled={disableClient}
                                 className={
                                     errors.client
@@ -299,7 +298,7 @@ export function AttentionsModalModify({
                                 {...register("client", {
                                     required: {
                                         value: true,
-                                        message: "Se requiere un cliente",
+                                        message: "Se requiere un paciente",
                                     },
                                 })}
                             />
@@ -330,14 +329,30 @@ export function AttentionsModalModify({
                             {!clientSelected &&
                                 clients
                                     .filter((item) => {
-                                        const searchTerm =
-                                            watch("client")?.toLowerCase(); // Convertir a minúsculas y verificar si es undefined
-                                        const clientName =
-                                            item.name.toLowerCase(); // Convertir a minúsculas
+                                        const normalizeString = (str) =>
+                                            str
+                                                .normalize("NFD")
+                                                .replace(/[\u0300-\u036f]/g, "")
+                                                .toLowerCase(); // Normaliza y convierte a minúsculas
+
+                                        const searchTerm = watch("client")
+                                            ?.trimStart()
+                                            .toLowerCase();
+
+                                        if (searchTerm === undefined) {
+                                            return;
+                                        }
+
+                                        const normalizedSearchTerm =
+                                            normalizeString(searchTerm);
+                                        const normalizedClientName =
+                                            normalizeString(item.name);
 
                                         return (
                                             searchTerm &&
-                                            clientName.startsWith(searchTerm)
+                                            normalizedClientName.includes(
+                                                normalizedSearchTerm
+                                            )
                                         );
                                     })
                                     .slice(0, 5)

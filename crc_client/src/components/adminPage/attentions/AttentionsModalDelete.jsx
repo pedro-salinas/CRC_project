@@ -26,13 +26,13 @@ export function AttentionsModalDelete({
     // Botones se cambian en cargando
     const [loading, setLoading] = useState(false);
 
-    // Seleccion de cliente
+    // Seleccion de paciente
     const [clientSelected, setClientSelected] = useState(false);
 
-    // Deshabilitar cliente
+    // Deshabilitar paciente
     const [disableClient, setDisableClient] = useState(false);
 
-    // ID del cliente (valor real del cliente)
+    // ID del paciente (valor real del paciente)
     const [clientID, setClientID] = useState("");
 
     // ID del kine (valor real del kine)
@@ -226,7 +226,7 @@ export function AttentionsModalDelete({
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="client">
                         <div>
-                            <Form.Label>Cliente</Form.Label>
+                            <Form.Label>Pacientes</Form.Label>
                         </div>
                         <div
                             style={{
@@ -238,7 +238,7 @@ export function AttentionsModalDelete({
                             <input
                                 disabled
                                 type="text"
-                                placeholder="Buscar cliente..."
+                                placeholder="Buscar paciente..."
                                 className={
                                     errors.client
                                         ? "form-control is-invalid"
@@ -248,7 +248,7 @@ export function AttentionsModalDelete({
                                 {...register("client", {
                                     required: {
                                         value: true,
-                                        message: "Se requiere un cliente",
+                                        message: "Se requiere un paciente",
                                     },
                                 })}
                             />

@@ -43,11 +43,12 @@ import {
 // Modales
 import { AttentionsModalInsert } from "./AttentionsModalInsert";
 import { AttentionsModalModify } from "./AttentionsModalModify";
+import { AttentionsModalMultipleModify } from "./AttentionsModalMultipleModify";
 import { AttentionsModalDelete } from "./AttentionsModalDelete";
 
 export function AttentionsTable() {
     // Seleccion de un solo elemento
-    const singleSelection = true;
+    const singleSelection = false;
 
     // Cargar tabla (tambien cargar las atenciones)
     const [loadingTable, setLoadingTable] = useState(true);
@@ -60,6 +61,12 @@ export function AttentionsTable() {
         }, 500);
     }
 
+    // Alerta en tabla y mensaje
+    const [showAlert, setShowAlert] = useState(false);
+
+    const [alertType, setAlertType] = useState("");
+    const [alertText, setAlertText] = useState("");
+
     // Datos de las busquedas
     const [programs, setPrograms] = useState([]);
     const [kines, setKines] = useState([]);
@@ -70,6 +77,9 @@ export function AttentionsTable() {
 
     // Datos seleccionados de la tabla
     const [selectedRows, setSelectedRows] = useState([]);
+
+    // Datos seleccionados de la tabla
+    const [attentionsNumber, setAttentionsNumber] = useState(0);
 
     // Callback para manejar la selección de filas en el data table
     const handleRowSelection = (rows) => {
@@ -114,56 +124,75 @@ export function AttentionsTable() {
     // Modal de modificar
     const [showModify, setShowModify] = useState(false);
 
+    // Modal de modificación multiple
+    const [showMultipleModify, setShowMultipleModify] = useState(false);
+
     const handleCloseModify = () => {
         setSelectedRows([]);
         handleReload();
         setShowModify(false);
+        setShowMultipleModify(false);
     };
+
     const handleShowModify = () => {
+        setAttentionsNumber(selectedRows.length);
         if (selectedRows.length > 0) {
-            const programName = selectedRows[0].program.name;
-            const kineName = selectedRows[0].kine.name;
-            const clientName = selectedRows[0].client.name;
-            const programID = selectedRows[0].program._id;
-            const kineID = selectedRows[0].kine._id;
-            const clientID = selectedRows[0].client._id;
+            if (selectedRows.length == 0) {
+                const programName = selectedRows[0].program.name;
+                const kineName = selectedRows[0].kine.name;
+                const clientName = selectedRows[0].client.name;
+                const programID = selectedRows[0].program._id;
+                const kineID = selectedRows[0].kine._id;
+                const clientID = selectedRows[0].client._id;
 
-            const month =
-                selectedRows[0].month &&
-                selectedRows[0].month.toString().length === 1
-                    ? "0" + selectedRows[0].month
-                    : selectedRows[0].month;
+                const month =
+                    selectedRows[0].month &&
+                    selectedRows[0].month.toString().length === 1
+                        ? "0" + selectedRows[0].month
+                        : selectedRows[0].month;
 
-            const day =
-                selectedRows[0].day &&
-                selectedRows[0].day.toString().length === 1
-                    ? "0" + selectedRows[0].day
-                    : selectedRows[0].day;
+                const day =
+                    selectedRows[0].day &&
+                    selectedRows[0].day.toString().length === 1
+                        ? "0" + selectedRows[0].day
+                        : selectedRows[0].day;
 
-            const date = `${selectedRows[0].year}-${month}-${day}`;
+                const date = `${selectedRows[0].year}-${month}-${day}`;
 
-            const hour =
-                selectedRows[0].hour.toString().length === 1
-                    ? "0" + selectedRows[0].hour + ":00"
-                    : selectedRows[0].hour + ":00";
+                const hour =
+                    selectedRows[0].hour.toString().length === 1
+                        ? "0" + selectedRows[0].hour + ":00"
+                        : selectedRows[0].hour + ":00";
 
-            const data = {
-                _id: selectedRows[0]._id,
-                program: programName,
-                kine: kineName,
-                client: clientName,
-                programID: programID,
-                kineID: kineID,
-                clientID: clientID,
-                date: date,
-                hour: hour,
-                state: selectedRows[0].state,
-                description: selectedRows[0].description,
-            };
+                const data = {
+                    _id: selectedRows[0]._id,
+                    program: programName,
+                    kine: kineName,
+                    client: clientName,
+                    programID: programID,
+                    kineID: kineID,
+                    clientID: clientID,
+                    date: date,
+                    hour: hour,
+                    state: selectedRows[0].state,
+                    description: selectedRows[0].description,
+                };
 
-            setDefaultValues(data);
+                setDefaultValues(data);
 
-            setShowModify(true);
+                setShowModify(true);
+            } else {
+                if (selectedRows.length <= 10) {
+                    setDefaultValues(selectedRows);
+                    setShowMultipleModify(true);
+                } else {
+                    setAlertType("danger");
+                    setAlertText(
+                        "No se puede modificar mas de 10 atenciones a la vez"
+                    );
+                    setShowAlert(true);
+                }
+            }
         }
     };
 
@@ -178,57 +207,59 @@ export function AttentionsTable() {
 
     const handleShowDelete = () => {
         if (selectedRows.length > 0) {
-            const programName = selectedRows[0].program.name;
-            const kineName = selectedRows[0].kine.name;
-            const clientName = selectedRows[0].client.name;
-            const programID = selectedRows[0].program._id;
-            const kineID = selectedRows[0].kine._id;
-            const clientID = selectedRows[0].client._id;
+            if (selectedRows.length == 0) {
+                const programName = selectedRows[0].program.name;
+                const kineName = selectedRows[0].kine.name;
+                const clientName = selectedRows[0].client.name;
+                const programID = selectedRows[0].program._id;
+                const kineID = selectedRows[0].kine._id;
+                const clientID = selectedRows[0].client._id;
 
-            const month =
-                selectedRows[0].month &&
-                selectedRows[0].month.toString().length === 1
-                    ? "0" + selectedRows[0].month
-                    : selectedRows[0].month;
+                const month =
+                    selectedRows[0].month &&
+                    selectedRows[0].month.toString().length === 1
+                        ? "0" + selectedRows[0].month
+                        : selectedRows[0].month;
 
-            const day =
-                selectedRows[0].day &&
-                selectedRows[0].day.toString().length === 1
-                    ? "0" + selectedRows[0].day
-                    : selectedRows[0].day;
+                const day =
+                    selectedRows[0].day &&
+                    selectedRows[0].day.toString().length === 1
+                        ? "0" + selectedRows[0].day
+                        : selectedRows[0].day;
 
-            const date = `${selectedRows[0].year}-${month}-${day}`;
+                const date = `${selectedRows[0].year}-${month}-${day}`;
 
-            const hour =
-                selectedRows[0].hour.toString().length === 1
-                    ? "0" + selectedRows[0].hour + ":00"
-                    : selectedRows[0].hour + ":00";
+                const hour =
+                    selectedRows[0].hour.toString().length === 1
+                        ? "0" + selectedRows[0].hour + ":00"
+                        : selectedRows[0].hour + ":00";
 
-            const data = {
-                _id: selectedRows[0]._id,
-                program: programName,
-                kine: kineName,
-                client: clientName,
-                programID: programID,
-                kineID: kineID,
-                clientID: clientID,
-                date: date,
-                hour: hour,
-                state: selectedRows[0].state,
-                description: selectedRows[0].description,
-            };
+                const data = {
+                    _id: selectedRows[0]._id,
+                    program: programName,
+                    kine: kineName,
+                    client: clientName,
+                    programID: programID,
+                    kineID: kineID,
+                    clientID: clientID,
+                    date: date,
+                    hour: hour,
+                    state: selectedRows[0].state,
+                    description: selectedRows[0].description,
+                };
 
-            setDefaultValues(data);
+                setDefaultValues(data);
 
-            setShowDelete(true);
+                setShowDelete(true);
+            } else {
+                setAlertType("danger");
+                setAlertText(
+                    "No se puede eliminar mas de una atención a la vez"
+                );
+                setShowAlert(true);
+            }
         }
     };
-
-    // Alerta en tabla y mensaje
-    const [showAlert, setShowAlert] = useState(false);
-
-    const [alertType, setAlertType] = useState("");
-    const [alertText, setAlertText] = useState("");
 
     // Obtener las atenciones
     const getAttentionsBackend = async () => {
@@ -262,7 +293,6 @@ export function AttentionsTable() {
     useEffect(() => {
         if (tableData) {
             setLoadingTable(true);
-            console.log(tableData);
         }
     }, [tableData]);
 
@@ -297,6 +327,7 @@ export function AttentionsTable() {
                             variant="primary"
                             onClick={handleShowInsert}
                             className="mr-1"
+                            style={{ display: "flex", alignItems: "center" }}
                         >
                             <strong>Ingresar atención</strong>
                             <PersonAdd size={35} color="white" />
@@ -317,8 +348,11 @@ export function AttentionsTable() {
                             className="bl-5"
                             onClick={handleShowModify}
                             disabled={!loadingTable}
+                            style={{ display: "flex", alignItems: "center" }}
                         >
-                            <strong>Modificar</strong>
+                            <strong style={{ paddingRight: "2px" }}>
+                                Modificar
+                            </strong>
                             <PencilSquare size={35} color="white" />
                         </Button>
                         <Button
@@ -326,8 +360,11 @@ export function AttentionsTable() {
                             className="br-5"
                             onClick={handleShowDelete}
                             disabled={!loadingTable}
+                            style={{ display: "flex", alignItems: "center" }}
                         >
-                            <strong>Eliminar</strong>
+                            <strong style={{ paddingRight: "2px" }}>
+                                Eliminar
+                            </strong>
                             <XSquare size={35} color="white" />
                         </Button>
                     </ButtonGroup>
@@ -389,6 +426,18 @@ export function AttentionsTable() {
                 programs={programs}
                 kines={kines}
                 clients={clients}
+            />
+
+            {/* Modal de modificación de multiples atenciones */}
+            <AttentionsModalMultipleModify
+                show={showMultipleModify}
+                handleClose={handleCloseModify}
+                setAlertType={setAlertType}
+                setAlertText={setAlertText}
+                setShowAlert={setShowAlert}
+                defaultValues={defaultValues}
+                closeSession={closeSession}
+                attentionsNumber={attentionsNumber}
             />
 
             {/* Modal de eliminación de atención */}

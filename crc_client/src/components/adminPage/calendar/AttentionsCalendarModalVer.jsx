@@ -19,13 +19,13 @@ export function AttentionsCalendarModalVer({
     // Botones se cambian en cargando
     const [loading, setLoading] = useState(false);
 
-    // Seleccion de cliente
+    // Seleccion de paciente
     const [clientSelected, setClientSelected] = useState(false);
 
-    // Deshabilitar cliente
+    // Deshabilitar paciente
     const [disableClient, setDisableClient] = useState(false);
 
-    // ID del cliente (valor real del cliente)
+    // ID del paciente (valor real del paciente)
     const [clientID, setClientID] = useState("");
 
     // ID del kine (valor real del kine)

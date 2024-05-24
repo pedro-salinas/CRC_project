@@ -190,6 +190,7 @@ export function ProgramsTable() {
                             variant="primary"
                             onClick={handleShowInsert}
                             className="mr-1"
+                            style={{ display: "flex", alignItems: "center" }}
                         >
                             <strong>Ingresar programa</strong>
                             <PersonAdd size={35} color="white" />
@@ -210,8 +211,11 @@ export function ProgramsTable() {
                             className="bl-5"
                             onClick={handleShowModify}
                             disabled={!loadingTable}
+                            style={{ display: "flex", alignItems: "center" }}
                         >
-                            <strong>Modificar</strong>
+                            <strong style={{ paddingRight: "2px" }}>
+                                Modificar
+                            </strong>
                             <PencilSquare size={35} color="white" />
                         </Button>
                         <Button
@@ -219,8 +223,11 @@ export function ProgramsTable() {
                             className="br-5"
                             onClick={handleShowDelete}
                             disabled={!loadingTable}
+                            style={{ display: "flex", alignItems: "center" }}
                         >
-                            <strong>Eliminar</strong>
+                            <strong style={{ paddingRight: "2px" }}>
+                                Eliminar
+                            </strong>
                             <XSquare size={35} color="white" />
                         </Button>
                     </ButtonGroup>

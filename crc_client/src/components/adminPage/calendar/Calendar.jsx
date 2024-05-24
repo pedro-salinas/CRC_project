@@ -512,7 +512,11 @@ export function Calendar() {
                             onClick={handleShowInsertRepeat}
                             className="mx-1"
                             disabled={loadingCalendar}
-                            style={{ fontSize: isMobile ? "8px" : "16px" }}
+                            style={{
+                                fontSize: isMobile ? "8px" : "16px",
+                                display: "flex",
+                                alignItems: "center",
+                            }}
                         >
                             Ingresar atención (repetir hora)
                             <PersonAdd size={20} color="white" />
@@ -522,7 +526,11 @@ export function Calendar() {
                             onClick={handleShowInsertDifferent}
                             className="mx-1"
                             disabled={loadingCalendar}
-                            style={{ fontSize: isMobile ? "8px" : "16px" }}
+                            style={{
+                                fontSize: isMobile ? "8px" : "16px",
+                                display: "flex",
+                                alignItems: "center",
+                            }}
                         >
                             Ingresar atención (diferentes horas)
                             <PersonAdd size={20} color="white" />

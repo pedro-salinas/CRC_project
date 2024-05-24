@@ -244,6 +244,7 @@ export function UsersTable() {
                             variant="primary"
                             onClick={handleShowInsert}
                             className="mr-1"
+                            style={{ display: "flex", alignItems: "center" }}
                         >
                             <strong>Ingresar usuario</strong>
                             <PersonAdd size={35} color="white" />
@@ -264,8 +265,11 @@ export function UsersTable() {
                             className="bl-5"
                             onClick={handleShowModify}
                             disabled={!loadingTable}
+                            style={{ display: "flex", alignItems: "center" }}
                         >
-                            <strong>Modificar</strong>
+                            <strong style={{ paddingRight: "2px" }}>
+                                Modificar
+                            </strong>
                             <PencilSquare size={35} color="white" />
                         </Button>
                         <Button
@@ -273,8 +277,11 @@ export function UsersTable() {
                             className="br-5"
                             onClick={handleShowDelete}
                             disabled={!loadingTable}
+                            style={{ display: "flex", alignItems: "center" }}
                         >
-                            <strong>Eliminar</strong>
+                            <strong style={{ paddingRight: "2px" }}>
+                                Eliminar
+                            </strong>
                             <XSquare size={35} color="white" />
                         </Button>
                     </ButtonGroup>
