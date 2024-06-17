@@ -42,11 +42,11 @@ function App() {
 
     useEffect(() => {
         console.log(window.location.hostname);
+        console.log(VITE_PROTOCOL + VITE_URL + window.location.pathname);
         if (window.location.hostname === "www" + VITE_URL) {
             setRedirected(true);
             window.location.href =
                 VITE_PROTOCOL + VITE_URL + window.location.pathname;
-            console.log(VITE_PROTOCOL + VITE_URL + window.location.pathname);
         }
     }, []);
 
