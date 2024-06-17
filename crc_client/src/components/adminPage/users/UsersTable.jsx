@@ -10,16 +10,13 @@ import Row from "react-bootstrap/Row";
 import Alert from "react-bootstrap/Alert";
 import Spinner from "react-bootstrap/Spinner";
 
-// Importar tabla
-import { Table } from "../DataTable";
-
 // Context
 import { useUserContext } from "../../../context/userContext";
 
 // Router
 import { useNavigate } from "react-router-dom";
 
-// Importar API
+// Api
 import { getUsers, logout } from "../../../api/user";
 
 // Bootstrap icons
@@ -30,7 +27,10 @@ import {
     XSquare,
 } from "react-bootstrap-icons";
 
-// DataTable configs
+// React data table
+import { Table } from "../DataTable";
+
+// React data table config
 import {
     columns,
     columnsForSelect,

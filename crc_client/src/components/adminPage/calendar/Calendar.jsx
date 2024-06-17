@@ -10,16 +10,13 @@ import Row from "react-bootstrap/Row";
 import Alert from "react-bootstrap/Alert";
 import Spinner from "react-bootstrap/Spinner";
 
-// // Importar tabla
-// import { Table } from "../DataTable";
-
 // Context
 import { useUserContext } from "../../../context/userContext";
 
 // Router
 import { useNavigate } from "react-router-dom";
 
-// Importar API
+// Api
 import { logout } from "../../../api/user";
 import {
     // getAttentions,
@@ -40,7 +37,7 @@ import {
     PersonAdd,
 } from "react-bootstrap-icons";
 
-// CSS
+// Estilos
 import "./styles.css";
 
 // Utilidad para saber si es que estamos en movil o no

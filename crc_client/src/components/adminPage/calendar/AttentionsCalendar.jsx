@@ -1,7 +1,7 @@
 // Bootstrap
 import Card from "react-bootstrap/Card";
 
-// Calendario
+// Componentes
 import { Calendar } from "./Calendar";
 
 export function AttentionsCalendar() {

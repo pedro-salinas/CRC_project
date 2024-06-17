@@ -106,7 +106,7 @@ export function Stage2({ attentions, goStage3, isMobile }) {
     }
 
     const lastMonth = () => {
-        console.log(currentDate.getMonth() - 1, today.getMonth());
+        // console.log(currentDate.getMonth() - 1, today.getMonth());
         if (currentDate.getMonth() - 1 >= today.getMonth()) {
             const lastDate = new Date(currentDate);
             lastDate.setMonth(currentDate.getMonth() - 1);

@@ -9,7 +9,7 @@ import Image from "react-bootstrap/Image";
 // Context
 import { useUserContext } from "../../context/userContext";
 
-// Importar API
+// Api
 import { logout } from "../../api/user";
 
 // React

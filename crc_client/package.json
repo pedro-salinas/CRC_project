@@ -1,41 +1,45 @@
 {
-  "name": "crc_client",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "aos": "^2.3.4",
-    "axios": "^1.6.5",
-    "bootstrap": "^5.3.2",
-    "moment-timezone": "^0.5.44",
-    "react": "^18.2.0",
-    "react-bootstrap": "^2.9.2",
-    "react-bootstrap-icons": "^1.10.3",
-    "react-cookie": "^7.0.2",
-    "react-data-table-component": "^7.6.2",
-    "react-facebook-pixel": "^1.0.4",
-    "react-helmet": "^6.1.0",
-    "react-hook-form": "^7.49.3",
-    "react-router-dom": "^6.21.2",
-    "react-youtube": "^10.1.0"
-  },
-  "devDependencies": {
-    "@types/react": "^18.2.43",
-    "@types/react-dom": "^18.2.17",
-    "@vitejs/plugin-react": "^4.2.1",
-    "css": "^3.0.0",
-    "eslint": "^8.55.0",
-    "eslint-plugin-react": "^7.33.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.5",
-    "post": "^0.0.1",
-    "sass": "^1.69.7",
-    "vite": "^5.0.8"
-  }
+    "name": "crc_client",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+        "preview": "vite preview",
+        "serve-build": "serve -s dist"
+    },
+    "dependencies": {
+        "aos": "^2.3.4",
+        "axios": "^1.6.5",
+        "bootstrap": "^5.3.2",
+        "chart.js": "^4.4.3",
+        "moment-timezone": "^0.5.44",
+        "react": "^18.2.0",
+        "react-bootstrap": "^2.9.2",
+        "react-bootstrap-icons": "^1.10.3",
+        "react-chartjs-2": "^5.2.0",
+        "react-cookie": "^7.0.2",
+        "react-data-table-component": "^7.6.2",
+        "react-facebook-pixel": "^1.0.4",
+        "react-helmet": "^6.1.0",
+        "react-hook-form": "^7.49.3",
+        "react-router-dom": "^6.21.2",
+        "react-youtube": "^10.1.0"
+    },
+    "devDependencies": {
+        "@types/react": "^18.2.43",
+        "@types/react-dom": "^18.2.17",
+        "@vitejs/plugin-react": "^4.2.1",
+        "css": "^3.0.0",
+        "eslint": "^8.55.0",
+        "eslint-plugin-react": "^7.33.2",
+        "eslint-plugin-react-hooks": "^4.6.0",
+        "eslint-plugin-react-refresh": "^0.4.5",
+        "post": "^0.0.1",
+        "sass": "^1.69.7",
+        "source-map-explorer": "^2.5.3",
+        "vite": "^5.0.8"
+    }
 }

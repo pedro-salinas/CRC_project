@@ -1,3 +1,4 @@
+// Componentes
 import { EndPageLogin } from "../../components/adminPage/loginPage/EndPageLogin";
 import { LoginForm } from "../../components/adminPage/loginPage/LoginForm";
 

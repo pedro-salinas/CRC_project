@@ -19,7 +19,7 @@ import {
 const router = Router();
 
 // Obtener todas las atenciones
-router.get("/attentions", getAttentions);
+router.get("/attentions", authRequired, authStaff, getAttentions);
 // Obtener atenciones para una fecha en concreto
 router.post(
     "/attentions_date",

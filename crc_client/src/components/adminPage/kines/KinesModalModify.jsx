@@ -1,10 +1,13 @@
+// React
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+
+// Bootstrap
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 
-// Importar API
+// Api
 import { updateKine } from "../../../api/kine";
 
 export function KinesModalModify({
@@ -53,15 +56,12 @@ export function KinesModalModify({
 
                 handleClose();
             } catch (error) {
-                console.log(error);
                 if (error.response.status === 400) {
                     let backendErrors;
 
                     if (error.response.data.error !== undefined) {
                         // Error de zod
-                        console.log("error de zod");
                         backendErrors = error.response.data.error;
-                        console.log(backendErrors);
                     } else if (error.response.data.message !== undefined) {
                         // Error de validación
                         backendErrors = [error.response.data.message];

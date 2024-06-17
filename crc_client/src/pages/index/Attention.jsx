@@ -1,3 +1,4 @@
+// Componentes
 import { CustomNavbar } from "../../components/indexPage/CustomNavbar";
 import { FooterSection } from "../../components/indexPage/FooterSection";
 import { EndPage } from "../../components/indexPage/EndPage";

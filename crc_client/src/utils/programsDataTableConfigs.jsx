@@ -1,8 +1,8 @@
 // Tiempo
 import moment from "moment-timezone";
-
 export const timeZone = "America/Santiago";
 
+// Columnas react data table
 export const columns = [
     {
         name: "Nombre",

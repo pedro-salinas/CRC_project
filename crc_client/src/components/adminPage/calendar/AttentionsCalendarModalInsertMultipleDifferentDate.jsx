@@ -1,20 +1,22 @@
+// React
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+
+// Bootstrap
 import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
-import ButtonGroup from "react-bootstrap/ButtonGroup";
+import Col from "react-bootstrap/Col";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Dropdown from "react-bootstrap/Dropdown";
 
-// Importar API
+// Api
 import { createMultiplesAttentions } from "../../../api/attention";
 
 // Bootstrap icons
 import { XLg, PlusCircle, XCircle } from "react-bootstrap-icons";
 
-// CSS
+// Estilos
 import "./styles.css";
 
 export function AttentionsCalendarModalInsertMultipleDifferentDate({

@@ -1,1 +1,20 @@
+/* Archivo custom-carousel.css */
 
+/* Estilos para los botones de navegación del carrusel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(93deg)
+        brightness(0%) contrast(103%);
+}
+
+.carousel-control-prev-icon:hover,
+.carousel-control-next-icon:hover {
+    filter: invert(50%) sepia(50%) saturate(0%) hue-rotate(93deg)
+        brightness(50%) contrast(103%);
+}
+
+/* Estilos para los indicadores del carrusel */
+
+.carousel-indicators button {
+    background-color: #343a40 !important; /* Color negro para los indicadores */
+}

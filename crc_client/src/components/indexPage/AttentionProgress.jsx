@@ -16,7 +16,7 @@ import { Telephone, Whatsapp, GeoAlt } from "react-bootstrap-icons";
 // Utilidad para saber si es que estamos en movil o no
 import { MobileHandler } from "../../utils/MobileHandler";
 
-// Importar API
+// Api
 import {
     getAttentions,
     insertAttentionRequest,

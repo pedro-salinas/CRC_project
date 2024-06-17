@@ -23,17 +23,25 @@ import { ConfirmEmail } from "./pages/extra/ConfirmEmail";
 // Contexto
 import { UserProvider } from "./context/userContext";
 
+// Estilos
 import "./App.css";
+
+// Rutas
 import { ProtectedRoute } from "./ProtectedRoute";
 
+// Variables de entorno
+export const VITE_URL = import.meta.env.VITE_URL;
+export const VITE_PROTOCOL = import.meta.env.VITE_PROTOCOL;
+
 function App() {
+    // Redireccionar de www a non-www
     const [redirected, setRedirected] = useState(false);
 
     useEffect(() => {
-        if (window.location.hostname === "www.crckinesiologia.cl") {
+        if (window.location.hostname === "www" + VITE_URL) {
             setRedirected(true);
             window.location.href =
-                "https://crckinesiologia.cl" + window.location.pathname;
+                VITE_PROTOCOL + VITE_URL + window.location.pathname;
         }
     }, []);
 
@@ -48,7 +56,7 @@ function App() {
                     <Route path="*" element={<Navigate to="/" />} />
                     {/* Ruta por defecto vacia dirige a index */}
                     <Route path="/" element={<Index />} />
-                    {/* <Route path="/attention" element={<Attention />} /> */}
+                    <Route path="/attention" element={<Attention />} />
                     <Route path="/confirm" element={<ConfirmEmail />} />
 
                     <Route path="/admin/login" element={<Login />} />

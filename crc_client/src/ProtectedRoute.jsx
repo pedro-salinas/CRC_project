@@ -1,5 +1,10 @@
+// React
 import { useEffect } from "react";
+
+// Router
 import { useNavigate, Outlet } from "react-router-dom";
+
+// Context
 import { useUserContext } from "./context/userContext";
 
 export function ProtectedRoute() {

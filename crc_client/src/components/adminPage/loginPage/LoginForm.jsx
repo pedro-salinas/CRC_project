@@ -1,6 +1,11 @@
+// React
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+
+// Router
 import { useNavigate } from "react-router-dom";
+
+// Bootstrap
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
@@ -11,10 +16,10 @@ import Image from "react-bootstrap/Image";
 // Contexto
 import { useUserContext } from "../../../context/userContext";
 
-// Importar API
+// Api
 import { loginRequest } from "../../../api/user";
 
-// Imagenes locales
+// Imagenes
 import logo from "../../../assets/logo.png";
 
 // Utilidad para saber si es que estamos en movil o no
@@ -53,8 +58,6 @@ export function LoginForm() {
             try {
                 const res = await loginRequest(values);
 
-                console.log(res.data);
-
                 if (!res.data.is_admin && !res.data.is_staff) {
                     setError("email", {
                         type: "custom",
@@ -71,7 +74,6 @@ export function LoginForm() {
                     navigate("/admin", { replace: true });
                 }
             } catch (error) {
-                console.log(error);
                 if (
                     error.response.status === 400 ||
                     error.response.status === 403 ||

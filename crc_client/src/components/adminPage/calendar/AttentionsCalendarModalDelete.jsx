@@ -1,17 +1,17 @@
+// React
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+
+// Bootstrap
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Dropdown from "react-bootstrap/Dropdown";
 
-// Importar API
+// Api
 import { deleteAttention } from "../../../api/attention";
 
-// Bootstrap icons
-import { XLg } from "react-bootstrap-icons";
-
-// CSS
+// Estilos
 import "./styles.css";
 
 export function AttentionsCalendarModalDelete({
@@ -108,7 +108,6 @@ export function AttentionsCalendarModalDelete({
                     year: year,
                     blocked: false,
                 };
-                console.log(data);
                 const res = await deleteAttention(data._id);
                 setLoading(false);
                 setAlertType("success");
@@ -116,7 +115,6 @@ export function AttentionsCalendarModalDelete({
                 setShowAlert(true);
                 handleClose();
             } catch (error) {
-                console.log(error);
                 if (error.response.status === 400) {
                     // Fallo anterior al controlador
                     let backendErrors;

@@ -1,3 +1,4 @@
+// Componentes
 import { CustomNavbarAdmin } from "../../components/adminPage/CustomNavbarAdmin";
 import { AttentionsCalendar } from "../../components/adminPage/calendar/AttentionsCalendar";
 

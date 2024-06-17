@@ -16,7 +16,7 @@ import {
 // Utilidad para saber si es que estamos en movil o no
 import { MobileHandler } from "../../utils/MobileHandler";
 
-// Imagenes locales
+// Imagenes
 import image1 from "../../assets/contact.jpg";
 import image2 from "../../assets/pagos.png";
 
@@ -28,13 +28,19 @@ export function ContactSection() {
         paddingTop: isMobile ? "60px" : "150px",
     };
 
+    const fontSizeTitle = {
+        fontSize: isMobile ? "36px" : "56px",
+    };
+
     return (
         <Container style={dynamicStylePrices} id="contact">
-            <Row className="text-center" data-aos="fade-down">
-                <h1 className="fw-bold">Contacto</h1>
+            <Row className="text-center" data-aos="fade-up">
+                <h1 className="fw-bold" style={fontSizeTitle}>
+                    Contacto
+                </h1>
             </Row>
-            <Row>
-                <Col className="p-5" data-aos="fade-right">
+            <Row data-aos="fade-up">
+                <Col className="p-5">
                     <Row className="p-3">
                         <Col md={2} className="d-flex align-items-center">
                             <Clock size={35} color="#31B6AD" />
@@ -108,7 +114,7 @@ export function ContactSection() {
                         </Col>
                     </Row>
                 </Col>
-                <Col className="p-5 text-center" data-aos="fade-right">
+                <Col className="p-5 text-center">
                     {!isMobile ? (
                         <Image src={image1} width="400px" />
                     ) : (
@@ -116,7 +122,7 @@ export function ContactSection() {
                     )}
                 </Col>
             </Row>
-            <Row className="text-center" data-aos="fade-down">
+            <Row className="text-center" data-aos="fade-up">
                 <iframe
                     src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d812.7650592291094!2d-71.66542186434249!3d-35.42853780203311!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9665c6a11de5e409%3A0x3442ddff66705722!2sAv.%20Dos%20Sur%20890%2C%20Talca%2C%20Maule!5e0!3m2!1ses!2scl!4v1676962521374!5m2!1ses!2scl`}
                     width="600"

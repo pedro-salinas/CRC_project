@@ -1,3 +1,4 @@
+// Componentes
 import { CustomNavbarAdmin } from "../../components/adminPage/CustomNavbarAdmin";
 import { ProgramsTable } from "../../components/adminPage/programs/ProgramsTable";
 

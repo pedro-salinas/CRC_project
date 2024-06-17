@@ -1,3 +1,4 @@
+// Validar rut: bool
 export function validateRut(rut) {
     if (!/^[0-9.]+[-]?[0-9kK]{1}/.test(rut)) {
         return false;

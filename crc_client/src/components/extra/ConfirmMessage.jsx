@@ -27,7 +27,6 @@ export function ConfirmMessage() {
         async function verifyEmail() {
             try {
                 const res = await verifyEmailRequest(queryParameters.get("id"));
-                console.log(res);
                 setShow(true);
             } catch (error) {
                 console.log(error);

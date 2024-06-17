@@ -14,6 +14,10 @@ export function EndPage() {
         paddingTop: isMobile ? "30px" : "30px",
     };
 
+    const fontSize = {
+        fontSize: isMobile ? "12px" : "18px",
+    };
+
     return (
         <Container
             style={dynamicStyleFooter}
@@ -22,7 +26,7 @@ export function EndPage() {
             fluid
             className="d-flex flex-column align-items-between"
         >
-            <Row className="pb-4">
+            <Row className="pb-4" style={fontSize}>
                 <Col>
                     © Copyright <strong>CRC kinesiología</strong>. Todos los
                     derechos reservados

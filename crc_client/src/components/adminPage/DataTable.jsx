@@ -1,10 +1,14 @@
+// React
 import { useMemo, useState, useCallback, useEffect } from "react";
+
+// Bootstrap
 import { Form, Col, Row } from "react-bootstrap";
 
+// React data table
 import DataTable from "react-data-table-component";
 
+// Tiempo
 import moment from "moment-timezone";
-
 export const timeZone = "America/Santiago";
 
 const handleSelectChange = (setSelectText) => (e) => {

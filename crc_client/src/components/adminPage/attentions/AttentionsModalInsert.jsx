@@ -1,17 +1,20 @@
+// React
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+
+// Bootstrap
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
 import Dropdown from "react-bootstrap/Dropdown";
 
-// Importar API
+// Api
 import { insertAttentionRequest } from "../../../api/attention";
 
 // Bootstrap icons
 import { XLg } from "react-bootstrap-icons";
 
-// CSS
+// Estilos
 import "./styles.css";
 
 export function AttentionsModalInsert({

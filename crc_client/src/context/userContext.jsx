@@ -1,8 +1,13 @@
+// React
 import { createContext, useState, useContext, useEffect } from "react";
+
+// Cookies
 import { useCookies } from "react-cookie";
 
+// Api
 import { verifyToken } from "../api/user";
 
+// Context
 export const UserContext = createContext();
 
 export const useUserContext = () => {
