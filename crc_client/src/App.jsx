@@ -37,11 +37,15 @@ function App() {
     // Redireccionar de www a non-www
     const [redirected, setRedirected] = useState(false);
 
+    console.log(VITE_URL);
+    console.log(VITE_PROTOCOL);
+
     useEffect(() => {
         if (window.location.hostname === "www" + VITE_URL) {
             setRedirected(true);
             window.location.href =
                 VITE_PROTOCOL + VITE_URL + window.location.pathname;
+            console.log(VITE_PROTOCOL + VITE_URL + window.location.pathname);
         }
     }, []);
 
