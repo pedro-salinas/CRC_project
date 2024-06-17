@@ -38,14 +38,14 @@ export function CustomNavbar() {
         <Navbar
             key="navbar"
             id="navbar"
-            expand="md"
+            expand="lg"
             fixed="top"
             className="bg-body-tertiary mb-3"
         >
             <Container>
                 <Navbar.Brand>
                     {!isMobile ? (
-                        <Image src={logo} href="#navbar" width="450px" />
+                        <Image src={logo} href="#navbar" width="250px" />
                     ) : (
                         <Image
                             src={logo}

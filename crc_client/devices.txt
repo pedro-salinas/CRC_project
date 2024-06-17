@@ -1,0 +1,25 @@
+pc: OK
+
+iphone se: OK
+iphone xr: OK
+iphone 12 pro: OK
+iphone 14 pro max: OK
+
+pixel 7: OK
+
+samsung galaxy s8+: OK
+samsung galaxy s20 ultra: OK
+
+ipad mini: OK
+ipad air: OK
+
+ipad pro: OK
+surface pro 7: OK
+surface duo: OK
+
+galaxy z fold 5: OK
+asus zenbook fold: OK
+samsung galaxy a51/71: OK
+
+nest hub: OK
+nest hub max: OK

@@ -29,7 +29,7 @@ export function ContactSection() {
     };
 
     const fontSizeTitle = {
-        fontSize: isMobile ? "36px" : "56px",
+        fontSize: isMobile ? "36px" : "46px",
     };
 
     return (
@@ -118,7 +118,7 @@ export function ContactSection() {
                     {!isMobile ? (
                         <Image src={image1} width="400px" />
                     ) : (
-                        <Image src={image1} width="300px" />
+                        <Image src={image1} width="250px" />
                     )}
                 </Col>
             </Row>

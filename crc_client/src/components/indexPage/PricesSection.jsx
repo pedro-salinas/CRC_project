@@ -29,7 +29,7 @@ export function PricesSection({ program, programs, loading }) {
     };
 
     const fontSizeTitle = {
-        fontSize: isMobile ? "36px" : "56px",
+        fontSize: isMobile ? "36px" : "46px",
     };
 
     return (
@@ -39,52 +39,64 @@ export function PricesSection({ program, programs, loading }) {
                     <strong>
                         Puedes al agendar tu evaluación y acceder ¡A todo esto!
                     </strong>
-                    <span style={{ color: "red" }}> (por solo {program})</span>
+
+                    <span style={{ color: "red" }}>
+                        {" "}
+                        (por solo{" "}
+                        {!loading && (
+                            <span style={{ color: "red" }}>{program}</span>
+                        )}
+                        {loading && (
+                            <span style={{ color: "red" }}>..............</span>
+                        )}
+                        )
+                    </span>
                 </h1>
             </Row>
+            <Row
+                className="text-center justify-content-center pt-4"
+                data-aos="fade-up"
+            >
+                <Col xs={8}>
+                    <h5 className="text-center pt-4">
+                        Contamos con un gran equipo de profesionales de la
+                        kinesiología, comprometidos en brindarles la mejor
+                        atención, con nuestra experiencia.
+                    </h5>
+                </Col>
+            </Row>
             <Row className="text-center pt-4" data-aos="fade-up">
-                <Row className="text-center justify-content-center">
-                    <Col xs={8}>
-                        <h5 className="text-center pt-4">
-                            Contamos con un gran equipo de profesionales de la
-                            kinesiología, comprometidos en brindarles la mejor
-                            atención, con nuestra experiencia.
-                        </h5>
-                    </Col>
-                </Row>
-                <Row className="text-center pt-4">
-                    {/* <Col>
+                {/* <Col>
                         <Button variant="primary">
                             <h5>Agendar una hora</h5>
                         </Button>
                     </Col> */}
-                    <Link to="https://wa.me/56966140265">
-                        <Button
-                            variant="info"
-                            style={{
-                                padding: "0px",
-                                margin: "0px",
-                                border: "0px",
-                            }}
-                        >
-                            <Row className="p-2 align-items-center">
-                                <Col sm={8} className="p-0">
-                                    <h6>Agenda por Whatsapp</h6>
-                                </Col>
-                                <Col sm={3} className="p-0">
-                                    <Whatsapp size={30} color="white" />
-                                </Col>
-                            </Row>
-                        </Button>
-                    </Link>
-                </Row>
+                <Link to="https://wa.me/56966140265">
+                    <Button
+                        variant="info"
+                        style={{
+                            padding: "0px",
+                            margin: "0px",
+                            border: "0px",
+                        }}
+                    >
+                        <Row className="p-2 align-items-center">
+                            <Col sm={8} className="p-0">
+                                <h6>Agenda por Whatsapp</h6>
+                            </Col>
+                            <Col sm={3} className="p-0">
+                                <Whatsapp size={30} color="white" />
+                            </Col>
+                        </Row>
+                    </Button>
+                </Link>
             </Row>
-            <Row
-                className="prices-container pt-4 pb-4 m-1 mt-4"
-                data-aos="fade-up"
-            >
-                {!loading && (
-                    <div>
+            {!loading && (
+                <Row
+                    className="prices-container pt-4 pb-4 m-1 mt-4"
+                    data-aos="fade-up"
+                >
+                    <div data-aos="fade-up">
                         {programs.map((program, index) => {
                             if (program.visible) {
                                 let sale = "";
@@ -158,21 +170,25 @@ export function PricesSection({ program, programs, loading }) {
                             }
                         })}
                     </div>
-                )}
-            </Row>
+                </Row>
+            )}
 
             <Row className="pt-4 text-center" data-aos="fade-up">
                 <h1 className="pt-4">
                     <strong>
                         ¡Sí, exacto! Quiero obtener por fín mi solución por solo
-                        {program}{" "}
+                        {"  "}
+                        {!loading && <span>{program}</span>}
+                        {loading && <span>..............</span>}{" "}
                     </strong>
                 </h1>
             </Row>
             <Row className="pt-4 text-center" data-aos="fade-up">
                 <Col sm={12} md={6}>
                     <h5 className="pt-4 text-center">
-                        ¿Qué más puedes comprar con {program}?
+                        ¿Qué más puedes comprar con{" "}
+                        {!loading && <span>{program}</span>}
+                        {loading && <span>..............</span>}?
                     </h5>
                     <h5 className="pt-4 text-center">
                         <span style={{ color: "red" }}>

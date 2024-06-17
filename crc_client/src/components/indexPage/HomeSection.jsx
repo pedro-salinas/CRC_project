@@ -36,15 +36,15 @@ export function HomeSection({ program, loading }) {
 
     // Padding para movil o navegador
     const dynamicStyleHome = {
-        paddingTop: isMobile ? "60px" : "150px",
+        paddingTop: isMobile ? "60px" : "100px",
     };
 
     const fontSizeTitle = {
-        fontSize: isMobile ? "36px" : "56px",
+        fontSize: isMobile ? "36px" : "46px",
     };
 
     const videoSize = {
-        height: isMobile ? "300px" : "600px",
+        height: isMobile ? "300px" : "500px",
     };
 
     useEffect(() => {
