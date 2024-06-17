@@ -41,6 +41,7 @@ function App() {
     console.log(VITE_PROTOCOL);
 
     useEffect(() => {
+        console.log(window.location.hostname);
         if (window.location.hostname === "www" + VITE_URL) {
             setRedirected(true);
             window.location.href =
