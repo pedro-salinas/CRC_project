@@ -17,8 +17,8 @@ import {
 import { MobileHandler } from "../../utils/MobileHandler";
 
 // Imagenes
-import image1 from "../../assets/contact.png";
-import image2 from "../../assets/pagos.png";
+import image1 from "../../assets/contact.webp";
+import image2 from "../../assets/pagos.webp";
 
 export function ContactSection() {
     const { isMobile } = MobileHandler();

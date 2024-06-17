@@ -8,10 +8,10 @@ import Image from "react-bootstrap/Image";
 import { MobileHandler } from "../../utils/MobileHandler";
 
 // Imagenes
-import chris from "../../assets/crc_chris.png";
-import taekwondo from "../../assets/chris_taekwondo.jpg";
-import estilo from "../../assets/chris_estilo.jpg";
-import estudiar from "../../assets/chris_estudiar.jpg";
+import chris from "../../assets/crc_chris.webp";
+import taekwondo from "../../assets/chris_taekwondo.webp";
+import estilo from "../../assets/chris_estilo.webp";
+import estudiar from "../../assets/chris_estudiar.webp";
 
 export function AboutUs() {
     const { isMobile } = MobileHandler();

@@ -20,7 +20,7 @@ import { useUserContext } from "../../../context/userContext";
 import { loginRequest } from "../../../api/user";
 
 // Imagenes
-import logo from "../../../assets/logo.png";
+import logo from "../../../assets/logo.webp";
 
 // Utilidad para saber si es que estamos en movil o no
 import { MobileHandler } from "../../../utils/MobileHandler";

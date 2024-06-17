@@ -22,7 +22,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { MobileHandler } from "../../utils/MobileHandler";
 
 // Imagenes locales
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo.webp";
 
 export function CustomNavbarAdmin() {
     // Cerrar sesión

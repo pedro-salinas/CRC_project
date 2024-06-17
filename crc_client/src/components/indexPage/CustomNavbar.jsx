@@ -21,7 +21,7 @@ import { Whatsapp } from "react-bootstrap-icons";
 import { MobileHandler } from "../../utils/MobileHandler";
 
 // Imagenes
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo.webp";
 
 export function CustomNavbar() {
     // Estado para controlar la visibilidad del Offcanvas

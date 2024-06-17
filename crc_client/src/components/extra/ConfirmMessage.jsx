@@ -12,7 +12,7 @@ import { verifyEmailRequest } from "../../api/user";
 import { Link, useSearchParams, useNavigate } from "react-router-dom";
 
 // Imagenes locales
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logo.webp";
 
 // Utilidad para saber si es que estamos en movil o no
 import { MobileHandler } from "../../utils/MobileHandler";

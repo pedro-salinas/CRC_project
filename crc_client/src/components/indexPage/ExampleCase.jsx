@@ -8,8 +8,8 @@ import Image from "react-bootstrap/Image";
 import { MobileHandler } from "../../utils/MobileHandler";
 
 // Imagenes
-import ella from "../../assets/ella.jpg";
-import estoy_yo from "../../assets/estoy_yo.jpg";
+import ella from "../../assets/ella.webp";
+import estoy_yo from "../../assets/estoy_yo.webp";
 
 // Bootstrap icons
 import { ArrowRight, ArrowDown } from "react-bootstrap-icons";

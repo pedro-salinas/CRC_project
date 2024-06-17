@@ -15,7 +15,7 @@ import Image from "react-bootstrap/Image";
 import { MobileHandler } from "../../utils/MobileHandler";
 
 // Imagenes
-import chris from "../../assets/crc_chris.png";
+import chris from "../../assets/crc_chris.webp";
 
 // Bootstrap icons
 import { Whatsapp } from "react-bootstrap-icons";
