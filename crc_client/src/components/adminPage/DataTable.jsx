@@ -8,8 +8,7 @@ import { Form, Col, Row } from "react-bootstrap";
 import DataTable from "react-data-table-component";
 
 // Tiempo
-import moment from "moment-timezone";
-export const timeZone = "America/Santiago";
+import { formatDate } from "../../utils/dateUtils";
 
 const handleSelectChange = (setSelectText) => (e) => {
     setSelectText(e.target.value);
@@ -111,7 +110,7 @@ export function Table({
                 key === "createdAt" ||
                 key === "last_login"
             ) {
-                value = moment(value).tz(timeZone).format("YYYY-MM-DD HH:mm");
+                value = formatDate(value);
             }
 
             if (key !== selectText && selectText !== "all") {

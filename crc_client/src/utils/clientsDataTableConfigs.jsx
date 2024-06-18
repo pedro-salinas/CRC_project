@@ -1,6 +1,5 @@
 // Tiempo
-import moment from "moment-timezone";
-export const timeZone = "America/Santiago";
+import { formatDate } from "./dateUtils";
 
 // Columnas react data table
 export const columns = [
@@ -34,24 +33,14 @@ export const columns = [
     },
     {
         name: "Última actualización",
-        selector: (row) =>
-            row.updatedAt
-                ? moment(row.updatedAt)
-                      .tz(timeZone)
-                      .format("YYYY-MM-DD HH:mm:ss")
-                : "-",
+        selector: (row) => (row.updatedAt ? formatDate(row.updatedAt) : "-"),
         sortable: true,
         allowOverflow: true,
         wrap: true,
     },
     {
         name: "Fecha creación",
-        selector: (row) =>
-            row.createdAt
-                ? moment(row.createdAt)
-                      .tz(timeZone)
-                      .format("YYYY-MM-DD HH:mm:ss")
-                : "-",
+        selector: (row) => (row.createdAt ? formatDate(row.createdAt) : "-"),
         sortable: true,
         allowOverflow: true,
         wrap: true,
