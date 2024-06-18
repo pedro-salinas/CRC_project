@@ -30,24 +30,24 @@ import "./App.css";
 import { ProtectedRoute } from "./ProtectedRoute";
 
 // Variables de entorno
-export const VITE_URL = import.meta.env.VITE_URL;
-export const VITE_PROTOCOL = import.meta.env.VITE_PROTOCOL;
+// export const VITE_URL = import.meta.env.VITE_URL;
+// export const VITE_PROTOCOL = import.meta.env.VITE_PROTOCOL;
 
 function App() {
-    // Redireccionar de www a non-www
-    const [redirected, setRedirected] = useState(false);
+    // // Redireccionar de www a non-www
+    // const [redirected, setRedirected] = useState(false);
 
-    useEffect(() => {
-        if (window.location.hostname === "www." + VITE_URL) {
-            setRedirected(true);
-            window.location.href =
-                VITE_PROTOCOL + VITE_URL + window.location.pathname;
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (window.location.hostname === "www." + VITE_URL) {
+    //         setRedirected(true);
+    //         window.location.href =
+    //             VITE_PROTOCOL + VITE_URL + window.location.pathname;
+    //     }
+    // }, []);
 
-    if (redirected) {
-        return null; // Evita que los componentes se carguen dos veces
-    }
+    // if (redirected) {
+    //     return null; // Evita que los componentes se carguen dos veces
+    // }
     return (
         <UserProvider>
             <BrowserRouter>
