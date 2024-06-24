@@ -168,6 +168,9 @@ export function ProfilesTable() {
                 }
             });
 
+            // Limpiar grafico
+            setSelectedProfile([]);
+
             setDefaultValues(selectedRows[0]);
             setShowModify(true);
         }
@@ -190,6 +193,9 @@ export function ProfilesTable() {
                     selectedRows[0][`variable-${index - 1}`] = variable;
                 }
             });
+
+            // Limpiar grafico
+            setSelectedProfile([]);
 
             setDefaultValues(selectedRows[0]);
             setShowDelete(true);

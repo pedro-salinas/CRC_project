@@ -176,33 +176,34 @@ export function ProfilesModalModify({
                             {errors.variable && errors.variable.message}
                         </span>
                     </Form.Group>
-                    {[...Array(defaultValues.variables)].map((_, index) => (
-                        <Form.Group
-                            key={index}
-                            className="mb-3"
-                            controlId={`variable-${index}`}
-                        >
-                            <Form.Label>Variable {index + 2}</Form.Label>
-                            <input
-                                type="text"
-                                className={
-                                    errors[`variable-${index}`]
-                                        ? "form-control is-invalid"
-                                        : "form-control"
-                                }
-                                {...register(`variable-${index}`, {
-                                    required: {
-                                        value: true,
-                                        message: "Se requiere una variable",
-                                    },
-                                })}
-                            />
-                            <span className="text-danger">
-                                {errors[`variable-${index}`] &&
-                                    errors[`variable-${index}`].message}
-                            </span>
-                        </Form.Group>
-                    ))}
+                    {defaultValues.variables &&
+                        defaultValues.variables.slice(1).map((_, index) => (
+                            <Form.Group
+                                key={index}
+                                className="mb-3"
+                                controlId={`variable-${index}`}
+                            >
+                                <Form.Label>Variable {index + 2}</Form.Label>
+                                <input
+                                    type="text"
+                                    className={
+                                        errors[`variable-${index}`]
+                                            ? "form-control is-invalid"
+                                            : "form-control"
+                                    }
+                                    {...register(`variable-${index}`, {
+                                        required: {
+                                            value: true,
+                                            message: "Se requiere una variable",
+                                        },
+                                    })}
+                                />
+                                <span className="text-danger">
+                                    {errors[`variable-${index}`] &&
+                                        errors[`variable-${index}`].message}
+                                </span>
+                            </Form.Group>
+                        ))}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button
