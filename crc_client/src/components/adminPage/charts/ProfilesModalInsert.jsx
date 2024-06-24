@@ -177,7 +177,7 @@ export function ProfilesModalInsert({
                     <Form.Group className="mb-3" controlId="variable">
                         <Form.Label>Variable 1</Form.Label>
                         <input
-                            type="number"
+                            type="text"
                             className={
                                 errors.variable
                                     ? "form-control is-invalid"
@@ -202,7 +202,7 @@ export function ProfilesModalInsert({
                         >
                             <Form.Label>Variable {index + 2}</Form.Label>
                             <input
-                                type="number"
+                                type="text"
                                 className={
                                     errors[`variable-${index}`]
                                         ? "form-control is-invalid"
