@@ -10,12 +10,12 @@ import Card from "react-bootstrap/Card";
 export function Stage1({ programs, goStage2 }) {
     return (
         <Row
-            className="pt-2 justify-content-center"
-            data-aos="fade-up"
+            className="pt-4 justify-content-center"
+            data-aos="fade-down"
             style={{ minHeight: "250px" }}
         >
             <Row className="text-center">
-                <h3>Seleccione un dia</h3>
+                <h3>Seleccione el tipo de atención</h3>
             </Row>
             {programs.map((program) => {
                 if (program.agenda) {

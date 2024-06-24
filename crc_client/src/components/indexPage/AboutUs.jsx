@@ -27,14 +27,14 @@ export function AboutUs() {
 
     return (
         <Container style={dynamicStyleInfo} id="info">
-            <Row className="text-center" data-aos="fade-up">
+            <Row className="text-center" data-aos="fade-down">
                 <h1 style={fontSizeTitle}>
                     <strong>Suena todo muy bonito, pero. . .</strong>
                 </h1>
             </Row>
             <Row
                 className="pt-4 text-center justify-content-center"
-                data-aos="fade-up"
+                data-aos="fade-down"
             >
                 <Col xs={10}>
                     <h4>
@@ -44,7 +44,7 @@ export function AboutUs() {
                     </h4>
                 </Col>
             </Row>
-            <Row className="pt-4 text-center" data-aos="fade-up">
+            <Row className="pt-4 text-center" data-aos="fade-down">
                 <Col sm={12} md={6} className="pt-4">
                     {!isMobile ? (
                         <Image src={chris} width="300px" />
@@ -72,7 +72,7 @@ export function AboutUs() {
             </Row>
             <Row
                 className="pt-4 text-center justify-content-center"
-                data-aos="fade-up"
+                data-aos="fade-down"
             >
                 <Col xs={12}>
                     <h4 className="pt-4">
@@ -93,7 +93,7 @@ export function AboutUs() {
                     </h4>
                 </Col>
             </Row>
-            <Row className="pt-4 text-center" data-aos="fade-up">
+            <Row className="pt-4 text-center" data-aos="fade-down">
                 <h1>
                     <strong>
                         No estaba preparado para recibir ese diagnóstico;
@@ -104,7 +104,7 @@ export function AboutUs() {
                     </strong>
                 </h1>
             </Row>
-            <Row className="pt-4" data-aos="fade-up">
+            <Row className="pt-4" data-aos="fade-down">
                 <Col sm={12} md={6}>
                     <h5 className="pt-4 text-start">
                         Fuí a distintos especialistas buscando opiniones,
@@ -137,7 +137,7 @@ export function AboutUs() {
                     )}
                 </Col>
             </Row>
-            <Row className="pt-4 text-center" data-aos="fade-up">
+            <Row className="pt-4 text-center" data-aos="fade-down">
                 <Col sm={12} md={6} className="pt-4">
                     {!isMobile ? (
                         <Image src={estilo} width="350px" />
@@ -169,7 +169,7 @@ export function AboutUs() {
                     </h3>
                 </Col>
             </Row>
-            <Row className="pt-4 text-center" data-aos="fade-up">
+            <Row className="pt-4 text-center" data-aos="fade-down">
                 <h1>
                     <strong>Una solución</strong>
                     <strong>
@@ -177,7 +177,7 @@ export function AboutUs() {
                     </strong>
                 </h1>
             </Row>
-            <Row className="pt-4" data-aos="fade-up">
+            <Row className="pt-4" data-aos="fade-down">
                 <Col sm={12} md={6}>
                     <h5 className="pt-4 text-start">
                         Aprendí métodos de evaluación complejos, que mientras
@@ -207,7 +207,7 @@ export function AboutUs() {
             </Row>
             <Row
                 className="pt-4 text-center justify-content-center"
-                data-aos="fade-up"
+                data-aos="fade-down"
             >
                 <Col xs={8}>
                     <h4 className="pt-4">

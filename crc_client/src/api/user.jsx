@@ -1,6 +1,6 @@
 import { instance } from "./axios";
 
-// CRUD Ususario
+// CRUD Usuario
 export function insertUserRequest(data) {
     return instance.post("/user", data);
 }

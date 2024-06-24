@@ -371,7 +371,7 @@ export function AttentionsTable() {
                 </Card.Title>
 
                 {loadingTable && (
-                    <Card.Text>
+                    <>
                         {tableData.length > 0 && (
                             <Table
                                 data={tableData}
@@ -381,7 +381,7 @@ export function AttentionsTable() {
                                 singleSelection={singleSelection}
                             ></Table>
                         )}
-                    </Card.Text>
+                    </>
                 )}
 
                 {!loadingTable && (

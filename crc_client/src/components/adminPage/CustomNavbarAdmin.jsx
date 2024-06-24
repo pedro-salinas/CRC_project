@@ -120,6 +120,9 @@ export function CustomNavbarAdmin() {
                         <Nav.Link as={Link} to="/admin/clients">
                             <h6>Paciente</h6>
                         </Nav.Link>
+                        <Nav.Link as={Link} to="/admin/charts">
+                            <h6>Gráficos</h6>
+                        </Nav.Link>
                         {!isMobile ? (
                             <Nav.Link
                                 as={Link}

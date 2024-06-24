@@ -234,7 +234,7 @@ export function ProgramsTable() {
                 </Card.Title>
 
                 {loadingTable && (
-                    <Card.Text>
+                    <>
                         {tableData.length > 0 && (
                             <Table
                                 data={tableData}
@@ -244,7 +244,7 @@ export function ProgramsTable() {
                                 singleSelection={singleSelection}
                             ></Table>
                         )}
-                    </Card.Text>
+                    </>
                 )}
 
                 {!loadingTable && (

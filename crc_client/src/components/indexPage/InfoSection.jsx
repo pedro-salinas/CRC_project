@@ -24,14 +24,14 @@ export function InfoSection() {
 
     return (
         <Container style={dynamicStyleInfo} id="info">
-            <Row className="text-center" data-aos="fade-up">
+            <Row className="text-center" data-aos="fade-down">
                 <h4 style={{ fontSize: "28px" }}>
                     Lo sé... Estas frustrado(a) por tu dolor lumbar persistente
                     y has agotado todas las opciones
                     <strong> sin encontrar alivio.</strong>
                 </h4>
             </Row>
-            <Row className="pt-2 align-items-center" data-aos="fade-up">
+            <Row className="pt-2 align-items-center" data-aos="fade-down">
                 <Col className="text-center align-items-center" sm={12} md={6}>
                     <Row className="pt-4">
                         <h1 className="fw-bold">
@@ -390,7 +390,7 @@ export function InfoSection() {
                     </Carousel>
                 </Col>
             </Row>
-            <Row className="pt-4 text-center" data-aos="fade-up">
+            <Row className="pt-4 text-center" data-aos="fade-down">
                 <h2>Te contaré aún más a continuación</h2>
             </Row>
 

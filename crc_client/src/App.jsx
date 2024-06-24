@@ -1,6 +1,3 @@
-// React
-import { useEffect, useState } from "react";
-
 // Navegacion
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
@@ -14,6 +11,7 @@ import { Users } from "./pages/admin/Users";
 import { Kines } from "./pages/admin/Kines";
 import { Clients } from "./pages/admin/Clients";
 import { Programs } from "./pages/admin/Programs";
+import { Charts } from "./pages/admin/Charts";
 import { Attentions } from "./pages/admin/Attentions";
 import { AttentionsTablePage } from "./pages/admin/AttentionsTablePage";
 
@@ -29,25 +27,7 @@ import "./App.css";
 // Rutas
 import { ProtectedRoute } from "./ProtectedRoute";
 
-// Variables de entorno
-// export const VITE_URL = import.meta.env.VITE_URL;
-// export const VITE_PROTOCOL = import.meta.env.VITE_PROTOCOL;
-
 function App() {
-    // // Redireccionar de www a non-www
-    // const [redirected, setRedirected] = useState(false);
-
-    // useEffect(() => {
-    //     if (window.location.hostname === "www." + VITE_URL) {
-    //         setRedirected(true);
-    //         window.location.href =
-    //             VITE_PROTOCOL + VITE_URL + window.location.pathname;
-    //     }
-    // }, []);
-
-    // if (redirected) {
-    //     return null; // Evita que los componentes se carguen dos veces
-    // }
     return (
         <UserProvider>
             <BrowserRouter>
@@ -70,6 +50,8 @@ function App() {
                         <Route path="/admin/kines" element={<Kines />} />
                         <Route path="/admin/clients" element={<Clients />} />
                         <Route path="/admin/programs" element={<Programs />} />
+                        <Route path="/admin/charts" element={<Charts />} />
+
                         <Route
                             path="/admin/attentions"
                             element={<Attentions />}

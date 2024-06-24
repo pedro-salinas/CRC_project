@@ -14,8 +14,31 @@ import estoy_yo from "../../assets/estoy_yo.webp";
 // Bootstrap icons
 import { ArrowRight, ArrowDown } from "react-bootstrap-icons";
 
-// Grafico
-import { Chart } from "./Chart";
+// React chart
+import { Radar } from "react-chartjs-2";
+
+// Chart
+import {
+    Chart as ChartJS,
+    RadialLinearScale,
+    PointElement,
+    LineElement,
+    Filler,
+    Tooltip,
+    Legend,
+} from "chart.js";
+
+// Componentes del chart
+ChartJS.register(
+    RadialLinearScale,
+    PointElement,
+    LineElement,
+    Filler,
+    Tooltip,
+    Legend
+);
+
+import { data, options } from "./charData";
 
 export function ExampleCase() {
     const { isMobile } = MobileHandler();
@@ -35,12 +58,12 @@ export function ExampleCase() {
 
     return (
         <Container style={dynamicStyleInfo} id="info">
-            <Row className="text-center" data-aos="fade-up">
+            <Row className="text-center" data-aos="fade-down">
                 <h1 style={fontSizeTitle}>
                     <strong>Ella no podía siquiera agacharse por dolor </strong>
                 </h1>
             </Row>
-            <Row className="pt-4" data-aos="fade-up">
+            <Row className="pt-4" data-aos="fade-down">
                 <Col sm={12} md={6} className="pt-4 text-center">
                     {!isMobile ? (
                         <Image src={ella} width="350px" />
@@ -84,7 +107,7 @@ export function ExampleCase() {
             </Row>
             <Row
                 className="pt-4 text-center justify-content-center"
-                data-aos="fade-up"
+                data-aos="fade-down"
             >
                 <Col sm={12} md={6}>
                     <h5 className="pt-4 text-start">
@@ -127,11 +150,11 @@ export function ExampleCase() {
                             height: chartSize.height,
                         }}
                     >
-                        <Chart />
+                        <Radar data={data} options={options} />
                     </div>
                 </Col>
             </Row>
-            <Row className="pt-4 text-center" data-aos="fade-up">
+            <Row className="pt-4 text-center" data-aos="fade-down">
                 <h1 style={fontSizeTitle}>
                     <strong>
                         Un método que está ayudando a cientos de personas a
@@ -139,7 +162,7 @@ export function ExampleCase() {
                     </strong>
                 </h1>
             </Row>
-            <Row className="pt-4 text-center" data-aos="fade-up">
+            <Row className="pt-4 text-center" data-aos="fade-down">
                 <Col sm={12} md={6} className="pt-4">
                     {!isMobile ? (
                         <Image src={estoy_yo} width="350px" />
@@ -167,41 +190,6 @@ export function ExampleCase() {
                     </h3>
                 </Col>
             </Row>
-
-            {/* <Row className="pt-4 text-center">
-                    <h3>
-                        <strong>Y lo mejor de todo:</strong>
-                    </h3>
-                    <h3 className="pt-4">
-                        <strong>
-                            Quiero rebajar su precio para que todo el mundo
-                            pueda obtenerlo
-                        </strong>
-                    </h3>
-                </Row>
-                <Row className="pt-4 text-center">
-                    <Col>
-                        <Button
-                            variant="primary"
-                            style={{
-                                borderRadius: "28px",
-                            }}
-                        >
-                            <h1
-                                style={{
-                                    color: "white",
-                                }}
-                            >
-                                Por tan solo{"  "}
-                                <strong>
-                                    <span style={{ color: "red" }}>
-                                        $14.990
-                                    </span>
-                                </strong>
-                            </h1>
-                        </Button>
-                    </Col>
-                </Row> */}
         </Container>
     );
 }

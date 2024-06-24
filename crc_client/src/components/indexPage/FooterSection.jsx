@@ -20,7 +20,7 @@ export function FooterSection() {
 
     return (
         <Container style={dynamicStyleFooter}>
-            <Row className="text-center" data-aos="fade-up">
+            <Row className="text-center" data-aos="fade-down">
                 <Col>
                     <Row>
                         <h2 className="fw-bold">CRC KINESIOLOGÍA</h2>

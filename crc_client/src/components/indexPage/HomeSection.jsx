@@ -59,7 +59,7 @@ export function HomeSection({ program, loading }) {
             <Row id="home" style={dynamicStyleHome}>
                 <Col
                     className="text-center align-items-center"
-                    data-aos="fade-up"
+                    data-aos="fade-down"
                 >
                     <Row>
                         <h4>
@@ -83,7 +83,7 @@ export function HomeSection({ program, loading }) {
                             allowfullscreen
                         ></iframe>
                     </Row>
-                    <Row className="pt-4" data-aos="fade-up">
+                    <Row className="pt-4" data-aos="fade-down">
                         <Col>
                             <Button
                                 variant="primary"
@@ -115,7 +115,7 @@ export function HomeSection({ program, loading }) {
                         </Col>
                     </Row>
 
-                    <Row className="pt-4" data-aos="fade-up">
+                    <Row className="pt-4" data-aos="fade-down">
                         <h1 className="pt-2" style={fontSizeTitle}>
                             <strong>
                                 Últimos{" "}

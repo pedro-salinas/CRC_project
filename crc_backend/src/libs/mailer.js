@@ -30,9 +30,9 @@ export async function sendAttentionEmail(data) {
     const htmlToSend = template(dataHTML);
 
     const info = await transporter.sendMail({
-        from: MAIL_USER,
+        from: `CRC Kinesiología <${MAIL_USER}>`,
         to: data.email,
-        subject: "[CRC Kinesiología] Reserva de hora",
+        subject: "Reserva de hora",
         html: htmlToSend,
     });
 }
@@ -53,9 +53,9 @@ export async function sendConfirmEmail(data) {
     const htmlToSend = template(dataHTML);
 
     const info = await transporter.sendMail({
-        from: MAIL_USER,
+        from: `CRC Kinesiología <${MAIL_USER}>`,
         to: data.email,
-        subject: "[CRC Kinesiología] Confirmación de correo electrónico",
+        subject: "Confirmación de correo electrónico",
         html: htmlToSend,
     });
 }

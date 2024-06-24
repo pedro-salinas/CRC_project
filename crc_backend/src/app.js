@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import userRoutes from "./routes/users.routes.js";
 import programsRoutes from "./routes/programs.routes.js";
 import kinesRoutes from "./routes/kines.routes.js";
+import profilesRoutes from "./routes/profiles.routes.js";
 import clientsRoutes from "./routes/clients.routes.js";
 import attentionRoutes from "./routes/attentions.routes.js";
 import { URL_FRONTEND } from "./config.js";
@@ -31,6 +32,7 @@ app.use(cookieParser());
 app.use("/api", userRoutes);
 app.use("/api", programsRoutes);
 app.use("/api", kinesRoutes);
+app.use("/api", profilesRoutes);
 app.use("/api", clientsRoutes);
 app.use("/api", attentionRoutes);
 

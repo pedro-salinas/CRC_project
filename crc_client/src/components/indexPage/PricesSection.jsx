@@ -34,7 +34,7 @@ export function PricesSection({ program, programs, loading }) {
 
     return (
         <Container style={dynamicStylePrices} id="prices">
-            <Row className="text-center" data-aos="fade-up">
+            <Row className="text-center" data-aos="fade-down">
                 <h1 className="pt-2" style={fontSizeTitle}>
                     <strong>
                         Puedes al agendar tu evaluación y acceder ¡A todo esto!
@@ -55,7 +55,7 @@ export function PricesSection({ program, programs, loading }) {
             </Row>
             <Row
                 className="text-center justify-content-center pt-4"
-                data-aos="fade-up"
+                data-aos="fade-down"
             >
                 <Col xs={8}>
                     <h5 className="text-center pt-4">
@@ -65,7 +65,7 @@ export function PricesSection({ program, programs, loading }) {
                     </h5>
                 </Col>
             </Row>
-            <Row className="text-center pt-4" data-aos="fade-up">
+            <Row className="text-center pt-4" data-aos="fade-down">
                 {/* <Col>
                         <Button variant="primary">
                             <h5>Agendar una hora</h5>
@@ -94,9 +94,9 @@ export function PricesSection({ program, programs, loading }) {
             {!loading && (
                 <Row
                     className="prices-container pt-4 pb-4 m-1 mt-4"
-                    data-aos="fade-up"
+                    data-aos="fade-down"
                 >
-                    <div data-aos="fade-up">
+                    <div data-aos="fade-down">
                         {programs.map((program, index) => {
                             if (program.visible) {
                                 let sale = "";
@@ -173,7 +173,7 @@ export function PricesSection({ program, programs, loading }) {
                 </Row>
             )}
 
-            <Row className="pt-4 text-center" data-aos="fade-up">
+            <Row className="pt-4 text-center" data-aos="fade-down">
                 <h1 className="pt-4">
                     <strong>
                         ¡Sí, exacto! Quiero obtener por fín mi solución por solo
@@ -183,7 +183,7 @@ export function PricesSection({ program, programs, loading }) {
                     </strong>
                 </h1>
             </Row>
-            <Row className="pt-4 text-center" data-aos="fade-up">
+            <Row className="pt-4 text-center" data-aos="fade-down">
                 <Col sm={12} md={6}>
                     <h5 className="pt-4 text-center">
                         ¿Qué más puedes comprar con{" "}
@@ -212,7 +212,7 @@ export function PricesSection({ program, programs, loading }) {
                 </Col>
             </Row>
 
-            <Row className="pt-4 text-center" data-aos="fade-up">
+            <Row className="pt-4 text-center" data-aos="fade-down">
                 <h1 className="pt-4">
                     <strong>
                         ¿Cuál es la TRAMPA y el motivo de esta oferta?
@@ -259,7 +259,7 @@ export function PricesSection({ program, programs, loading }) {
                     </li>
                 </ul>
             </Row>
-            <Row className="pt-4 text-center" data-aos="fade-up">
+            <Row className="pt-4 text-center" data-aos="fade-down">
                 <h1 className="pt-4">
                     <strong>¡Esto es todo!</strong>
                 </h1>

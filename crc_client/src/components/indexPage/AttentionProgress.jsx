@@ -17,14 +17,7 @@ import { Telephone, Whatsapp, GeoAlt } from "react-bootstrap-icons";
 import { MobileHandler } from "../../utils/MobileHandler";
 
 // Api
-import {
-    getAttentions,
-    insertAttentionRequest,
-    deleteAttention,
-} from "../../api/attention";
 import { getPrograms } from "../../api/program";
-import { getKines } from "../../api/kine";
-import { insertClientRequest } from "../../api/client";
 
 // Importar etapas
 import { Stage1 } from "./Stage1";
@@ -41,12 +34,9 @@ export function AttentionProgress() {
     // Porcentaje barra de progreso
     const [percentage, setPercentage] = useState(0);
 
-    // Programas y atenciones
+    // Programas
     const [programs, setPrograms] = useState();
-    const [attentions, setAttentions] = useState();
-
     const [program, setProgram] = useState();
-    const [attention, setAttention] = useState();
 
     // Etapa
     const [stage, setStage] = useState();
@@ -56,11 +46,9 @@ export function AttentionProgress() {
 
     const getDataBackend = async () => {
         try {
-            const res = await getAttentions();
-            const res2 = await getPrograms();
+            const res = await getPrograms();
 
-            setAttentions(res.data);
-            setPrograms(res2.data);
+            setPrograms(res.data);
             setLoading(false);
         } catch (error) {
             console.log(error);
@@ -97,6 +85,13 @@ export function AttentionProgress() {
         }, 1000);
     }
 
+    const goStage1 = () => {
+        localStorage.removeItem("program");
+        localStorage.removeItem("stage");
+        setStage(1);
+        setProgram();
+    };
+
     const goStage2 = (programSelected) => {
         localStorage.setItem("program", JSON.stringify(programSelected));
         localStorage.setItem("stage", 2);
@@ -116,8 +111,8 @@ export function AttentionProgress() {
     }, []);
 
     return (
-        <Container style={dynamicStyle} id="info" data-aos="fade-down">
-            <Row className="text-center" data-aos="fade-down">
+        <Container style={dynamicStyle} id="info">
+            <Row className="text-center pb-4" data-aos="fade-down">
                 <h1>
                     <strong>Agendar una hora</strong>
                 </h1>
@@ -128,7 +123,7 @@ export function AttentionProgress() {
                 variant="primary"
                 data-aos="fade-down"
             />
-            <Row className="text-center pt-2" data-aos="fade-down"></Row>
+            <Row className="text-center pt-4"></Row>
 
             {stage === 1 && !loading && (
                 <Stage1 programs={programs} goStage2={goStage2} />
@@ -136,7 +131,7 @@ export function AttentionProgress() {
 
             {stage === 2 && !loading && (
                 <Stage2
-                    attentions={attentions}
+                    goStage1={goStage1}
                     goStage3={goStage3}
                     isMobile={isMobile}
                 />
@@ -147,14 +142,18 @@ export function AttentionProgress() {
             {stage === 4 && !loading && <>stage 4</>}
 
             {loading && (
-                <Row className="text-center" style={{ minHeight: "250px" }}>
+                <Row
+                    className="text-center pt-4"
+                    style={{ minHeight: "250px" }}
+                    data-aos="fade-down"
+                >
                     <Col>
                         <Spinner
                             animation="border"
                             role="status"
                             variant="primary"
                         >
-                            <span className="visually-hidden">Loading...</span>
+                            <span className="visually-hidden ">Loading...</span>
                         </Spinner>
                     </Col>
                 </Row>

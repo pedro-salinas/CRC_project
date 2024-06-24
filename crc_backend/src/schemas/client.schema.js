@@ -38,10 +38,10 @@ export const createClientSchema = z.object({
         .string({
             required_error: "Se requiere un teléfono",
         })
-        .max(20, {
+        .max(11, {
             message: ["phone", "Teléfono muy largo"],
         })
-        .min(8, {
+        .min(9, {
             message: ["phone", "Teléfono muy corto"],
         }),
 });

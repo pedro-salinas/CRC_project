@@ -170,7 +170,8 @@ export function Table({
             }}
             wrap={true}
             noDataComponent="No hay datos que mostrar"
-            defaultSortFieldId={1}
+            defaultSortFieldId={"update"}
+            defaultSortAsc={false}
             onSelectedRowsChange={handleRowSelected}
         />
     );

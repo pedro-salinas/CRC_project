@@ -3,10 +3,15 @@ import { useState, useEffect } from "react";
 
 // Bootstrap
 import Button from "react-bootstrap/Button";
+import ButtonGroup from "react-bootstrap/ButtonGroup";
+import ButtonToolbar from "react-bootstrap/ButtonToolbar";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
 import Spinner from "react-bootstrap/Spinner";
+
+// Api
+import { getAttentionsByDate } from "../../api/attention";
 
 // Bootstrap icons
 import {
@@ -17,7 +22,7 @@ import {
     PersonAdd,
 } from "react-bootstrap-icons";
 
-export function Stage2({ attentions, goStage3, isMobile }) {
+export function Stage2({ goStage1, goStage3, isMobile }) {
     const weekDaysTable = ["Lun", "Mar", "Mie", "Jue", "Vie", "Sab", "Dom"];
 
     const weekDaysTableFull = [
@@ -44,9 +49,9 @@ export function Stage2({ attentions, goStage3, isMobile }) {
         "18:00",
         "19:00",
         "20:00",
-        "21:00",
-        "22:00",
-        "23:00",
+        // "21:00",
+        // "22:00",
+        // "23:00",
     ];
     const months = [
         "Enero",
@@ -72,6 +77,10 @@ export function Stage2({ attentions, goStage3, isMobile }) {
     const [daySelected, setDaySelected] = useState();
 
     const [loadingCalendar, setLoadingCalendar] = useState(true);
+
+    const [loadingHours, setLoadingHours] = useState(false);
+
+    const [hours, setHours] = useState();
 
     function getWeekDaysTitle(date) {
         let days = [];
@@ -106,7 +115,6 @@ export function Stage2({ attentions, goStage3, isMobile }) {
     }
 
     const lastMonth = () => {
-        // console.log(currentDate.getMonth() - 1, today.getMonth());
         if (currentDate.getMonth() - 1 >= today.getMonth()) {
             const lastDate = new Date(currentDate);
             lastDate.setMonth(currentDate.getMonth() - 1);
@@ -118,14 +126,17 @@ export function Stage2({ attentions, goStage3, isMobile }) {
         const nextDate = new Date(currentDate);
         nextDate.setMonth(currentDate.getMonth() + 1);
         setCurrentDate(nextDate);
+        setDaySelected();
     };
 
     const goToCurrentDate = () => {
         setCurrentDate(new Date());
+        setDaySelected();
     };
 
     function handleReload() {
         setLoadingCalendar(true);
+        setDaySelected();
 
         setTimeout(() => {
             setWeekDaysTitle(getWeekDaysTitle(currentDate));
@@ -141,66 +152,106 @@ export function Stage2({ attentions, goStage3, isMobile }) {
         fontSize: isMobile ? "16px" : "20px",
     };
 
+    const getDataBackend = async (weekDay) => {
+        try {
+            const resData = {
+                startYear: Number(weekDay.split(" ")[3]),
+                endYear: Number(weekDay.split(" ")[3]),
+                startMonth: Number(weekDay.split(" ")[2]),
+                endMonth: Number(weekDay.split(" ")[2]),
+                startDay: Number(weekDay.split(" ")[1]),
+                endDay: Number(weekDay.split(" ")[1]),
+            };
+
+            const res = await getAttentionsByDate(resData);
+
+            console.log(res.data);
+
+            setHours(res.data);
+            setLoadingHours(false);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const getDayHours = (weekDay) => {
+        setDaySelected(weekDay);
+        setLoadingHours(true);
+
+        handleReloadBackend(weekDay);
+    };
+
+    function handleReloadBackend(weekDay) {
+        setTimeout(() => {
+            getDataBackend(weekDay);
+        }, 500);
+    }
+
     return (
         <Row
-            className="pt-2 justify-content-center"
-            data-aos="fade-up"
+            className="pt-4 justify-content-center"
+            data-aos="fade-down"
             style={{ minHeight: "250px" }}
         >
-            <Row className="text-center">
-                <Col xs={8} className="text-end">
-                    <h3>Selecciona un día</h3>
-                </Col>
+            <Row className="text-center pt-4">
+                {!loadingCalendar && (
+                    <Col className="text-center" style={{ minHeight: "56px" }}>
+                        <h3 style={{ margin: "0px" }}>Seleccione un día</h3>
+                    </Col>
+                )}
                 {loadingCalendar && (
-                    <Col xs={4} className="text-start pt-2">
+                    <Col className="text-center" style={{ minHeight: "56px" }}>
                         <Spinner
                             animation="border"
                             role="status"
                             variant="primary"
                         >
-                            <span className="visually-hidden">Loading...</span>
+                            <h3>
+                                <span className="visually-hidden">
+                                    Loading...
+                                </span>
+                            </h3>
                         </Spinner>
                     </Col>
                 )}
             </Row>
 
-            <Row style={{ maxWidth: "600px" }}>
-                <Col xs={6} className="text-start pt-2">
+            <Row style={{ maxWidth: "600px" }} className="text-center">
+                <Col className="pt-2">
                     <h4>
                         {months[currentDate.getMonth()]}
                         {"  "}
                         {currentDate.getFullYear()}
                     </h4>
                 </Col>
-                <Col
-                    xs={6}
-                    className="d-flex justify-content-end align-items-start"
-                >
-                    <Button
-                        variant="light"
-                        onClick={lastMonth}
-                        className="m-2"
-                        disabled={loadingCalendar}
-                    >
-                        <ChevronDoubleLeft size={25} color="#31b6ad" />
-                    </Button>
-                    <Button
-                        variant="primary"
-                        onClick={goToCurrentDate}
-                        disabled={loadingCalendar}
-                        style={{ marginTop: "14px" }}
-                    >
-                        <h6>Hoy</h6>
-                    </Button>
-                    <Button
-                        variant="light"
-                        onClick={nextMonth}
-                        className="m-2"
-                        disabled={loadingCalendar}
-                        style={{ marginTop: "14px" }}
-                    >
-                        <ChevronDoubleRight size={25} color="#31b6ad" />
-                    </Button>
+                <Col className="pt-2">
+                    <ButtonGroup aria-label="Basic example">
+                        <Button
+                            variant="primary"
+                            onClick={lastMonth}
+                            className="m-1"
+                            disabled={loadingCalendar || loadingHours}
+                        >
+                            <ChevronDoubleLeft size={25} color="white" />
+                        </Button>
+                        <Button
+                            variant="primary"
+                            onClick={goToCurrentDate}
+                            disabled={loadingCalendar || loadingHours}
+                            className="m-1"
+                        >
+                            <h6>Hoy</h6>
+                        </Button>
+                        <Button
+                            variant="primary"
+                            onClick={nextMonth}
+                            className="m-1"
+                            disabled={loadingCalendar || loadingHours}
+                            style={{ marginTop: "" }}
+                        >
+                            <ChevronDoubleRight size={25} color="white" />
+                        </Button>
+                    </ButtonGroup>
                 </Col>
                 <hr />
             </Row>
@@ -227,27 +278,38 @@ export function Stage2({ attentions, goStage3, isMobile }) {
                         <Row
                             className="flex-nowrap pb-4"
                             style={dynamicText}
-                            data-aos="fade-up"
+                            data-aos="fade-down"
                         >
-                            {weeks.map((week) => {
+                            {weeks.map((weekDay) => {
+                                const dayName = weekDay.split(" ")[0];
+
                                 const currentDay = today.getDate();
                                 const currentMonth = today.getMonth() + 1;
-                                const day = week.split(" ")[1];
-                                const month = week.split(" ")[2];
+                                const day = weekDay.split(" ")[1];
+                                const month = weekDay.split(" ")[2];
 
                                 const formattedDay = day
                                     .toString()
                                     .padStart(2, "0");
 
                                 if (month == currentMonth) {
-                                    if (day >= currentDay + 2) {
+                                    if (
+                                        day >= currentDay + 2 &&
+                                        dayName != "Domingo"
+                                    ) {
                                         return (
                                             <Col className="p-0">
                                                 <Button
-                                                    disabled={loadingCalendar}
+                                                    disabled={
+                                                        loadingCalendar ||
+                                                        loadingHours
+                                                    }
                                                     className="btn-calendar"
                                                     variant="outline-primary border-light"
                                                     style={dynamicText}
+                                                    onClick={() =>
+                                                        getDayHours(weekDay)
+                                                    }
                                                 >
                                                     {formattedDay}
                                                 </Button>
@@ -271,10 +333,16 @@ export function Stage2({ attentions, goStage3, isMobile }) {
                                     return (
                                         <Col className="p-0">
                                             <Button
-                                                disabled={loadingCalendar}
+                                                disabled={
+                                                    loadingCalendar ||
+                                                    loadingHours
+                                                }
                                                 className="btn-calendar"
                                                 variant="outline-primary border-light"
                                                 style={dynamicText}
+                                                onClick={() =>
+                                                    getDayHours(weekDay)
+                                                }
                                             >
                                                 {formattedDay}
                                             </Button>
@@ -298,6 +366,71 @@ export function Stage2({ attentions, goStage3, isMobile }) {
                         </Row>
                     );
                 })}
+            </Row>
+            {daySelected && (
+                <Row
+                    className="text-center pt-4"
+                    style={{
+                        maxWidth: "600px",
+                    }}
+                >
+                    <Col>
+                        {loadingHours && (
+                            <Spinner
+                                animation="border"
+                                role="status"
+                                variant="primary"
+                            >
+                                <h3>
+                                    <span className="visually-hidden">
+                                        Loading...
+                                    </span>
+                                </h3>
+                            </Spinner>
+                        )}
+                        {!loadingHours && (
+                            <>
+                                {dayHours.map((dayHour, index) => {
+                                    // Convertir dayHour.hour a string si es necesario (dependiendo de tu estructura de datos)
+                                    const dayHourSplit = dayHour.split(":")[0];
+
+                                    const dayHourNumber = Number(dayHourSplit);
+
+                                    // Verificar si hay una coincidencia en hours basado en hour
+                                    const hourMatch = hours.find(
+                                        (obj) => obj.hour === dayHourNumber
+                                    );
+
+                                    // Si hay una coincidencia, renderizar el botón
+                                    if (!hourMatch) {
+                                        return (
+                                            <Button
+                                                key={index} // Asegúrate de usar una key única cuando se mapea una lista en React
+                                                variant="primary"
+                                                disabled={loadingCalendar}
+                                                className="m-1"
+                                            >
+                                                <h6>{dayHour}</h6>
+                                            </Button>
+                                        );
+                                    }
+                                })}
+                            </>
+                        )}
+                    </Col>
+                </Row>
+            )}
+            <Row className="text-center pt-4">
+                <Col>
+                    <Button
+                        variant="secondary"
+                        onClick={goStage1}
+                        disabled={loadingCalendar || loadingHours}
+                        className="m-1"
+                    >
+                        <h6>Volver</h6>
+                    </Button>
+                </Col>
             </Row>
         </Row>
     );

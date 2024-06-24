@@ -140,6 +140,7 @@ export function LoginForm() {
                                             message: "Se requiere un correo",
                                         },
                                     })}
+                                    autoComplete="email"
                                 />
                                 <span className="text-danger">
                                     {errors.email && errors.email.message}
@@ -164,6 +165,7 @@ export function LoginForm() {
                                                 "Se requiere una contraseña",
                                         },
                                     })}
+                                    autoComplete="current-password"
                                 />
                                 <span className="text-danger">
                                     {errors.password && errors.password.message}

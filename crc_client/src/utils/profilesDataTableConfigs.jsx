@@ -4,26 +4,14 @@ import { formatDate } from "./dateUtils";
 // Columnas react data table
 export const columns = [
     {
-        name: "RUT",
-        selector: (row) => row.rut,
-        sortable: true,
-        wrap: true,
-    },
-    {
         name: "Nombre",
         selector: (row) => row.name,
         sortable: true,
         wrap: true,
     },
     {
-        name: "Email",
-        selector: (row) => row.email,
-        sortable: true,
-        wrap: true,
-    },
-    {
-        name: "Teléfono",
-        selector: (row) => row.phone,
+        name: "Variables",
+        selector: (row) => row.variables.join(", "),
         sortable: true,
         wrap: true,
     },
@@ -48,20 +36,12 @@ export const columnsForSelect = [
         value: "all",
     },
     {
-        label: "RUT",
-        value: "rut",
-    },
-    {
         label: "Nombre",
         value: "name",
     },
     {
-        label: "Email",
-        value: "email",
-    },
-    {
-        label: "Teléfono",
-        value: "phone",
+        label: "Variables",
+        value: "variables",
     },
     {
         label: "Última actualización",
