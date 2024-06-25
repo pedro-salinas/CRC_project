@@ -23,21 +23,23 @@ import image2 from "../../assets/pagos.webp";
 export function ContactSection() {
     const { isMobile } = MobileHandler();
 
-    // Padding para movil o navegador
-    const dynamicStylePrices = {
-        paddingTop: isMobile ? "60px" : "150px",
-    };
-
     const fontSizeTitle = {
         fontSize: isMobile ? "36px" : "46px",
     };
 
+    // CSS movil
+    const dynamicPadding = isMobile
+        ? "contact-mobile-padding"
+        : "contact-desktop-padding";
+
+    const dynamicFont = isMobile
+        ? "contact-mobile-font"
+        : "contact-desktop-font";
+
     return (
-        <Container style={dynamicStylePrices} id="contact">
+        <Container id="contact" className={dynamicPadding}>
             <Row className="text-center" data-aos="fade-down">
-                <h1 className="fw-bold" style={fontSizeTitle}>
-                    Contacto
-                </h1>
+                <h1 className={`fw-bold ${dynamicFont}`}>Contacto</h1>
             </Row>
             <Row data-aos="fade-down">
                 <Col className="p-5">

@@ -16,19 +16,19 @@ import estudiar from "../../assets/chris_estudiar.webp";
 export function AboutUs() {
     const { isMobile } = MobileHandler();
 
-    // Padding para movil o navegador
-    const dynamicStyleInfo = {
-        paddingTop: isMobile ? "60px" : "150px",
-    };
+    // CSS movil
+    const dynamicPadding = isMobile
+        ? "aboutus-mobile-padding"
+        : "aboutus-desktop-padding";
 
-    const fontSizeTitle = {
-        fontSize: isMobile ? "36px" : "46px",
-    };
+    const dynamicFont = isMobile
+        ? "aboutus-mobile-font"
+        : "aboutus-desktop-font";
 
     return (
-        <Container style={dynamicStyleInfo} id="info">
+        <Container id="info" className={dynamicPadding}>
             <Row className="text-center" data-aos="fade-down">
-                <h1 style={fontSizeTitle}>
+                <h1 className={dynamicFont}>
                     <strong>Suena todo muy bonito, pero. . .</strong>
                 </h1>
             </Row>
@@ -82,13 +82,13 @@ export function AboutUs() {
                     <h4 className="pt-4">
                         Practicaba deportes por horas a diario, hasta que de un
                         momento a otro, el
-                        <span style={{ color: "red" }}>
+                        <span className="red-color">
                             {" "}
                             dolor lumbar y de cadera derecha{" "}
                         </span>
                         no me permitieron seguir. Le pregunte a todos los
                         profesores que tenía, y cada uno me daba un
-                        <span style={{ color: "red" }}> pronóstico peor</span>,
+                        <span className="red-color"> pronóstico peor</span>,
                         alejandome cada vez más de mi vida deportiva.
                     </h4>
                 </Col>
@@ -111,16 +111,16 @@ export function AboutUs() {
                         tomándome resonancias, ecografías, entre otros, quienes
                         me aseguraron que por mi pinzamiento de cadera y esa
                         hernia
-                        <span style={{ color: "red" }}>
+                        <span className="red-color">
                             {"  "}NO PODRÍA VOLVER A PRACTICAR DEPORTES...
                         </span>
                     </h5>
                     <h5 className="pt-4 text-start">
                         Incluso me propusieron una{" "}
-                        <span style={{ color: "red" }}>{"  "}OPERACIÓN</span>{" "}
-                        para corregir esas “lesiones”, pero sólo si estaba
-                        dispuesto a renunciar al Taekwondo y a cualquier deporte
-                        de impacto
+                        <span className="red-color">{"  "}OPERACIÓN</span> para
+                        corregir esas “lesiones”, pero sólo si estaba dispuesto
+                        a renunciar al Taekwondo y a cualquier deporte de
+                        impacto
                     </h5>
                     <h3 className="pt-4 text-start">
                         <strong>

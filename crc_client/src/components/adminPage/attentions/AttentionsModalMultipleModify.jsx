@@ -10,9 +10,6 @@ import Form from "react-bootstrap/Form";
 // Api
 import { updateAttention } from "../../../api/attention";
 
-// Estilos
-import "./styles.css";
-
 export function AttentionsModalMultipleModify({
     show,
     handleClose,

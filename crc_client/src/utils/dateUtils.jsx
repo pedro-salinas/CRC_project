@@ -2,11 +2,11 @@ export function formatDate(dateString) {
     const date = new Date(dateString);
     const tzOffset = date.getTimezoneOffset() / 60;
 
-    //GMT-4 (Chile)
+    //GMT-4 (Chile) (Cambiar a 3 en horario de verano o ¿5?)
     const chileOffset = 4;
     date.setHours(date.getHours() - tzOffset + chileOffset);
 
-    // Format the date into the desired format
+    // Formatear datos
     const formattedDate = date
         .toLocaleString("sv-SE", {
             year: "numeric",

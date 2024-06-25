@@ -12,7 +12,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import { deleteAttention } from "../../../api/attention";
 
 // Estilos
-import "./styles.css";
+import "./Calendar.css";
 
 export function AttentionsCalendarModalDelete({
     show,
@@ -291,13 +291,7 @@ export function AttentionsCalendarModalDelete({
                         <div>
                             <Form.Label>Paciente</Form.Label>
                         </div>
-                        <div
-                            style={{
-                                position: "relative",
-                                display: "inline-block",
-                                width: "100%",
-                            }}
-                        >
+                        <div className="pacient">
                             <input
                                 type="text"
                                 placeholder="Buscar paciente..."
@@ -357,7 +351,6 @@ export function AttentionsCalendarModalDelete({
                                                 )
                                             }
                                             key={item._id}
-                                            style={{}}
                                         >
                                             {item.name}
                                             {"   "}({item.rut})
@@ -492,11 +485,10 @@ export function AttentionsCalendarModalDelete({
                         <Form.Label>Descripción (opcional)</Form.Label>
                         <textarea
                             disabled
-                            style={{ borderRadius: "2px" }}
                             className={
                                 errors.description
-                                    ? "form-control is-invalid"
-                                    : "form-control"
+                                    ? "form-control is-invalid rounded"
+                                    : "form-control rounded"
                             }
                             {...register("description")}
                         ></textarea>

@@ -21,9 +21,6 @@ import { ConfirmEmail } from "./pages/extra/ConfirmEmail";
 // Contexto
 import { UserProvider } from "./context/userContext";
 
-// Estilos
-import "./App.css";
-
 // Rutas
 import { ProtectedRoute } from "./ProtectedRoute";
 

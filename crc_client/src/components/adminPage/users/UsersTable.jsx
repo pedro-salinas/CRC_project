@@ -243,10 +243,9 @@ export function UsersTable() {
                         <Button
                             variant="primary"
                             onClick={handleShowInsert}
-                            className="mr-1"
-                            style={{ display: "flex", alignItems: "center" }}
+                            className="mr-1 button-center"
                         >
-                            <strong>Ingresar usuario</strong>
+                            <strong className="p-1">Ingresar usuario</strong>
                             <PersonAdd size={35} color="white" />
                         </Button>
                         <Button
@@ -262,33 +261,27 @@ export function UsersTable() {
                     <ButtonGroup className="m-2">
                         <Button
                             variant="warning"
-                            className="bl-5"
+                            className="bl-5 button-center"
                             onClick={handleShowModify}
                             disabled={!loadingTable}
-                            style={{ display: "flex", alignItems: "center" }}
                         >
-                            <strong style={{ paddingRight: "2px" }}>
-                                Modificar
-                            </strong>
+                            <strong className="p-1">Modificar</strong>
                             <PencilSquare size={35} color="white" />
                         </Button>
                         <Button
                             variant="danger"
-                            className="br-5"
+                            className="br-5 button-center"
                             onClick={handleShowDelete}
                             disabled={!loadingTable}
-                            style={{ display: "flex", alignItems: "center" }}
                         >
-                            <strong style={{ paddingRight: "2px" }}>
-                                Eliminar
-                            </strong>
+                            <strong className="p-1">Eliminar</strong>
                             <XSquare size={35} color="white" />
                         </Button>
                     </ButtonGroup>
                 </Card.Title>
 
                 {loadingTable && (
-                    <Card.Text>
+                    <>
                         {tableData.length > 0 && (
                             <Table
                                 data={tableData}
@@ -298,7 +291,7 @@ export function UsersTable() {
                                 singleSelection={singleSelection}
                             ></Table>
                         )}
-                    </Card.Text>
+                    </>
                 )}
 
                 {!loadingTable && (

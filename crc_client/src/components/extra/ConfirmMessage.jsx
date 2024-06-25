@@ -37,10 +37,10 @@ export function ConfirmMessage() {
 
     const { isMobile } = MobileHandler();
 
-    // Padding para movil o navegador
-    const widthImage = {
-        width: isMobile ? "250px" : "450px",
-    };
+    // CSS movil
+    const dynamicWidth = isMobile
+        ? "confirm-mobile-size"
+        : "confirm-desktop-size";
 
     return (
         <Container className="pt-5 p-5">
@@ -48,7 +48,7 @@ export function ConfirmMessage() {
                 <Col className="border shadow-lg" lg={6}>
                     <Row className="bg-light">
                         <Col className="p-5 text-center">
-                            <Image src={logo} style={widthImage} />
+                            <Image src={logo} className={dynamicWidth} />
                         </Col>
                     </Row>
                     <Row>

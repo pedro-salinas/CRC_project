@@ -224,15 +224,9 @@ export function AttentionsModalDelete({
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="client">
                         <div>
-                            <Form.Label>Pacientes</Form.Label>
+                            <Form.Label>Paciente</Form.Label>
                         </div>
-                        <div
-                            style={{
-                                position: "relative",
-                                display: "inline-block",
-                                width: "100%",
-                            }}
-                        >
+                        <div className="pacient">
                             <input
                                 disabled
                                 type="text"
@@ -379,11 +373,10 @@ export function AttentionsModalDelete({
                         <Form.Label>Descripción (opcional)</Form.Label>
                         <textarea
                             disabled
-                            style={{ borderRadius: "2px" }}
                             className={
                                 errors.description
-                                    ? "form-control is-invalid"
-                                    : "form-control"
+                                    ? "form-control is-invalid rounded"
+                                    : "form-control rounded"
                             }
                             {...register("description")}
                         ></textarea>

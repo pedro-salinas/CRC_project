@@ -81,3 +81,39 @@ tr:hover {
 td {
     border-bottom: 1px solid #ddd; /* Borde inferior para las celdas */
 }
+
+.mobile-font {
+    font-size: 8px;
+}
+
+.desktop-font {
+    font-size: 16px;
+}
+
+.mobile-size {
+    max-height: 600px;
+}
+
+.desktop-size {
+    max-height: 600px;
+}
+
+.calendar-button {
+    display: flex;
+    align-items: center;
+}
+
+.calendar-card {
+    min-width: 220px;
+    border: solid 1px;
+    border-radius: 5px;
+}
+
+.calendar-card-body {
+    padding: 4px;
+    color: white;
+}
+
+.calendar-blocked {
+    min-width: 240px;
+}

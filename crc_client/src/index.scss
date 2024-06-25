@@ -1,4 +1,4 @@
-// Varaibles a cambiar de bootstrap
+// Variable de bootstrap
 $theme-colors: (
     "primary": #31b6ad,
     "secondary": #6c757d,
@@ -27,13 +27,14 @@ h6 {
     margin-top: 8px;
 }
 
-//Color titulos
+// Color titulos
 h1,
 h2,
 h3 {
     color: #31b6ad;
 }
 
+// Botones
 .btn {
     color: white;
 }
@@ -78,6 +79,7 @@ h3 {
     border-radius: 2px 2px 2px 2px;
 }
 
+// Alertas
 .alert {
     border-radius: 2px;
 }
@@ -92,4 +94,175 @@ h3 {
 #end {
     background-color: #444444;
     color: white;
+}
+
+// ------------------------ Attentions
+
+.pacient {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.pacient-close-button {
+    position: absolute;
+    top: 5%;
+    right: 1%;
+    padding: 5px;
+    border: none;
+    background-color: transparent !important;
+    z-index: 1;
+}
+
+.rounded {
+    border-radius: 2px;
+}
+
+/* Estilo del contenedor */
+.select-container {
+    border: 1px solid grey; /* Borde fino de color negro */
+    background-color: white;
+}
+
+/* Estilo de cada opción */
+.select-option {
+    padding-inline-start: 10px; /* Espaciado interno */
+}
+
+/* Estilo del hover */
+.select-option:hover {
+    background-color: #2064d4; /* Fondo azul claro al pasar el mouse */
+    color: white;
+}
+
+.select-container:empty {
+    border: none;
+}
+
+// ------------------------ Custom navbar admin
+
+.red-sub {
+    border-right: 1px solid;
+    margin-right: 10px;
+    margin: 2px;
+}
+
+.close-session {
+    color: #dc3545;
+    cursor: pointer;
+}
+
+// ------------------------ Profiles
+
+.button-center {
+    display: flex;
+    align-items: center;
+}
+
+.profile-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.chart-mobile-size {
+    height: 400px;
+}
+
+.chart-desktop-size {
+    height: 500px;
+}
+
+// ------------------------ LoginForm
+
+.login-mobile-width {
+    width: 180px;
+}
+
+.login-desktop-width {
+    width: 450px;
+}
+
+// ------------------------ EndPageLogin
+
+.end-mobile-width {
+    padding-top: 30px;
+}
+
+.end-desktop-width {
+    padding-top: 30px;
+}
+
+// ------------------------ ConfirmMessage
+
+.confirm-mobile-width {
+    width: 250px;
+}
+
+.confirm-desktop-width {
+    width: 450px;
+}
+// ------------------------ EndPageLogin
+
+.aboutus-mobile-padding {
+    padding-top: 60px;
+}
+
+.aboutus-desktop-padding {
+    padding-top: 150px;
+}
+
+.aboutus-mobile-font {
+    font-size: 36px;
+}
+
+.aboutus-desktop-font {
+    font-size: 46px;
+}
+
+.red-color {
+    color: red;
+}
+
+// ------------------------ AttentionProgress //
+
+.attention-mobile-padding {
+    padding-top: 80px;
+}
+
+.attention-desktop-padding {
+    padding-top: 150px;
+}
+
+.attention-height {
+    min-height: 250px;
+}
+
+// ------------------------ ContactSection
+
+.contact-mobile-padding {
+    padding-top: 60px;
+}
+
+.contact-desktop-padding {
+    padding-top: 150px;
+}
+
+.contact-mobile-font {
+    font-size: 36px;
+}
+
+.contact-desktop-font {
+    font-size: 46px;
+}
+
+// ------------------------ InfoSection
+
+.info-mobile-padding {
+    padding-top: 60px;
+}
+
+.info-desktop-padding {
+    padding-top: 150px;
 }

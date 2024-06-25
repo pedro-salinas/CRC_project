@@ -73,14 +73,13 @@ export function ExampleCase() {
                 </Col>
                 <Col sm={12} md={6}>
                     <h5 className="pt-4 text-start">
-                        <span style={{ color: "red" }}>Se olvidó{"  "}</span>
+                        <span className="red-color">Se olvidó{"  "}</span>
                         de poder trabajar con comodidad. De moverse con
-                        <span style={{ color: "red" }}>{"  "}tranquilidad</span>
-                        .
+                        <span className="red-color">{"  "}tranquilidad</span>.
                     </h5>
                     <h5 className="pt-4 text-start">
                         Tenía un{" "}
-                        <span style={{ color: "red" }}>
+                        <span className="red-color">
                             {"  "}miedo{"  "}
                         </span>{" "}
                         gigante de quedar con esa complicación para siempre.
@@ -112,7 +111,7 @@ export function ExampleCase() {
                 <Col sm={12} md={6}>
                     <h5 className="pt-4 text-start">
                         Era hora de probarlo en alguien que ya hubiese{" "}
-                        <span style={{ color: "red" }}>
+                        <span className="red-color">
                             fracasado en otros tratamientos
                         </span>
                         , como yo.
@@ -120,7 +119,7 @@ export function ExampleCase() {
                     <h5 className="pt-4 text-start">
                         Así, llegó Marisol, quien acudió a distintos
                         traumatólogos y kinesiologos con anterioridad,
-                        <span style={{ color: "red" }}>
+                        <span className="red-color">
                             {"  "}fallando con los tratamientos que le indicaban
                         </span>
                         ,<strong>ya que algo faltaba</strong>.
@@ -179,7 +178,7 @@ export function ExampleCase() {
                     </h5>
                     <h5 className="pt-4 text-start">
                         Sin embargo,{" "}
-                        <span style={{ color: "red" }}>
+                        <span className="red-color">
                             tú no tienes cinco años
                         </span>{" "}
                         para descubrir cómo solucionar tu dolor sin gastar todo

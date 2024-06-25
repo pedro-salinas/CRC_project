@@ -244,6 +244,14 @@ export function ProfilesTable() {
 
     // Handler para ingresar perfiles
     const onSubmit = handleSubmit((values) => {
+        const filteredValues = {};
+
+        for (const key in values) {
+            if (key.includes(selectedProfile[0].name)) {
+                filteredValues[key] = values[key];
+            }
+        }
+
         setLoadingChart(true);
 
         const backendValidation = () => {
@@ -251,8 +259,8 @@ export function ProfilesTable() {
             const prevData = [];
             const nextData = [];
 
-            Object.keys(values).forEach((key) => {
-                const value = values[key];
+            Object.keys(filteredValues).forEach((key) => {
+                const value = filteredValues[key];
                 const splits = key.split("-");
                 const type = splits[0];
                 const variable = splits[3];
@@ -280,9 +288,10 @@ export function ProfilesTable() {
 
     const { isMobile } = MobileHandler();
 
-    const chartSize = {
-        height: isMobile ? 400 : 500,
-    };
+    // CSS movil
+    const dynamicChartSize = isMobile
+        ? "chart-mobile-size"
+        : "chart-desktop-size";
 
     // Descargar gráfico
     const chartRef = useRef(null);
@@ -320,10 +329,9 @@ export function ProfilesTable() {
                         <Button
                             variant="primary"
                             onClick={handleShowInsert}
-                            className="mr-1"
-                            style={{ display: "flex", alignItems: "center" }}
+                            className="mr-1 button-center"
                         >
-                            <strong>Ingresar perfil</strong>
+                            <strong className="p-1">Ingresar perfil</strong>
                             <PersonAdd size={35} color="white" />
                         </Button>
                         <Button
@@ -339,26 +347,20 @@ export function ProfilesTable() {
                     <ButtonGroup className="m-2">
                         <Button
                             variant="warning"
-                            className="bl-5"
+                            className="bl-5 button-center"
                             onClick={handleShowModify}
                             disabled={!loadingTable}
-                            style={{ display: "flex", alignItems: "center" }}
                         >
-                            <strong style={{ paddingRight: "2px" }}>
-                                Modificar
-                            </strong>
+                            <strong className="p-1">Modificar</strong>
                             <PencilSquare size={35} color="white" />
                         </Button>
                         <Button
                             variant="danger"
-                            className="br-5"
+                            className="br-5 button-center"
                             onClick={handleShowDelete}
                             disabled={!loadingTable}
-                            style={{ display: "flex", alignItems: "center" }}
                         >
-                            <strong style={{ paddingRight: "2px" }}>
-                                Eliminar
-                            </strong>
+                            <strong className="p-1">Eliminar</strong>
                             <XSquare size={35} color="white" />
                         </Button>
                     </ButtonGroup>
@@ -414,17 +416,17 @@ export function ProfilesTable() {
                                     >
                                         <label>{property}</label>
                                         <input
-                                            id={`antes-variable-${index}-${property}`}
+                                            id={`antes-variable-${index}-${property}-${selectedProfile[0].name}`}
                                             type="number"
                                             className={
                                                 errors[
-                                                    `antes-variable-${index}-${property}`
+                                                    `antes-variable-${index}-${property}-${selectedProfile[0].name}`
                                                 ]
                                                     ? "form-control is-invalid"
                                                     : "form-control"
                                             }
                                             {...register(
-                                                `antes-variable-${index}-${property}`,
+                                                `antes-variable-${index}-${property}-${selectedProfile[0].name}`,
                                                 {
                                                     required: {
                                                         value: true,
@@ -436,10 +438,10 @@ export function ProfilesTable() {
                                         />
                                         <span className="text-danger">
                                             {errors[
-                                                `antes-variable-${index}-${property}`
+                                                `antes-variable-${index}-${property}-${selectedProfile[0].name}`
                                             ] &&
                                                 errors[
-                                                    `antes-variable-${index}-${property}`
+                                                    `antes-variable-${index}-${property}-${selectedProfile[0].name}`
                                                 ].message}
                                         </span>
                                     </Col>
@@ -461,17 +463,17 @@ export function ProfilesTable() {
                                     >
                                         <label>{property}</label>
                                         <input
-                                            id={`despues-variable-${index}-${property}`}
+                                            id={`despues-variable-${index}-${property}-${selectedProfile[0].name}`}
                                             type="number"
                                             className={
                                                 errors[
-                                                    `despues-variable-${index}-${property}`
+                                                    `despues-variable-${index}-${property}-${selectedProfile[0].name}`
                                                 ]
                                                     ? "form-control is-invalid"
                                                     : "form-control"
                                             }
                                             {...register(
-                                                `despues-variable-${index}-${property}`,
+                                                `despues-variable-${index}-${property}-${selectedProfile[0].name}`,
                                                 {
                                                     required: {
                                                         value: true,
@@ -483,10 +485,10 @@ export function ProfilesTable() {
                                         />
                                         <span className="text-danger">
                                             {errors[
-                                                `despues-variable-${index}-${property}`
+                                                `despues-variable-${index}-${property}-${selectedProfile[0].name}`
                                             ] &&
                                                 errors[
-                                                    `despues-variable-${index}-${property}`
+                                                    `despues-variable-${index}-${property}-${selectedProfile[0].name}`
                                                 ].message}
                                         </span>
                                     </Col>
@@ -517,13 +519,7 @@ export function ProfilesTable() {
                             <Row className="text-center" data-aos="fade-down">
                                 <div
                                     id="dowload-chart"
-                                    style={{
-                                        display: "flex",
-                                        justifyContent: "center",
-                                        alignItems: "center",
-                                        width: "100%",
-                                        height: chartSize.height,
-                                    }}
+                                    className={`profile-chart ${dynamicChartSize}`}
                                 >
                                     <Radar
                                         ref={chartRef}

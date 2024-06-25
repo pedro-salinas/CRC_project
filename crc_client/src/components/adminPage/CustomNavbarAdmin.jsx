@@ -124,17 +124,11 @@ export function CustomNavbarAdmin() {
                             <h6>Gráficos</h6>
                         </Nav.Link>
                         {!isMobile ? (
-                            <Nav.Link
-                                as={Link}
-                                to="/admin/users"
-                                style={{
-                                    borderRight: "1px solid",
-                                    borderBlockColor: "red",
-                                    marginRight: "10px",
-                                }}
-                            >
-                                <h6>Usuarios</h6>
-                            </Nav.Link>
+                            <div className="red-sub">
+                                <Nav.Link as={Link} to="/admin/users">
+                                    <h6>Usuarios</h6>
+                                </Nav.Link>
+                            </div>
                         ) : (
                             <Nav.Link as={Link} to="/admin/users">
                                 <h6>Usuarios</h6>
@@ -149,12 +143,9 @@ export function CustomNavbarAdmin() {
                                 <Nav className="justify-content-center">
                                     <a
                                         onClick={closeSession}
-                                        style={{
-                                            color: "#dc3545",
-                                            cursor: "pointer",
-                                        }}
+                                        className="close-session"
                                     >
-                                        <u>Cerrar sesión</u>
+                                        Cerrar sesión
                                     </a>
                                 </Nav>
                             </Col>

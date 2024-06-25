@@ -9,18 +9,15 @@ import { MobileHandler } from "../../../utils/MobileHandler";
 export function EndPageLogin() {
     const { isMobile } = MobileHandler();
 
-    // Padding para movil o navegador
-    const dynamicStyleFooter = {
-        paddingTop: isMobile ? "30px" : "30px",
-    };
+    // CSS movil
+    const dynamicEndPadding = isMobile ? "end-mobile-size" : "end-desktop-size";
 
     return (
         <Container
-            style={dynamicStyleFooter}
             id="end"
             expand="md"
             fluid
-            className="d-flex flex-column align-items-between fixed-bottom"
+            className={`d-flex flex-column align-items-between fixed-bottom ${dynamicEndPadding}`}
         >
             <Row className="pb-4">
                 <Col>

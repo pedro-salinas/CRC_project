@@ -40,14 +40,14 @@ export function PricesSection({ program, programs, loading }) {
                         Puedes al agendar tu evaluación y acceder ¡A todo esto!
                     </strong>
 
-                    <span style={{ color: "red" }}>
+                    <span className="red-color">
                         {" "}
                         (por solo{" "}
                         {!loading && (
-                            <span style={{ color: "red" }}>{program}</span>
+                            <span className="red-color">{program}</span>
                         )}
                         {loading && (
-                            <span style={{ color: "red" }}>..............</span>
+                            <span className="red-color">..............</span>
                         )}
                         )
                     </span>
@@ -131,9 +131,7 @@ export function PricesSection({ program, programs, loading }) {
                                             </Col>
                                             <Col className="text-end">
                                                 <h4>
-                                                    <span
-                                                        style={{ color: "red" }}
-                                                    >
+                                                    <span className="red-color">
                                                         {sale}
                                                     </span>
                                                     {"  "}
@@ -191,7 +189,7 @@ export function PricesSection({ program, programs, loading }) {
                         {loading && <span>..............</span>}?
                     </h5>
                     <h5 className="pt-4 text-center">
-                        <span style={{ color: "red" }}>
+                        <span className="red-color">
                             Puedes ir con ese precio a comprar una hamburguesa o
                             ir con alguien a comer pizza.
                         </span>
@@ -225,11 +223,11 @@ export function PricesSection({ program, programs, loading }) {
                 <h3 className="pt-4">¡NO HAY NINGUNA TRAMPA!</h3>
                 <h5 className="pt-4">
                     Sé que en algunos centros dejan incluso a evaluación gratis,
-                    pero te ven <span style={{ color: "red" }}>15 MINUTOS</span>{" "}
-                    y sin un tratamiento personalizado para ti, con el que
+                    pero te ven <span className="red-color">15 MINUTOS</span> y
+                    sin un tratamiento personalizado para ti, con el que
                     terminas haciendo lo mismo que todos los pacientes y
-                    <span style={{ color: "red" }}> gastando el doble</span>,
-                    sólo por no tener terapias que atiendan a tu condición.
+                    <span className="red-color"> gastando el doble</span>, sólo
+                    por no tener terapias que atiendan a tu condición.
                 </h5>
                 <h3 className="pt-4">¡Este no es uno de esos casos! </h3>
                 <h5 className="pt-4">

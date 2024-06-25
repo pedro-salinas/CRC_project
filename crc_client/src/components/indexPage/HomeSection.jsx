@@ -63,7 +63,7 @@ export function HomeSection({ program, loading }) {
                 >
                     <Row>
                         <h4>
-                            <span style={{ color: "red" }}>¡Atención!</span> Te
+                            <span className="red-color">¡Atención!</span> Te
                             presento...
                         </h4>
                         <h1 className="pt-2" style={fontSizeTitle}>
@@ -100,12 +100,12 @@ export function HomeSection({ program, loading }) {
                                     aliviar mi dolor a solo{" "}
                                     <strong>
                                         {!loading && (
-                                            <span style={{ color: "red" }}>
+                                            <span className="red-color">
                                                 {program}
                                             </span>
                                         )}
                                         {loading && (
-                                            <span style={{ color: "red" }}>
+                                            <span className="red-color">
                                                 ..............
                                             </span>
                                         )}
@@ -119,7 +119,7 @@ export function HomeSection({ program, loading }) {
                         <h1 className="pt-2" style={fontSizeTitle}>
                             <strong>
                                 Últimos{" "}
-                                <span style={{ color: "red" }}>
+                                <span className="red-color">
                                     {counter} cupos
                                 </span>
                             </strong>

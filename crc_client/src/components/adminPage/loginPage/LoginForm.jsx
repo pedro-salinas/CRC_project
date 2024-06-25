@@ -38,10 +38,8 @@ export function LoginForm() {
 
     const { isMobile } = MobileHandler();
 
-    // Padding para movil o navegador
-    const widthImage = {
-        width: isMobile ? "180px" : "450px",
-    };
+    // CSS movil
+    const dynamicWidth = isMobile ? "login-mobile-size" : "login-desktop-size";
 
     const [loading, setLoading] = useState(false);
 
@@ -114,7 +112,7 @@ export function LoginForm() {
                 <Col className="border shadow-lg" lg={6}>
                     <Row className="bg-light">
                         <Col className="p-2 text-center">
-                            <Image src={logo} style={widthImage} />
+                            <Image src={logo} className={dynamicWidth} />
                         </Col>
                     </Row>
                     <Row>

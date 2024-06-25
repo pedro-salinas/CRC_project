@@ -137,7 +137,7 @@ export function AttentionsTable() {
     const handleShowModify = () => {
         setAttentionsNumber(selectedRows.length);
         if (selectedRows.length > 0) {
-            if (selectedRows.length == 0) {
+            if (selectedRows.length == 1) {
                 const programName = selectedRows[0].program.name;
                 const kineName = selectedRows[0].kine.name;
                 const clientName = selectedRows[0].client.name;
@@ -323,13 +323,8 @@ export function AttentionsTable() {
             <Card.Body>
                 <Card.Title className="text-center">
                     <ButtonGroup className="m-2">
-                        <Button
-                            variant="primary"
-                            onClick={handleShowInsert}
-                            className="mr-1"
-                            style={{ display: "flex", alignItems: "center" }}
-                        >
-                            <strong>Ingresar atención</strong>
+                        <Button variant="primary" onClick={handleShowInsert}>
+                            <strong className="p-1">Ingresar atención</strong>
                             <PersonAdd size={35} color="white" />
                         </Button>
                         <Button
@@ -345,26 +340,18 @@ export function AttentionsTable() {
                     <ButtonGroup className="m-2">
                         <Button
                             variant="warning"
-                            className="bl-5"
                             onClick={handleShowModify}
                             disabled={!loadingTable}
-                            style={{ display: "flex", alignItems: "center" }}
                         >
-                            <strong style={{ paddingRight: "2px" }}>
-                                Modificar
-                            </strong>
+                            <strong className="p-1">Modificar</strong>
                             <PencilSquare size={35} color="white" />
                         </Button>
                         <Button
                             variant="danger"
-                            className="br-5"
                             onClick={handleShowDelete}
                             disabled={!loadingTable}
-                            style={{ display: "flex", alignItems: "center" }}
                         >
-                            <strong style={{ paddingRight: "2px" }}>
-                                Eliminar
-                            </strong>
+                            <strong className="p-1">Eliminar</strong>
                             <XSquare size={35} color="white" />
                         </Button>
                     </ButtonGroup>

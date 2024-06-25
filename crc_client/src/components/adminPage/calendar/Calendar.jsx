@@ -38,7 +38,7 @@ import {
 } from "react-bootstrap-icons";
 
 // Estilos
-import "./styles.css";
+import "./Calendar.css";
 
 // Utilidad para saber si es que estamos en movil o no
 import { MobileHandler } from "../../../utils/MobileHandler";
@@ -67,10 +67,9 @@ export function Calendar() {
 
     const { isMobile } = MobileHandler();
 
-    // Padding para movil o navegador
-    const dynamicStyle = {
-        maxHeight: isMobile ? "600px" : "600px",
-    };
+    // CSS movil
+    const dynamicMaxHeight = isMobile ? "mobile-size" : "desktop-size";
+    const dynamicFont = isMobile ? "mobile-font" : "desktop-font";
 
     const dayHours = [
         "08:00",
@@ -507,13 +506,8 @@ export function Calendar() {
                         <Button
                             variant="primary"
                             onClick={handleShowInsertRepeat}
-                            className="mx-1"
+                            className={`mx-1 ${dynamicFont} calendar-button`}
                             disabled={loadingCalendar}
-                            style={{
-                                fontSize: isMobile ? "8px" : "16px",
-                                display: "flex",
-                                alignItems: "center",
-                            }}
                         >
                             Ingresar atención (repetir hora)
                             <PersonAdd size={20} color="white" />
@@ -521,13 +515,8 @@ export function Calendar() {
                         <Button
                             variant="primary"
                             onClick={handleShowInsertDifferent}
-                            className="mx-1"
+                            className={`mx-1 ${dynamicFont} calendar-button`}
                             disabled={loadingCalendar}
-                            style={{
-                                fontSize: isMobile ? "8px" : "16px",
-                                display: "flex",
-                                alignItems: "center",
-                            }}
                         >
                             Ingresar atención (diferentes horas)
                             <PersonAdd size={20} color="white" />
@@ -585,7 +574,7 @@ export function Calendar() {
             )}
 
             {!loadingCalendar && (
-                <div className="parent" style={dynamicStyle}>
+                <div className={`parent ${dynamicMaxHeight}`}>
                     <table>
                         <thead className="sticky-header ">
                             <tr>
@@ -715,25 +704,14 @@ export function Calendar() {
                                                                 <div
                                                                     key={index}
                                                                 >
-                                                                    <Card
-                                                                        className="m-1"
-                                                                        style={{
-                                                                            minWidth:
-                                                                                "220px",
-                                                                            border: "solid 1px",
-                                                                            borderRadius:
-                                                                                "5px",
-                                                                        }}
-                                                                    >
+                                                                    <Card className="m-1 calendar-card">
                                                                         <Card.Body
+                                                                            className="calendar-card-body"
                                                                             style={{
-                                                                                padding:
-                                                                                    "4px",
                                                                                 backgroundColor:
                                                                                     attention
                                                                                         .kine
                                                                                         .color,
-                                                                                color: "white",
                                                                             }}
                                                                         >
                                                                             <Card.Text>
@@ -790,12 +768,7 @@ export function Calendar() {
                                                             )
                                                         )}
                                                 {!hasBlockedAttention && (
-                                                    <div
-                                                        className="text-center"
-                                                        style={{
-                                                            minWidth: "240px",
-                                                        }}
-                                                    >
+                                                    <div className="text-center calendar-blocked">
                                                         <Button
                                                             variant="light"
                                                             onClick={() =>

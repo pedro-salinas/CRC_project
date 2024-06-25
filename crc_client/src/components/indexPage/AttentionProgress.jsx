@@ -26,10 +26,10 @@ import { Stage2 } from "./Stage2";
 export function AttentionProgress() {
     const { isMobile } = MobileHandler();
 
-    // Padding para movil o navegador
-    const dynamicStyle = {
-        paddingTop: isMobile ? "80px" : "150px",
-    };
+    // CSS movil
+    const dynamicPadding = isMobile
+        ? "attention-mobile-padding"
+        : "attention-desktop-padding";
 
     // Porcentaje barra de progreso
     const [percentage, setPercentage] = useState(0);
@@ -111,7 +111,7 @@ export function AttentionProgress() {
     }, []);
 
     return (
-        <Container style={dynamicStyle} id="info">
+        <Container id="info" className={dynamicPadding}>
             <Row className="text-center pb-4" data-aos="fade-down">
                 <h1>
                     <strong>Agendar una hora</strong>
@@ -143,8 +143,7 @@ export function AttentionProgress() {
 
             {loading && (
                 <Row
-                    className="text-center pt-4"
-                    style={{ minHeight: "250px" }}
+                    className="text-center pt-4 attention-height"
                     data-aos="fade-down"
                 >
                     <Col>

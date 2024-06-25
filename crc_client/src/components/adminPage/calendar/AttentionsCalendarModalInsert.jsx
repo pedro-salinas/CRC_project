@@ -15,7 +15,7 @@ import { insertAttentionRequest } from "../../../api/attention";
 import { XLg } from "react-bootstrap-icons";
 
 // Estilos
-import "./styles.css";
+import "./Calendar.css";
 
 export function AttentionsCalendarModalInsert({
     show,
@@ -287,13 +287,7 @@ export function AttentionsCalendarModalInsert({
                         <div>
                             <Form.Label>Paciente</Form.Label>
                         </div>
-                        <div
-                            style={{
-                                position: "relative",
-                                display: "inline-block",
-                                width: "100%",
-                            }}
-                        >
+                        <div className="pacient">
                             <input
                                 type="text"
                                 placeholder="Buscar paciente..."
@@ -315,16 +309,7 @@ export function AttentionsCalendarModalInsert({
                             {disableClient && (
                                 <Button
                                     variant=""
-                                    className="br-5"
-                                    style={{
-                                        position: "absolute",
-                                        top: "5%",
-                                        right: "1%",
-                                        padding: "5px",
-                                        border: "none",
-                                        backgroundColor: "transparent",
-                                        zIndex: 1, // Asegurar que el botón esté visualmente encima del input
-                                    }}
+                                    className="br-5 pacient-close-button"
                                 >
                                     <XLg
                                         size={15}
@@ -375,7 +360,6 @@ export function AttentionsCalendarModalInsert({
                                                 )
                                             }
                                             key={item._id}
-                                            style={{}}
                                         >
                                             {item.name}
                                             {"   "}({item.rut})
@@ -508,7 +492,6 @@ export function AttentionsCalendarModalInsert({
                     <Form.Group className="mb-3" controlId="description">
                         <Form.Label>Descripción (opcional)</Form.Label>
                         <textarea
-                            style={{ borderRadius: "2px" }}
                             className={
                                 errors.description
                                     ? "form-control is-invalid"
