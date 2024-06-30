@@ -17,20 +17,15 @@ import "./Info.css";
 export function InfoSection() {
     const { isMobile } = MobileHandler();
 
-    // Padding para movil o navegador
-    const dynamicStyleInfo = {
-        paddingTop: isMobile ? "60px" : "150px",
-    };
-
     // CSS movil
     const dynamicPadding = isMobile
         ? "info-mobile-padding"
         : "info-desktop-padding";
 
     return (
-        <Container id="info" className="dynamicPadding">
+        <Container id="info" className={dynamicPadding}>
             <Row className="text-center" data-aos="fade-down">
-                <h4 style={{ fontSize: "28px" }}>
+                <h4 className="info-subtitle-font">
                     Lo sé... Estas frustrado(a) por tu dolor lumbar persistente
                     y has agotado todas las opciones
                     <strong> sin encontrar alivio.</strong>
@@ -86,14 +81,7 @@ export function InfoSection() {
                         <Carousel.Item>
                             <Container>
                                 <Row className="pt-2 b-2 p-2">
-                                    <Card
-                                        style={{
-                                            border: "solid 1px grey",
-                                            borderRadius: "10px",
-                                            padding: "50px",
-                                            minHeight: "450px",
-                                        }}
-                                    >
+                                    <Card className="info-card">
                                         <Card.Body>
                                             <Card.Title>
                                                 José Ignacio Andrade Rojas
@@ -113,47 +101,27 @@ export function InfoSection() {
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                         </Card.Body>
                                     </Card>
@@ -163,14 +131,7 @@ export function InfoSection() {
                         <Carousel.Item>
                             <Container>
                                 <Row className="pt-2 b-2 p-2">
-                                    <Card
-                                        style={{
-                                            border: "solid 1px grey",
-                                            borderRadius: "10px",
-                                            padding: "50px",
-                                            minHeight: "450px",
-                                        }}
-                                    >
+                                    <Card className="info-card">
                                         <Card.Body>
                                             <Card.Title>
                                                 Veronica Caceres Arias
@@ -189,47 +150,27 @@ export function InfoSection() {
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                         </Card.Body>
                                     </Card>
@@ -239,14 +180,7 @@ export function InfoSection() {
                         <Carousel.Item>
                             <Container>
                                 <Row className="pt-2 b-2 p-2">
-                                    <Card
-                                        style={{
-                                            border: "solid 1px grey",
-                                            borderRadius: "10px",
-                                            padding: "50px",
-                                            minHeight: "450px",
-                                        }}
-                                    >
+                                    <Card className="info-card">
                                         <Card.Body>
                                             <Card.Title>
                                                 Pablo Vergara
@@ -264,47 +198,27 @@ export function InfoSection() {
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                         </Card.Body>
                                     </Card>
@@ -314,14 +228,7 @@ export function InfoSection() {
                         <Carousel.Item>
                             <Container>
                                 <Row className="pt-2 b-2 p-2">
-                                    <Card
-                                        style={{
-                                            border: "solid 1px grey",
-                                            borderRadius: "10px",
-                                            padding: "50px",
-                                            minHeight: "450px",
-                                        }}
-                                    >
+                                    <Card className="info-card">
                                         <Card.Body>
                                             <Card.Title>
                                                 JAVIERA MONDACA
@@ -345,47 +252,27 @@ export function InfoSection() {
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                             <StarFill
                                                 size={25}
                                                 color="yellow"
-                                                style={{
-                                                    stroke: "black",
-                                                    strokeWidth: 0.2,
-                                                    marginRight: "5px",
-                                                }}
+                                                className="info-star"
                                             />
                                         </Card.Body>
                                     </Card>

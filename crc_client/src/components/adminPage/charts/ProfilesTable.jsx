@@ -289,9 +289,9 @@ export function ProfilesTable() {
     const { isMobile } = MobileHandler();
 
     // CSS movil
-    const dynamicChartSize = isMobile
-        ? "chart-mobile-size"
-        : "chart-desktop-size";
+    const dynamicChartHeight = isMobile
+        ? "profiles-mobile-height"
+        : "profiles-desktop-height";
 
     // Descargar gráfico
     const chartRef = useRef(null);
@@ -519,7 +519,7 @@ export function ProfilesTable() {
                             <Row className="text-center" data-aos="fade-down">
                                 <div
                                     id="dowload-chart"
-                                    className={`profile-chart ${dynamicChartSize}`}
+                                    className={`profiles-chart ${dynamicChartHeight}`}
                                 >
                                     <Radar
                                         ref={chartRef}

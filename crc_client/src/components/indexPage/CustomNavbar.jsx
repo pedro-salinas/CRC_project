@@ -92,11 +92,7 @@ export function CustomNavbar() {
                         <Link to="https://wa.me/56966140265">
                             <Button
                                 variant="info"
-                                style={{
-                                    padding: "0px",
-                                    margin: "0px",
-                                    border: "0px",
-                                }}
+                                className="customnavbar-no-p-m-b"
                             >
                                 <Row className="p-2 align-items-center">
                                     <Col sm={8} className="p-0">

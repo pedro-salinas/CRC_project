@@ -55,6 +55,10 @@ th {
     font-size: 16px !important;
 }
 
+.th-headers {
+    min-width: 220px;
+}
+
 th,
 td {
     padding: 2px;
@@ -63,7 +67,7 @@ td {
 }
 
 th {
-    background-color: #f2f2f2; /* Color de fondo para las celdas del encabezado */
+    background-color: white; /* Color de fondo para las celdas del encabezado */
 }
 
 tr:not(:last-child) {
@@ -104,13 +108,14 @@ td {
 }
 
 .calendar-card {
+    color: white !important;
     min-width: 220px;
     border: solid 1px;
     border-radius: 5px;
+    border-width: 0px !important;
 }
 
 .calendar-card-body {
-    padding: 4px;
     color: white;
 }
 

@@ -82,14 +82,17 @@ export function AboutUs() {
                     <h4 className="pt-4">
                         Practicaba deportes por horas a diario, hasta que de un
                         momento a otro, el
-                        <span className="red-color">
+                        <span className="aboutus-red-color">
                             {" "}
                             dolor lumbar y de cadera derecha{" "}
                         </span>
                         no me permitieron seguir. Le pregunte a todos los
                         profesores que tenía, y cada uno me daba un
-                        <span className="red-color"> pronóstico peor</span>,
-                        alejandome cada vez más de mi vida deportiva.
+                        <span className="aboutus-red-color">
+                            {" "}
+                            pronóstico peor
+                        </span>
+                        , alejandome cada vez más de mi vida deportiva.
                     </h4>
                 </Col>
             </Row>
@@ -111,16 +114,18 @@ export function AboutUs() {
                         tomándome resonancias, ecografías, entre otros, quienes
                         me aseguraron que por mi pinzamiento de cadera y esa
                         hernia
-                        <span className="red-color">
+                        <span className="aboutus-red-color">
                             {"  "}NO PODRÍA VOLVER A PRACTICAR DEPORTES...
                         </span>
                     </h5>
                     <h5 className="pt-4 text-start">
                         Incluso me propusieron una{" "}
-                        <span className="red-color">{"  "}OPERACIÓN</span> para
-                        corregir esas “lesiones”, pero sólo si estaba dispuesto
-                        a renunciar al Taekwondo y a cualquier deporte de
-                        impacto
+                        <span className="aboutus-red-color">
+                            {"  "}OPERACIÓN
+                        </span>{" "}
+                        para corregir esas “lesiones”, pero sólo si estaba
+                        dispuesto a renunciar al Taekwondo y a cualquier deporte
+                        de impacto
                     </h5>
                     <h3 className="pt-4 text-start">
                         <strong>

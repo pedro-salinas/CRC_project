@@ -339,7 +339,7 @@ export function AttentionsCalendarModalInsertMultipleDifferentDate({
                         <div>
                             <Form.Label>Paciente</Form.Label>
                         </div>
-                        <div className="pacient">
+                        <div className="attentions-pacient-form">
                             <input
                                 type="text"
                                 placeholder="Buscar paciente..."
@@ -361,7 +361,7 @@ export function AttentionsCalendarModalInsertMultipleDifferentDate({
                             {disableClient && (
                                 <Button
                                     variant=""
-                                    className="br-5 pacient-close-button"
+                                    className="br-5 attentions-pacient-close-button"
                                 >
                                     <XLg
                                         size={15}
@@ -371,7 +371,7 @@ export function AttentionsCalendarModalInsertMultipleDifferentDate({
                                 </Button>
                             )}
                         </div>
-                        <Dropdown className="select-container">
+                        <Dropdown className="attentions-select-container">
                             {!clientSelected &&
                                 clients
                                     .filter((item) => {
@@ -404,7 +404,7 @@ export function AttentionsCalendarModalInsertMultipleDifferentDate({
                                     .slice(0, 5)
                                     .map((item) => (
                                         <Dropdown.Item
-                                            className="form-control select-option"
+                                            className="form-control attentions-select-option"
                                             onClick={() =>
                                                 onSearchClient(
                                                     item.name,

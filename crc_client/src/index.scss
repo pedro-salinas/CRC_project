@@ -1,4 +1,5 @@
-// Variable de bootstrap
+// ------------------------ Bootstrap variables
+
 $theme-colors: (
     "primary": #31b6ad,
     "secondary": #6c757d,
@@ -14,10 +15,12 @@ $body-tertiary-bg: white;
 $border-radius: 50px;
 $btn-color: white;
 
-// Bootstrap scss
+// ------------------------ Importacion de bootstrap
+
 @import "../node_modules/bootstrap/scss/bootstrap";
 
-// Ajustar padding top para que no se vea todo apretado
+// ------------------------ Global h elements
+
 h1,
 h2,
 h3,
@@ -27,14 +30,16 @@ h6 {
     margin-top: 8px;
 }
 
-// Color titulos
+// ------------------------ Bootstrap titulos
+
 h1,
 h2,
 h3 {
     color: #31b6ad;
 }
 
-// Botones
+// ------------------------ Bootstrap botones
+
 .btn {
     color: white;
 }
@@ -65,7 +70,8 @@ h3 {
     border-radius: 20px !important;
 }
 
-// Borde de tarjetas
+// ------------------------ Bootstrap cards
+
 .card {
     border-width: 10px;
 }
@@ -79,32 +85,28 @@ h3 {
     border-radius: 2px 2px 2px 2px;
 }
 
-// Alertas
+// ------------------------ Alertas
+
 .alert {
     border-radius: 2px;
 }
 
-// Contenedor de los precios
-.prices-container {
-    background-color: #e6e6e6;
-    border-radius: 10px;
+// ------------------------ Admin Common
+
+.button-center {
+    display: flex;
+    align-items: center;
 }
 
-// Final de la pagina
-#end {
-    background-color: #444444;
-    color: white;
-}
+// ------------------------ Admin Attentions
 
-// ------------------------ Attentions
-
-.pacient {
+.attentions-pacient-form {
     position: relative;
     display: inline-block;
     width: 100%;
 }
 
-.pacient-close-button {
+.attentions-pacient-close-button {
     position: absolute;
     top: 5%;
     right: 1%;
@@ -114,32 +116,29 @@ h3 {
     z-index: 1;
 }
 
-.rounded {
+.attentions-rounded {
     border-radius: 2px;
 }
 
-/* Estilo del contenedor */
-.select-container {
-    border: 1px solid grey; /* Borde fino de color negro */
+.attentions-select-container {
+    border: 1px solid grey;
     background-color: white;
 }
 
-/* Estilo de cada opción */
-.select-option {
-    padding-inline-start: 10px; /* Espaciado interno */
+.attentions-select-option {
+    padding-inline-start: 10px;
 }
 
-/* Estilo del hover */
-.select-option:hover {
-    background-color: #2064d4; /* Fondo azul claro al pasar el mouse */
+.attentions-select-option:hover {
+    background-color: #2064d4;
     color: white;
 }
 
-.select-container:empty {
+.attentions-select-container:empty {
     border: none;
 }
 
-// ------------------------ Custom navbar admin
+// ------------------------ Admin Custom Navbar Admin
 
 .red-sub {
     border-right: 1px solid;
@@ -152,29 +151,24 @@ h3 {
     cursor: pointer;
 }
 
-// ------------------------ Profiles
+// ------------------------ Admin Profiles
 
-.button-center {
-    display: flex;
-    align-items: center;
-}
-
-.profile-chart {
+.profiles-chart {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100%;
 }
 
-.chart-mobile-size {
+.profiles-mobile-height {
     height: 400px;
 }
 
-.chart-desktop-size {
+.profiles-desktop-height {
     height: 500px;
 }
 
-// ------------------------ LoginForm
+// ------------------------ Admin LoginForm
 
 .login-mobile-width {
     width: 180px;
@@ -184,17 +178,7 @@ h3 {
     width: 450px;
 }
 
-// ------------------------ EndPageLogin
-
-.end-mobile-width {
-    padding-top: 30px;
-}
-
-.end-desktop-width {
-    padding-top: 30px;
-}
-
-// ------------------------ ConfirmMessage
+// ------------------------ Admin ConfirmMessage
 
 .confirm-mobile-width {
     width: 250px;
@@ -203,7 +187,7 @@ h3 {
 .confirm-desktop-width {
     width: 450px;
 }
-// ------------------------ EndPageLogin
+// ------------------------ Index AboutUs
 
 .aboutus-mobile-padding {
     padding-top: 60px;
@@ -221,11 +205,11 @@ h3 {
     font-size: 46px;
 }
 
-.red-color {
+.aboutus-red-color {
     color: red;
 }
 
-// ------------------------ AttentionProgress //
+// ------------------------ Index AttentionProgress
 
 .attention-mobile-padding {
     padding-top: 80px;
@@ -239,7 +223,7 @@ h3 {
     min-height: 250px;
 }
 
-// ------------------------ ContactSection
+// ------------------------ Index ContactSection
 
 .contact-mobile-padding {
     padding-top: 60px;
@@ -257,7 +241,7 @@ h3 {
     font-size: 46px;
 }
 
-// ------------------------ InfoSection
+// ------------------------ Index InfoSection
 
 .info-mobile-padding {
     padding-top: 60px;
@@ -265,4 +249,166 @@ h3 {
 
 .info-desktop-padding {
     padding-top: 150px;
+}
+
+// ------------------------ Index CustomNavbar
+
+.customnavbar-no-p-m-b {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+// ------------------------ Index ExampleCase
+
+.example-mobile-padding {
+    padding-top: 60px;
+}
+
+.example-desktop-padding {
+    padding-top: 150px;
+}
+
+.example-mobile-font {
+    font-size: 36px;
+}
+
+.example-desktop-font {
+    font-size: 46px;
+}
+
+.example-mobile-height {
+    height: 400px;
+}
+
+.example-desktop-height {
+    height: 450px;
+}
+
+.example-chart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+// ------------------------ Index Footer
+
+.footer-mobile-padding {
+    padding-top: 60px;
+}
+
+.footer-desktop-padding {
+    padding-top: 150px;
+}
+
+// ------------------------ Index HomeSection
+
+.home-mobile-padding {
+    padding-top: 60px;
+}
+
+.home-desktop-padding {
+    padding-top: 150px;
+}
+
+.home-mobile-font {
+    font-size: 36px;
+}
+
+.home-desktop-font {
+    font-size: 46px;
+}
+
+.home-mobile-height {
+    height: 300px;
+}
+
+.home-mobile-height {
+    height: 500px;
+}
+
+.home-home-box {
+    pointer-events: none;
+    cursor: default;
+    border-radius: 28px;
+}
+
+// ------------------------ Index InfoSection
+
+.info-mobile-padding {
+    padding-top: 60px;
+}
+
+.info-desktop-padding {
+    padding-top: 150px;
+}
+
+.info-subtitle-font {
+    font-size: 28px;
+}
+
+.info-card {
+    border: solid 1px grey;
+    border-radius: 10px;
+    padding: 50px;
+    min-height: 450px;
+}
+
+.info-star {
+    stroke: black;
+    stroke-width: 0.2;
+    margin-right: 5px;
+}
+
+// ------------------------ Index PricesSection
+
+.prices-mobile-padding {
+    padding-top: 60px;
+}
+
+.prices-desktop-padding {
+    padding-top: 150px;
+}
+
+.prices-mobile-font {
+    font-size: 36px;
+}
+
+.prices-desktop-font {
+    font-size: 46px;
+}
+
+.prices-no-p-m-b {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+}
+
+.prices-container {
+    background-color: #e6e6e6;
+    border-radius: 10px;
+}
+
+// ------------------------ Index Index EndPage
+
+.end-mobile-padding {
+    padding-top: 30px;
+}
+
+.end-desktop-padding {
+    padding-top: 30px;
+}
+
+.end-mobile-font {
+    font-size: 12px;
+}
+
+.end-desktop-font {
+    font-size: 18px;
+}
+
+#end {
+    background-color: #444444;
+    color: white;
 }

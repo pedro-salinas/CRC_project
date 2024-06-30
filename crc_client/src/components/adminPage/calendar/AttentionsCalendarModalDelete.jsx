@@ -291,7 +291,7 @@ export function AttentionsCalendarModalDelete({
                         <div>
                             <Form.Label>Paciente</Form.Label>
                         </div>
-                        <div className="pacient">
+                        <div className="attentions-pacient-form">
                             <input
                                 type="text"
                                 placeholder="Buscar paciente..."
@@ -310,7 +310,7 @@ export function AttentionsCalendarModalDelete({
                                 })}
                             />
                         </div>
-                        <Dropdown className="select-container">
+                        <Dropdown className="attentions-select-container">
                             {!clientSelected &&
                                 clients
                                     .filter((item) => {
@@ -343,7 +343,7 @@ export function AttentionsCalendarModalDelete({
                                     .slice(0, 5)
                                     .map((item) => (
                                         <Dropdown.Item
-                                            className="form-control select-option"
+                                            className="form-control attentions-select-option"
                                             onClick={() =>
                                                 onSearchClient(
                                                     item.name,
@@ -487,8 +487,8 @@ export function AttentionsCalendarModalDelete({
                             disabled
                             className={
                                 errors.description
-                                    ? "form-control is-invalid rounded"
-                                    : "form-control rounded"
+                                    ? "form-control is-invalid attentions-rounded"
+                                    : "form-control attentions-rounded"
                             }
                             {...register("description")}
                         ></textarea>

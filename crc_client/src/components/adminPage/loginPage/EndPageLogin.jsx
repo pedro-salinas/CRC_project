@@ -10,16 +10,20 @@ export function EndPageLogin() {
     const { isMobile } = MobileHandler();
 
     // CSS movil
-    const dynamicEndPadding = isMobile ? "end-mobile-size" : "end-desktop-size";
+    const dynamicPadding = isMobile
+        ? "end-mobile-padding"
+        : "end-desktop-padding";
+
+    const dynamicFontSize = isMobile ? "end-mobile-font" : "end-desktop-font";
 
     return (
         <Container
             id="end"
             expand="md"
             fluid
-            className={`d-flex flex-column align-items-between fixed-bottom ${dynamicEndPadding}`}
+            className={`d-flex flex-column align-items-between fixed-bottom ${dynamicPadding}`}
         >
-            <Row className="pb-4">
+            <Row className={`pb-4 ${dynamicFontSize}`}>
                 <Col>
                     © Copyright <strong>CRC kinesiología</strong>. Todos los
                     derechos reservados

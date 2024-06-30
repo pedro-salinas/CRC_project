@@ -226,7 +226,7 @@ export function AttentionsModalDelete({
                         <div>
                             <Form.Label>Paciente</Form.Label>
                         </div>
-                        <div className="pacient">
+                        <div className="attentions-pacient-form">
                             <input
                                 disabled
                                 type="text"
@@ -375,8 +375,8 @@ export function AttentionsModalDelete({
                             disabled
                             className={
                                 errors.description
-                                    ? "form-control is-invalid rounded"
-                                    : "form-control rounded"
+                                    ? "form-control is-invalid attentions-rounded"
+                                    : "form-control attentions-rounded"
                             }
                             {...register("description")}
                         ></textarea>

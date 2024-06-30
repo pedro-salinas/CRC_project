@@ -6,19 +6,9 @@ import Col from "react-bootstrap/Col";
 // Bootstrap icons
 import { Telephone, Whatsapp, GeoAlt } from "react-bootstrap-icons";
 
-// Utilidad para saber si es que estamos en movil o no
-import { MobileHandler } from "../../utils/MobileHandler";
-
 export function HeadIcons() {
-    const { isMobile } = MobileHandler();
-
-    // Padding para movil o navegador
-    const dynamicStyle = {
-        paddingTop: isMobile ? "80px" : "150px",
-    };
-
     return (
-        <Container style={dynamicStyle} data-aos="fade-down">
+        <Container data-aos="fade-down">
             <Row>
                 <Col>
                     <Row className="text-center align-items-center">

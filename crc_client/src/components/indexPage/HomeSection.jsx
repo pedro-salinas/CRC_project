@@ -34,18 +34,20 @@ export function HomeSection({ program, loading }) {
 
     const { isMobile } = MobileHandler();
 
-    // Padding para movil o navegador
-    const dynamicStyleHome = {
-        paddingTop: isMobile ? "60px" : "100px",
-    };
-
-    const fontSizeTitle = {
-        fontSize: isMobile ? "36px" : "46px",
-    };
-
     const videoSize = {
         height: isMobile ? "300px" : "500px",
     };
+
+    // CSS movil
+    const dynamicPadding = isMobile
+        ? "home-mobile-padding"
+        : "home-desktop-padding";
+
+    const dynamicFontSize = isMobile ? "home-mobile-font" : "home-desktop-font";
+
+    const dynamicHeight = isMobile
+        ? "home-mobile-height"
+        : "home-desktop-height";
 
     useEffect(() => {
         const today = new Date();
@@ -56,7 +58,7 @@ export function HomeSection({ program, loading }) {
 
     return (
         <Container>
-            <Row id="home" style={dynamicStyleHome}>
+            <Row id="home" className={dynamicPadding}>
                 <Col
                     className="text-center align-items-center"
                     data-aos="fade-down"
@@ -66,7 +68,7 @@ export function HomeSection({ program, loading }) {
                             <span className="red-color">¡Atención!</span> Te
                             presento...
                         </h4>
-                        <h1 className="pt-2" style={fontSizeTitle}>
+                        <h1 className={`pt-2 ${dynamicFontSize}`}>
                             <strong>Supera al DOLOR LUMBAR</strong>
                         </h1>
                         <h4 className="pt-2">
@@ -74,8 +76,7 @@ export function HomeSection({ program, loading }) {
                             la SOLUCIÓN a tu dolor
                         </h4>
                         <iframe
-                            className="pt-2"
-                            height={videoSize.height}
+                            className={`pt-2 ${dynamicHeight}`}
                             src="https://www.youtube.com/embed/ReuJnbJfkwo?si=emr6NMOsGxfa2qdy"
                             title="CRC - Anuncio youtube"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -85,14 +86,7 @@ export function HomeSection({ program, loading }) {
                     </Row>
                     <Row className="pt-4" data-aos="fade-down">
                         <Col>
-                            <Button
-                                variant="primary"
-                                style={{
-                                    pointerEvents: "none",
-                                    cursor: "default",
-                                    borderRadius: "28px",
-                                }}
-                            >
+                            <Button variant="primary" className="home-home-box">
                                 <h4>¡Sí! Quiero solucionar mi dolor lumbar.</h4>
 
                                 <h4>
@@ -116,7 +110,7 @@ export function HomeSection({ program, loading }) {
                     </Row>
 
                     <Row className="pt-4" data-aos="fade-down">
-                        <h1 className="pt-2" style={fontSizeTitle}>
+                        <h1 className={`pt-2 ${dynamicFontSize}`}>
                             <strong>
                                 Últimos{" "}
                                 <span className="red-color">
@@ -127,50 +121,6 @@ export function HomeSection({ program, loading }) {
                     </Row>
                 </Col>
             </Row>
-            {/* <Row className="pt-2">
-                <Col
-                    className="text-center align-items-center"
-                    data-aos="fade-right"
-                >
-                    <Row className="pt-4">
-                        <h1 className="fw-bold">¿Estás con dolor?</h1>
-                    </Row>
-                    <Row className="pt-4">
-                        <h5>
-                            Ten calma, sabemos que esta condición es
-                            completamente incómoda, frustrante y que te está
-                            alejando de tus actividades. ¡¡Afortunadamente
-                            encontraste tu solución!!
-                        </h5>
-                        <h5>
-                            En CRC Kinesiología crearemos en conjunto un plan de
-                            tratamiento totalmente especializado para que
-                            retomes el control de tu vida.
-                        </h5>
-                    </Row>
-                    <Row className="pt-4">
-                        <Col>
-                            <Button variant="primary" data-aos="fade-right">
-                                <h6>¡Quiero mi solución ahora!</h6>
-                            </Button>
-                        </Col>
-                    </Row>
-                </Col>
-                <Col
-                    className="text-center align-items-center"
-                    data-aos="fade-right"
-                >
-                    {!isMobile ? (
-                        <Image src={image1} width="600px" />
-                    ) : (
-                        <Image
-                            src={image1}
-                            width="300px"
-                            style={dynamicStyle}
-                        />
-                    )}
-                </Col>
-            </Row> */}
         </Container>
     );
 }

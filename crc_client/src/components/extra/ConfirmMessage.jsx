@@ -9,7 +9,7 @@ import Image from "react-bootstrap/Image";
 import { verifyEmailRequest } from "../../api/user";
 
 // Router
-import { Link, useSearchParams, useNavigate } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 // Imagenes locales
 import logo from "../../assets/logo.webp";
@@ -20,8 +20,6 @@ import { MobileHandler } from "../../utils/MobileHandler";
 export function ConfirmMessage() {
     const [queryParameters] = useSearchParams();
     const [show, setShow] = useState(false);
-
-    const navigate = useNavigate();
 
     useEffect(() => {
         async function verifyEmail() {

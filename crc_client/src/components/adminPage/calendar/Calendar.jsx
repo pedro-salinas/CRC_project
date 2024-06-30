@@ -261,8 +261,8 @@ export function Calendar() {
     };
 
     const handleShowInsert = (dayNumberHandler, hour) => {
-        let year = currentDate.getFullYear();
-        let month = currentDate.getMonth() + 1; //Parte del 1 esta baina
+        let year = Number(dayNumberHandler.split(" ")[3]);
+        let month = Number(dayNumberHandler.split(" ")[2]);
         let day = Number(dayNumberHandler.split(" ")[1]);
 
         month = month && month.toString().length === 1 ? "0" + month : month;
@@ -277,6 +277,8 @@ export function Calendar() {
             date: date,
             hour: realHour,
         };
+
+        console.log(data);
 
         setDefaultValues(data);
 
@@ -441,9 +443,9 @@ export function Calendar() {
     const blockDay = async (data) => {
         setLoadingCalendar(true);
 
-        let year = currentDate.getFullYear();
-        let month = currentDate.getMonth() + 1; //Parte del 1 esta baina
-        let day = Number(data);
+        let year = Number(data.split(" ")[3]);
+        let month = Number(data.split(" ")[2]);
+        let day = Number(data.split(" ")[1]);
 
         try {
             for (const dayHour of dayHours) {
@@ -584,7 +586,7 @@ export function Calendar() {
                                     </h6>
                                 </th>
 
-                                {weekDaysTitle.map((day) => {
+                                {weekDaysTitle.map((day, index) => {
                                     const matchingBlockedItems =
                                         blockedItems.filter(
                                             (item) =>
@@ -598,16 +600,17 @@ export function Calendar() {
 
                                     if (matchingBlockedItems.length == 0) {
                                         return (
-                                            <th key={day} className="">
+                                            <th
+                                                key={day}
+                                                className="th-headers"
+                                            >
                                                 {day.split(" ", 2).join(" ")}
 
                                                 <Button
                                                     variant="secondary"
                                                     className="m-2"
                                                     onClick={() =>
-                                                        blockDay(
-                                                            day.split(" ")[1]
-                                                        )
+                                                        blockDay(day)
                                                     }
                                                     disabled={loadingCalendar}
                                                 >
@@ -619,7 +622,10 @@ export function Calendar() {
 
                                     if (matchingBlockedItems.length > 0) {
                                         return (
-                                            <th key={day} className="">
+                                            <th
+                                                key={day}
+                                                className="th-headers"
+                                            >
                                                 {day.split(" ", 2).join(" ")}
 
                                                 <Button
@@ -779,6 +785,21 @@ export function Calendar() {
                                                                     hour
                                                                 )
                                                             }
+                                                        >
+                                                            <FilePlus
+                                                                size={25}
+                                                                width={200}
+                                                                color="#31b6ad"
+                                                            />
+                                                        </Button>
+                                                    </div>
+                                                )}
+
+                                                {hasBlockedAttention && (
+                                                    <div className="text-center calendar-blocked">
+                                                        <Button
+                                                            variant="light"
+                                                            disabled
                                                         >
                                                             <FilePlus
                                                                 size={25}

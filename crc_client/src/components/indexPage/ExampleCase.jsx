@@ -43,23 +43,23 @@ import { data, options } from "./charData";
 export function ExampleCase() {
     const { isMobile } = MobileHandler();
 
-    // Padding para movil o navegador
-    const dynamicStyleInfo = {
-        paddingTop: isMobile ? "60px" : "150px",
-    };
+    // CSS movil
+    const dynamicPadding = isMobile
+        ? "example-mobile-padding"
+        : "example-desktop-padding";
 
-    const fontSizeTitle = {
-        fontSize: isMobile ? "36px" : "46px",
-    };
+    const dynamicFontSize = isMobile
+        ? "example-mobile-font"
+        : "example-desktop-font";
 
-    const chartSize = {
-        height: isMobile ? 400 : 450,
-    };
+    const dynamicHeight = isMobile
+        ? "example-mobile-height"
+        : "example-desktop-height";
 
     return (
-        <Container style={dynamicStyleInfo} id="info">
+        <Container className={dynamicPadding} id="info">
             <Row className="text-center" data-aos="fade-down">
-                <h1 style={fontSizeTitle}>
+                <h1 className={dynamicFontSize}>
                     <strong>Ella no podía siquiera agacharse por dolor </strong>
                 </h1>
             </Row>
@@ -140,21 +140,13 @@ export function ExampleCase() {
                     )}
                 </Col>
                 <Col sm={12} md={6} className="pt-4">
-                    <div
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
-                            width: "100%",
-                            height: chartSize.height,
-                        }}
-                    >
+                    <div className={`example-chart ${dynamicHeight}`}>
                         <Radar data={data} options={options} />
                     </div>
                 </Col>
             </Row>
             <Row className="pt-4 text-center" data-aos="fade-down">
-                <h1 style={fontSizeTitle}>
+                <h1 className={dynamicFontSize}>
                     <strong>
                         Un método que está ayudando a cientos de personas a
                         aliviar su cuadro

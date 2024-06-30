@@ -113,6 +113,7 @@ export function AttentionsCalendarModalInsert({
                 onHideClear();
                 handleClose();
             } catch (error) {
+                console.log(error);
                 if (error.response.status === 400) {
                     // Fallo anterior al controlador
                     let backendErrors;
@@ -287,7 +288,7 @@ export function AttentionsCalendarModalInsert({
                         <div>
                             <Form.Label>Paciente</Form.Label>
                         </div>
-                        <div className="pacient">
+                        <div className="attentions-pacient-form">
                             <input
                                 type="text"
                                 placeholder="Buscar paciente..."
@@ -309,7 +310,7 @@ export function AttentionsCalendarModalInsert({
                             {disableClient && (
                                 <Button
                                     variant=""
-                                    className="br-5 pacient-close-button"
+                                    className="br-5 attentions-pacient-close-button"
                                 >
                                     <XLg
                                         size={15}
@@ -319,7 +320,7 @@ export function AttentionsCalendarModalInsert({
                                 </Button>
                             )}
                         </div>
-                        <Dropdown className="select-container">
+                        <Dropdown className="attentions-select-container">
                             {!clientSelected &&
                                 clients
                                     .filter((item) => {
@@ -352,7 +353,7 @@ export function AttentionsCalendarModalInsert({
                                     .slice(0, 5)
                                     .map((item) => (
                                         <Dropdown.Item
-                                            className="form-control select-option"
+                                            className="form-control attentions-select-option"
                                             onClick={() =>
                                                 onSearchClient(
                                                     item.name,

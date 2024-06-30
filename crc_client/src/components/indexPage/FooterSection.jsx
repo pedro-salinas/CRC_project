@@ -12,14 +12,13 @@ import { MobileHandler } from "../../utils/MobileHandler";
 export function FooterSection() {
     const { isMobile } = MobileHandler();
 
-    // Padding para movil o navegador
-    const dynamicStyleFooter = {
-        paddingTop: isMobile ? "60px" : "150px",
-        paddingBottom: isMobile ? "60px" : "150px",
-    };
+    // CSS movil
+    const dynamicPadding = isMobile
+        ? "footer-mobile-padding"
+        : "footer-desktop-padding";
 
     return (
-        <Container style={dynamicStyleFooter}>
+        <Container className={dynamicPadding}>
             <Row className="text-center" data-aos="fade-down">
                 <Col>
                     <Row>

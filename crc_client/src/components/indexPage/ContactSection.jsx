@@ -23,10 +23,6 @@ import image2 from "../../assets/pagos.webp";
 export function ContactSection() {
     const { isMobile } = MobileHandler();
 
-    const fontSizeTitle = {
-        fontSize: isMobile ? "36px" : "46px",
-    };
-
     // CSS movil
     const dynamicPadding = isMobile
         ? "contact-mobile-padding"

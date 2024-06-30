@@ -23,19 +23,19 @@ import { Whatsapp } from "react-bootstrap-icons";
 export function PricesSection({ program, programs, loading }) {
     const { isMobile } = MobileHandler();
 
-    // Padding para movil o navegador
-    const dynamicStylePrices = {
-        paddingTop: isMobile ? "60px" : "150px",
-    };
+    // CSS movil
+    const dynamicPadding = isMobile
+        ? "prices-mobile-padding"
+        : "prices-desktop-padding";
 
-    const fontSizeTitle = {
-        fontSize: isMobile ? "36px" : "46px",
-    };
+    const dynamicFontSize = isMobile
+        ? "prices-mobile-font"
+        : "prices-desktop-font";
 
     return (
-        <Container style={dynamicStylePrices} id="prices">
+        <Container className={dynamicPadding} id="prices">
             <Row className="text-center" data-aos="fade-down">
-                <h1 className="pt-2" style={fontSizeTitle}>
+                <h1 className={`pt-2 ${dynamicFontSize}`}>
                     <strong>
                         Puedes al agendar tu evaluación y acceder ¡A todo esto!
                     </strong>
@@ -72,14 +72,7 @@ export function PricesSection({ program, programs, loading }) {
                         </Button>
                     </Col> */}
                 <Link to="https://wa.me/56966140265">
-                    <Button
-                        variant="info"
-                        style={{
-                            padding: "0px",
-                            margin: "0px",
-                            border: "0px",
-                        }}
-                    >
+                    <Button variant="info" className="prices-no-p-m-b">
                         <Row className="p-2 align-items-center">
                             <Col sm={8} className="p-0">
                                 <h6>Agenda por Whatsapp</h6>
