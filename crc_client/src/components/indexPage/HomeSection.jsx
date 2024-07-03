@@ -45,9 +45,7 @@ export function HomeSection({ program, loading }) {
 
     const dynamicFontSize = isMobile ? "home-mobile-font" : "home-desktop-font";
 
-    const dynamicHeight = isMobile
-        ? "home-mobile-height"
-        : "home-desktop-height";
+    const dynamicHeight = isMobile ? "300" : "500";
 
     useEffect(() => {
         const today = new Date();
@@ -76,7 +74,8 @@ export function HomeSection({ program, loading }) {
                             la SOLUCIÓN a tu dolor
                         </h4>
                         <iframe
-                            className={`pt-2 ${dynamicHeight}`}
+                            height={dynamicHeight}
+                            className={`pt-2`}
                             src="https://www.youtube.com/embed/ReuJnbJfkwo?si=emr6NMOsGxfa2qdy"
                             title="CRC - Anuncio youtube"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
