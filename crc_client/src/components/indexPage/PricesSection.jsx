@@ -40,14 +40,16 @@ export function PricesSection({ program, programs, loading }) {
                         Puedes al agendar tu evaluación y acceder ¡A todo esto!
                     </strong>
 
-                    <span className="red-color">
+                    <span className="prices-red-color">
                         {" "}
                         (por solo{" "}
                         {!loading && (
-                            <span className="red-color">{program}</span>
+                            <span className="prices-red-color">{program}</span>
                         )}
                         {loading && (
-                            <span className="red-color">..............</span>
+                            <span className="prices-red-color">
+                                ..............
+                            </span>
                         )}
                         )
                     </span>
@@ -124,7 +126,7 @@ export function PricesSection({ program, programs, loading }) {
                                             </Col>
                                             <Col className="text-end">
                                                 <h4>
-                                                    <span className="red-color">
+                                                    <span className="prices-red-color">
                                                         {sale}
                                                     </span>
                                                     {"  "}
@@ -169,8 +171,14 @@ export function PricesSection({ program, programs, loading }) {
                     <strong>
                         ¡Sí, exacto! Quiero obtener por fín mi solución por solo
                         {"  "}
-                        {!loading && <span>{program}</span>}
-                        {loading && <span>..............</span>}{" "}
+                        {!loading && (
+                            <span className="prices-red-color">{program}</span>
+                        )}
+                        {loading && (
+                            <span className="prices-red-color">
+                                ..............
+                            </span>
+                        )}
                     </strong>
                 </h1>
             </Row>
@@ -178,11 +186,18 @@ export function PricesSection({ program, programs, loading }) {
                 <Col sm={12} md={6}>
                     <h5 className="pt-4 text-center">
                         ¿Qué más puedes comprar con{" "}
-                        {!loading && <span>{program}</span>}
-                        {loading && <span>..............</span>}?
+                        {!loading && (
+                            <span className="prices-red-color">{program}</span>
+                        )}
+                        {loading && (
+                            <span className="prices-red-color">
+                                ..............
+                            </span>
+                        )}
+                        ?
                     </h5>
                     <h5 className="pt-4 text-center">
-                        <span className="red-color">
+                        <span className="prices-red-color">
                             Puedes ir con ese precio a comprar una hamburguesa o
                             ir con alguien a comer pizza.
                         </span>
@@ -210,17 +225,24 @@ export function PricesSection({ program, programs, loading }) {
                     </strong>
                 </h1>
                 <h5 className="pt-4">
-                    En este punto pensarás ¿Todo esto a solo {program}? Está muy
-                    bien, pero tiene que haber alguna trampa ... ¿No?
+                    En este punto pensarás ¿Todo esto a solo{" "}
+                    {!loading && (
+                        <span className="prices-red-color">{program}</span>
+                    )}
+                    {loading && (
+                        <span className="prices-red-color">..............</span>
+                    )}
+                    ? Está muy bien, pero tiene que haber alguna trampa ... ¿No?
                 </h5>
                 <h3 className="pt-4">¡NO HAY NINGUNA TRAMPA!</h3>
                 <h5 className="pt-4">
                     Sé que en algunos centros dejan incluso a evaluación gratis,
-                    pero te ven <span className="red-color">15 MINUTOS</span> y
-                    sin un tratamiento personalizado para ti, con el que
-                    terminas haciendo lo mismo que todos los pacientes y
-                    <span className="red-color"> gastando el doble</span>, sólo
-                    por no tener terapias que atiendan a tu condición.
+                    pero te ven{" "}
+                    <span className="prices-red-color">15 MINUTOS</span> y sin
+                    un tratamiento personalizado para ti, con el que terminas
+                    haciendo lo mismo que todos los pacientes y
+                    <span className="prices-red-color"> gastando el doble</span>
+                    , sólo por no tener terapias que atiendan a tu condición.
                 </h5>
                 <h3 className="pt-4">¡Este no es uno de esos casos! </h3>
                 <h5 className="pt-4">

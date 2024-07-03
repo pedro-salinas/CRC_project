@@ -83,7 +83,7 @@ export function HomeSection({ program, loading }) {
                             allowfullscreen
                         ></iframe>
                     </Row>
-                    <Row className="pt-4" data-aos="fade-down">
+                    <Row className="pt-5" data-aos="fade-down">
                         <Col>
                             <Button variant="primary" className="home-home-box">
                                 <h4>¡Sí! Quiero solucionar mi dolor lumbar.</h4>
@@ -93,12 +93,12 @@ export function HomeSection({ program, loading }) {
                                     aliviar mi dolor a solo{" "}
                                     <strong>
                                         {!loading && (
-                                            <span className="red-color">
+                                            <span className="home-red-color">
                                                 {program}
                                             </span>
                                         )}
                                         {loading && (
-                                            <span className="red-color">
+                                            <span className="home-red-color">
                                                 ..............
                                             </span>
                                         )}
@@ -112,7 +112,7 @@ export function HomeSection({ program, loading }) {
                         <h1 className={`pt-2 ${dynamicFontSize}`}>
                             <strong>
                                 Últimos{" "}
-                                <span className="red-color">
+                                <span className="home-red-color">
                                     {counter} cupos
                                 </span>
                             </strong>
