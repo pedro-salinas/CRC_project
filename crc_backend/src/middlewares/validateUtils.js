@@ -50,13 +50,18 @@ export const authRut = (req, res, next) => {
         let dvr = 11 - (suma % 11);
 
         if (dvr === 11) {
-            dvr = 0;
-        }
-        if (dvr === 10) {
-            dvr = "K";
+            dvr = "0";
+        } else if (dvr === 10) {
+            dvr = "k";
+        } else {
+            dvr = dvr.toString();
         }
 
-        if (dvr == dv.toUpperCase()) {
+        if (
+            dvr === dv ||
+            (dvr === "k" && dv === "0") ||
+            (dvr === "0" && dv === "k")
+        ) {
             next();
         } else {
             return res.status(400).json({ message: ["rut", "RUT incorrecto"] });

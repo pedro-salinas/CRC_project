@@ -23,8 +23,8 @@ router.post(
     "/client",
     authRequired,
     authStaff,
-    authRut,
     normalizeRut,
+    authRut,
     normalizeEmail,
     validateSchema(createClientSchema),
     createClient
@@ -34,8 +34,8 @@ router.put(
     "/client/:_id",
     authRequired,
     authStaff,
-    authRut,
     normalizeRut,
+    authRut,
     normalizeEmail,
     validateSchema(createClientSchema),
     updateClient

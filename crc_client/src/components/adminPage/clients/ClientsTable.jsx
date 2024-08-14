@@ -169,7 +169,7 @@ export function ClientsTable() {
     return (
         <Card className="m-4 card-form">
             <Card.Header className="card-form-header ">
-                Administración de clientes
+                Administración de pacientes
             </Card.Header>
 
             {showAlert && (
@@ -191,7 +191,7 @@ export function ClientsTable() {
                             onClick={handleShowInsert}
                             className="mr-1 button-center"
                         >
-                            <strong className="p-1">Ingresar cliente</strong>
+                            <strong className="p-1">Ingresar paciente</strong>
                             <PersonAdd size={35} color="white" />
                         </Button>
                         <Button

@@ -123,7 +123,6 @@ export function AttentionProgress() {
                 variant="primary"
                 data-aos="fade-down"
             />
-            <Row className="text-center pt-4"></Row>
 
             {stage === 1 && !loading && (
                 <Stage1 programs={programs} goStage2={goStage2} />

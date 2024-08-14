@@ -39,8 +39,8 @@ router.post(
     "/user",
     authRequired,
     validateSchema(registerSchema),
-    authRut,
     normalizeRut,
+    authRut,
     normalizeEmail,
     insertUser
 );
@@ -48,8 +48,8 @@ router.post(
 router.put(
     "/user/:_id",
     validateSchema(updateSchema),
-    authRut,
     normalizeRut,
+    authRut,
     normalizeEmail,
     authRequired,
     authAdmin,
@@ -60,8 +60,8 @@ router.put(
 router.put(
     "/user",
     validateSchema(updateSchema),
-    authRut,
     normalizeRut,
+    authRut,
     normalizeEmail,
     authRequired,
     updateCurrentUser

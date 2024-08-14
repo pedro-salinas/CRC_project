@@ -123,10 +123,12 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
     };
 
     const nextMonth = () => {
-        const nextDate = new Date(currentDate);
-        nextDate.setMonth(currentDate.getMonth() + 1);
-        setCurrentDate(nextDate);
-        setDaySelected();
+        if (currentDate.getMonth() + 1 < today.getMonth() + 3) {
+            const nextDate = new Date(currentDate);
+            nextDate.setMonth(currentDate.getMonth() + 1);
+            setCurrentDate(nextDate);
+            setDaySelected();
+        }
     };
 
     const goToCurrentDate = () => {
@@ -148,9 +150,9 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
         handleReload();
     }, [currentDate]);
 
-    const dynamicText = {
-        fontSize: isMobile ? "16px" : "20px",
-    };
+    const dynamicFontSize = isMobile
+        ? "attention-mobile-size"
+        : "attention-desktop-size";
 
     const getDataBackend = async (weekDay) => {
         try {
@@ -164,8 +166,6 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
             };
 
             const res = await getAttentionsByDate(resData);
-
-            console.log(res.data);
 
             setHours(res.data);
             setLoadingHours(false);
@@ -188,19 +188,17 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
     }
 
     return (
-        <Row
-            className="pt-4 justify-content-center"
-            data-aos="fade-down"
-            style={{ minHeight: "250px" }}
-        >
-            <Row className="text-center pt-4">
+        <Col className="pt-4 attention-height">
+            <Row className="text-center">
                 {!loadingCalendar && (
-                    <Col className="text-center" style={{ minHeight: "56px" }}>
-                        <h3 style={{ margin: "0px" }}>Seleccione un día</h3>
+                    <Col className="text-center attention-loading">
+                        <h3 className="attention-today-button">
+                            Seleccione un día
+                        </h3>
                     </Col>
                 )}
                 {loadingCalendar && (
-                    <Col className="text-center" style={{ minHeight: "56px" }}>
+                    <Col className="text-center attention-loading">
                         <Spinner
                             animation="border"
                             role="status"
@@ -215,8 +213,7 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
                     </Col>
                 )}
             </Row>
-
-            <Row style={{ maxWidth: "600px" }} className="text-center">
+            <Row className="text-center attention-calendar">
                 <Col className="pt-2">
                     <h4>
                         {months[currentDate.getMonth()]}
@@ -247,7 +244,6 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
                             onClick={nextMonth}
                             className="m-1"
                             disabled={loadingCalendar || loadingHours}
-                            style={{ marginTop: "" }}
                         >
                             <ChevronDoubleRight size={25} color="white" />
                         </Button>
@@ -255,36 +251,31 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
                 </Col>
                 <hr />
             </Row>
-            <div className="clearfix"></div>
-            <Row
-                style={{
-                    maxWidth: "600px",
-                    boxShadow: "0 15px 40px rgba(0, 0, 0, 0.12)",
-                }}
-                className="text-center justify-content-center"
-            >
-                <Row className="flex-nowrap" style={dynamicText}>
-                    {weekDaysTable.map((wdt) => {
-                        return (
-                            <Col className="p-0 pb-4">
-                                <strong>{wdt}</strong>
-                            </Col>
-                        );
-                    })}
-                </Row>
-
-                {weekDaysTitle.map((weeks) => {
+            <Row className="text-center justify-content-center attention-calendar-shadow-box attention-calendar">
+                <Col>
+                    <Row className={`${dynamicFontSize} flex-nowrap`}>
+                        {weekDaysTable.map((wdt, i) => {
+                            return (
+                                <Col className="p-0 pb-4" key={i}>
+                                    <strong>{wdt}</strong>
+                                </Col>
+                            );
+                        })}
+                    </Row>
+                </Col>
+                {weekDaysTitle.map((weeks, weeksIndex) => {
                     return (
                         <Row
-                            className="flex-nowrap pb-4"
-                            style={dynamicText}
+                            className={`${dynamicFontSize} flex-nowrap pb-4`}
                             data-aos="fade-down"
+                            key={weeksIndex}
                         >
-                            {weeks.map((weekDay) => {
+                            {weeks.map((weekDay, weekDayIndex) => {
                                 const dayName = weekDay.split(" ")[0];
 
                                 const currentDay = today.getDate();
                                 const currentMonth = today.getMonth() + 1;
+
                                 const day = weekDay.split(" ")[1];
                                 const month = weekDay.split(" ")[2];
 
@@ -292,57 +283,21 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
                                     .toString()
                                     .padStart(2, "0");
 
-                                if (month == currentMonth) {
-                                    if (
-                                        day >= currentDay + 2 &&
-                                        dayName != "Domingo"
-                                    ) {
-                                        return (
-                                            <Col className="p-0">
-                                                <Button
-                                                    disabled={
-                                                        loadingCalendar ||
-                                                        loadingHours
-                                                    }
-                                                    className="btn-calendar"
-                                                    variant="outline-primary border-light"
-                                                    style={dynamicText}
-                                                    onClick={() =>
-                                                        getDayHours(weekDay)
-                                                    }
-                                                >
-                                                    {formattedDay}
-                                                </Button>
-                                            </Col>
-                                        );
-                                    } else {
-                                        return (
-                                            <Col className="p-0">
-                                                <Button
-                                                    disabled
-                                                    className="btn-calendar"
-                                                    variant="outline-primary border-light"
-                                                    style={dynamicText}
-                                                >
-                                                    {formattedDay}
-                                                </Button>
-                                            </Col>
-                                        );
-                                    }
-                                } else if (month > currentMonth) {
+                                if (
+                                    month < currentMonth ||
+                                    dayName == "Domingo" ||
+                                    (day < currentDay + 2 &&
+                                        currentMonth == month)
+                                ) {
                                     return (
-                                        <Col className="p-0">
+                                        <Col
+                                            className="p-0"
+                                            key={`${weeksIndex}-${weekDayIndex}`}
+                                        >
                                             <Button
-                                                disabled={
-                                                    loadingCalendar ||
-                                                    loadingHours
-                                                }
-                                                className="btn-calendar"
+                                                disabled
+                                                className={`${dynamicFontSize} btn-calendar`}
                                                 variant="outline-primary border-light"
-                                                style={dynamicText}
-                                                onClick={() =>
-                                                    getDayHours(weekDay)
-                                                }
                                             >
                                                 {formattedDay}
                                             </Button>
@@ -350,12 +305,20 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
                                     );
                                 } else {
                                     return (
-                                        <Col className="p-0">
+                                        <Col
+                                            className="p-0"
+                                            key={`${weeksIndex}-${weekDayIndex}`}
+                                        >
                                             <Button
-                                                disabled
-                                                className="btn-calendar"
+                                                disabled={
+                                                    loadingCalendar ||
+                                                    loadingHours
+                                                }
+                                                className={`${dynamicFontSize} btn-calendar`}
                                                 variant="outline-primary border-light"
-                                                style={dynamicText}
+                                                onClick={() =>
+                                                    getDayHours(weekDay)
+                                                }
                                             >
                                                 {formattedDay}
                                             </Button>
@@ -367,13 +330,9 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
                     );
                 })}
             </Row>
+
             {daySelected && (
-                <Row
-                    className="text-center pt-4"
-                    style={{
-                        maxWidth: "600px",
-                    }}
-                >
+                <Row className="text-center pt-4 attention-calendar">
                     <Col>
                         {loadingHours && (
                             <Spinner
@@ -391,21 +350,18 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
                         {!loadingHours && (
                             <>
                                 {dayHours.map((dayHour, index) => {
-                                    // Convertir dayHour.hour a string si es necesario (dependiendo de tu estructura de datos)
                                     const dayHourSplit = dayHour.split(":")[0];
 
                                     const dayHourNumber = Number(dayHourSplit);
 
-                                    // Verificar si hay una coincidencia en hours basado en hour
                                     const hourMatch = hours.find(
                                         (obj) => obj.hour === dayHourNumber
                                     );
 
-                                    // Si hay una coincidencia, renderizar el botón
                                     if (!hourMatch) {
                                         return (
                                             <Button
-                                                key={index} // Asegúrate de usar una key única cuando se mapea una lista en React
+                                                key={index}
                                                 variant="primary"
                                                 disabled={loadingCalendar}
                                                 className="m-1"
@@ -432,6 +388,6 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
                     </Button>
                 </Col>
             </Row>
-        </Row>
+        </Col>
     );
 }

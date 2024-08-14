@@ -7,6 +7,7 @@ export const normalizeRut = (req, res, next) => {
 
         req.body.rut = formattedRut;
 
+        console.log(rut);
         next();
     } catch (error) {
         res.status(500).json({ message: ["email", error.message] });

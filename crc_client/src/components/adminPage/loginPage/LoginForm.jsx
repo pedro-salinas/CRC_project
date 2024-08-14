@@ -39,7 +39,9 @@ export function LoginForm() {
     const { isMobile } = MobileHandler();
 
     // CSS movil
-    const dynamicWidth = isMobile ? "login-mobile-size" : "login-desktop-size";
+    const dynamicWidth = isMobile
+        ? "login-mobile-width"
+        : "login-desktop-width";
 
     const [loading, setLoading] = useState(false);
 

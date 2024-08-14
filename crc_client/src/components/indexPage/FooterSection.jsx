@@ -19,7 +19,7 @@ export function FooterSection() {
 
     return (
         <Container className={dynamicPadding}>
-            <Row className="text-center" data-aos="fade-down">
+            <Row className="pb-4 text-center" data-aos="fade-down">
                 <Col>
                     <Row>
                         <h2 className="fw-bold">CRC KINESIOLOGÍA</h2>

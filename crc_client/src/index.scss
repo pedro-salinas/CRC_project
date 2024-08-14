@@ -412,3 +412,47 @@ h3 {
     background-color: #444444;
     color: white;
 }
+
+// ------------------------ Index Attention Stage 1
+
+.attention-height {
+    min-height: 400px;
+}
+
+.attention-card-border {
+    border-width: 2px;
+    border-radius: 3px;
+}
+
+.attention-grey {
+    color: #444444;
+}
+
+.attention-red {
+    color: red;
+}
+
+.attention-loading {
+    min-height: 56px;
+}
+
+.attention-today-button {
+    margin: 0px;
+}
+
+.attention-calendar {
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+.attention-calendar-shadow-box {
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.attention-mobile-size {
+    font-size: 16px;
+}
+
+.attention-desktop-size {
+    font-size: 20px;
+}
