@@ -82,12 +82,15 @@ export function AttentionsCalendarModalInsertMultipleSameDate({
                 const hour = Number(values.hour);
                 const allDates = [];
 
+                const year = Number(values.date.split("-")[0]);
+                const month = Number(values.date.split("-")[1]);
+                const day = Number(values.date.split("-")[2]);
+
                 for (let index = 0; index < values.repeats; index++) {
-                    const auxDate = new Date(values.date);
+                    const auxDate = new Date(year, month - 1, day);
                     auxDate.setDate(auxDate.getDate() + 7 * index);
 
                     const auxDateFormat = auxDate.toISOString().split("T")[0];
-
                     const auxArray = [
                         Number(auxDateFormat.split("-")[2]),
                         Number(auxDateFormat.split("-")[1]),
@@ -98,9 +101,6 @@ export function AttentionsCalendarModalInsertMultipleSameDate({
                     allDates.push(auxArray);
                 }
 
-                const day = Number(values.date.split("-")[2]);
-                const month = Number(values.date.split("-")[1]);
-                const year = Number(values.date.split("-")[0]);
                 delete values.date;
                 delete values.hour;
                 delete values.program;
