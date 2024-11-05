@@ -22,6 +22,12 @@ export const columns = [
         wrap: true,
     },
     {
+        name: "Especialidad",
+        selector: (row) => row.specialty,
+        sortable: true,
+        wrap: true,
+    },
+    {
         name: "Precio en oferta",
         selector: (row) => row.on_sale_price,
         sortable: true,
