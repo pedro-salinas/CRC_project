@@ -1,6 +1,7 @@
 import Attention from "../models/attention.model.js";
 import Client from "../models/client.model.js";
 import { sendAttentionEmail } from "../libs/mailer.js";
+import { sendWhatsAppMessage } from "../libs/wsp.js";
 
 function formatHourAndDate(hour, day, month, year) {
     const textHour = `${String(hour).padStart(2, "0")}:00 hrs`;
@@ -332,7 +333,7 @@ export const createAttentionByWeb = async (req, res) => {
             year
         );
 
-        const data = {
+        const dataMail = {
             name: web_client.name,
             email: web_client.email,
             date: textDate,
@@ -340,7 +341,17 @@ export const createAttentionByWeb = async (req, res) => {
             specialty: specialty,
         };
 
-        const sendMail = await sendAttentionEmail(data);
+        const sendMail = await sendAttentionEmail(dataMail);
+
+        const dataWsp = {
+            name: web_client.name,
+            date: textDate,
+            hour: textHour,
+            specialty: specialty,
+            phone: web_client.phone,
+        };
+
+        // const sendWsp = await sendWhatsAppMessage(dataWsp);
 
         const client = await Client.findOne({ rut: rut });
 
@@ -361,6 +372,7 @@ export const createAttentionByWeb = async (req, res) => {
 
         res.json(savedAttention);
     } catch (error) {
+        console.log(error);
         res.status(500).json({ message: error });
     }
 };

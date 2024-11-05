@@ -263,10 +263,10 @@ export const createAttentionSchemaWeb = z.object({
             .string({
                 required_error: "Se requiere un teléfono",
             })
-            .max(9, {
+            .max(8, {
                 message: ["phone", "Teléfono muy largo"],
             })
-            .min(9, {
+            .min(8, {
                 message: ["phone", "Teléfono muy corto"],
             }),
         price: z
