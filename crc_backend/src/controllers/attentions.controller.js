@@ -1,7 +1,7 @@
 import Attention from "../models/attention.model.js";
 import Client from "../models/client.model.js";
 import { sendAttentionEmail } from "../libs/mailer.js";
-import { sendWhatsAppMessage } from "../libs/wsp.js";
+// import { sendWhatsAppMessage } from "../libs/wsp.js";
 
 function formatHourAndDate(hour, day, month, year) {
     const textHour = `${String(hour).padStart(2, "0")}:00 hrs`;
