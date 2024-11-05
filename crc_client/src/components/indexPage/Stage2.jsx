@@ -74,6 +74,10 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
     );
     const [today, setToday] = useState(new Date());
 
+    const [specialty, setSpecialty] = useState(
+        localStorage.getItem("specialty")
+    );
+
     const [daySelected, setDaySelected] = useState();
 
     const [loadingCalendar, setLoadingCalendar] = useState(true);
@@ -191,7 +195,7 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
         <Col className="pt-4 attention-height">
             <Row className="text-center">
                 <Col className="text-center attention-loading">
-                    <h1 className="fw-bold ">Seleccione un día</h1>
+                    <h1 className="fw-bold ">Seleccione un día y hora</h1>
                 </Col>
             </Row>
             <Row className="text-center attention-calendar">
@@ -264,55 +268,146 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
                                     .toString()
                                     .padStart(2, "0");
 
-                                if (
-                                    month < currentMonth ||
-                                    dayName == "Domingo" ||
-                                    (day < currentDay + 2 &&
-                                        currentMonth == month)
-                                ) {
-                                    return (
-                                        <Col
-                                            className="p-0"
-                                            key={`${weeksIndex}-${weekDayIndex}`}
-                                        >
-                                            <Button
-                                                disabled
-                                                className={`${dynamicFontSize} btn-calendar`}
-                                                variant="outline-primary border-light"
+                                if (specialty == "Kinesiología") {
+                                    if (
+                                        month < currentMonth ||
+                                        dayName == "Domingo" ||
+                                        (day < currentDay + 2 &&
+                                            currentMonth == month)
+                                    ) {
+                                        return (
+                                            <Col
+                                                className="p-0"
+                                                key={`${weeksIndex}-${weekDayIndex}`}
                                             >
-                                                {formattedDay}
-                                            </Button>
-                                        </Col>
-                                    );
-                                } else {
-                                    return (
-                                        <Col
-                                            className="p-0"
-                                            key={`${weeksIndex}-${weekDayIndex}`}
-                                        >
-                                            <Button
-                                                disabled={
-                                                    loadingCalendar ||
-                                                    loadingHours
-                                                }
-                                                className={`${dynamicFontSize} btn-calendar`}
-                                                variant="outline-primary border-light"
-                                                onClick={() =>
-                                                    getDayHours(weekDay)
-                                                }
+                                                <Button
+                                                    disabled
+                                                    className={`${dynamicFontSize} btn-calendar`}
+                                                    variant="outline-primary border-light"
+                                                >
+                                                    {formattedDay}
+                                                </Button>
+                                            </Col>
+                                        );
+                                    } else {
+                                        return (
+                                            <Col
+                                                className="p-0"
+                                                key={`${weeksIndex}-${weekDayIndex}`}
                                             >
-                                                {formattedDay}
-                                            </Button>
-                                        </Col>
-                                    );
+                                                <Button
+                                                    disabled={
+                                                        loadingCalendar ||
+                                                        loadingHours
+                                                    }
+                                                    className={`${dynamicFontSize} btn-calendar`}
+                                                    variant="outline-primary border-light"
+                                                    onClick={() =>
+                                                        getDayHours(weekDay)
+                                                    }
+                                                >
+                                                    {formattedDay}
+                                                </Button>
+                                            </Col>
+                                        );
+                                    }
+                                }
+
+                                if (specialty == "Psicología") {
+                                    if (
+                                        month < currentMonth ||
+                                        (dayName != "Viernes" &&
+                                            dayName != "Sabado") ||
+                                        (day < currentDay + 2 &&
+                                            currentMonth == month)
+                                    ) {
+                                        return (
+                                            <Col
+                                                className="p-0"
+                                                key={`${weeksIndex}-${weekDayIndex}`}
+                                            >
+                                                <Button
+                                                    disabled
+                                                    className={`${dynamicFontSize} btn-calendar`}
+                                                    variant="outline-primary border-light"
+                                                >
+                                                    {formattedDay}
+                                                </Button>
+                                            </Col>
+                                        );
+                                    } else {
+                                        return (
+                                            <Col
+                                                className="p-0"
+                                                key={`${weeksIndex}-${weekDayIndex}`}
+                                            >
+                                                <Button
+                                                    disabled={
+                                                        loadingCalendar ||
+                                                        loadingHours
+                                                    }
+                                                    className={`${dynamicFontSize} btn-calendar`}
+                                                    variant="outline-primary border-light"
+                                                    onClick={() =>
+                                                        getDayHours(weekDay)
+                                                    }
+                                                >
+                                                    {formattedDay}
+                                                </Button>
+                                            </Col>
+                                        );
+                                    }
+                                }
+
+                                if (specialty == "Kinesiología") {
+                                    if (
+                                        month < currentMonth ||
+                                        dayName == "Domingo" ||
+                                        (day < currentDay + 2 &&
+                                            currentMonth == month)
+                                    ) {
+                                        return (
+                                            <Col
+                                                className="p-0"
+                                                key={`${weeksIndex}-${weekDayIndex}`}
+                                            >
+                                                <Button
+                                                    disabled
+                                                    className={`${dynamicFontSize} btn-calendar`}
+                                                    variant="outline-primary border-light"
+                                                >
+                                                    {formattedDay}
+                                                </Button>
+                                            </Col>
+                                        );
+                                    } else {
+                                        return (
+                                            <Col
+                                                className="p-0"
+                                                key={`${weeksIndex}-${weekDayIndex}`}
+                                            >
+                                                <Button
+                                                    disabled={
+                                                        loadingCalendar ||
+                                                        loadingHours
+                                                    }
+                                                    className={`${dynamicFontSize} btn-calendar`}
+                                                    variant="outline-primary border-light"
+                                                    onClick={() =>
+                                                        getDayHours(weekDay)
+                                                    }
+                                                >
+                                                    {formattedDay}
+                                                </Button>
+                                            </Col>
+                                        );
+                                    }
                                 }
                             })}
                         </Row>
                     );
                 })}
             </Row>
-
-            {/* Seleccionar horas */}
             {daySelected && (
                 <Row className="text-center pt-4 attention-calendar">
                     <Col>
@@ -337,52 +432,95 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
                                     const dayHourNumber = Number(dayHourSplit);
 
                                     const hourMatch = hours.find(
-                                        (obj) => obj.hour === dayHourNumber
+                                        (obj) =>
+                                            obj.hour === dayHourNumber &&
+                                            obj.program.specialty === specialty
                                     );
 
                                     const dayName = daySelected.split(" ")[0];
 
-                                    if (!hourMatch && dayName != "Sabado") {
-                                        console.log("No es sabado perro nazhe");
-                                        return (
-                                            <Button
-                                                key={index}
-                                                variant="primary"
-                                                disabled={loadingCalendar}
-                                                className="m-1"
-                                                onClick={() =>
-                                                    goStage3(
-                                                        daySelected,
-                                                        dayHour
-                                                    )
-                                                }
-                                            >
-                                                <h6>{dayHour}</h6>
-                                            </Button>
-                                        );
+                                    if (specialty == "Kinesiología") {
+                                        if (
+                                            !hourMatch &&
+                                            (dayName !== "Sabado" ||
+                                                (dayName === "Sabado" &&
+                                                    dayHourNumber <= 12))
+                                        ) {
+                                            return (
+                                                <Button
+                                                    key={index}
+                                                    variant="primary"
+                                                    disabled={loadingCalendar}
+                                                    className="m-1"
+                                                    onClick={() =>
+                                                        goStage3(
+                                                            daySelected,
+                                                            dayHour
+                                                        )
+                                                    }
+                                                >
+                                                    <h6>{dayHour}</h6>
+                                                </Button>
+                                            );
+                                        }
                                     }
 
-                                    if (
-                                        !hourMatch &&
-                                        dayName == "Sabado" &&
-                                        dayHourNumber <= 12
-                                    ) {
-                                        return (
-                                            <Button
-                                                key={index}
-                                                variant="primary"
-                                                disabled={loadingCalendar}
-                                                className="m-1"
-                                                onClick={() =>
-                                                    goStage4(
-                                                        daySelected,
-                                                        dayHour
-                                                    )
-                                                }
-                                            >
-                                                <h6>{dayHour}</h6>
-                                            </Button>
-                                        );
+                                    if (specialty == "Psicología") {
+                                        if (
+                                            !hourMatch &&
+                                            ((dayName === "Sabado" &&
+                                                dayHourNumber >= 9 &&
+                                                dayHourNumber <= 12) ||
+                                                (dayName === "Viernes" &&
+                                                    dayHourNumber >= 15 &&
+                                                    dayHourNumber <= 20))
+                                        ) {
+                                            return (
+                                                <Button
+                                                    key={index}
+                                                    variant="primary"
+                                                    disabled={loadingCalendar}
+                                                    className="m-1"
+                                                    onClick={() =>
+                                                        goStage3(
+                                                            daySelected,
+                                                            dayHour
+                                                        )
+                                                    }
+                                                >
+                                                    <h6>{dayHour}</h6>
+                                                </Button>
+                                            );
+                                        }
+                                    }
+
+                                    if (specialty == "Nutrición") {
+                                        if (
+                                            !hourMatch &&
+                                            ((dayName === "Sabado" &&
+                                                dayHourNumber >= 9 &&
+                                                dayHourNumber <= 12) ||
+                                                (dayName === "Viernes" &&
+                                                    dayHourNumber >= 18 &&
+                                                    dayHourNumber <= 20))
+                                        ) {
+                                            return (
+                                                <Button
+                                                    key={index}
+                                                    variant="primary"
+                                                    disabled={loadingCalendar}
+                                                    className="m-1"
+                                                    onClick={() =>
+                                                        goStage3(
+                                                            daySelected,
+                                                            dayHour
+                                                        )
+                                                    }
+                                                >
+                                                    <h6>{dayHour}</h6>
+                                                </Button>
+                                            );
+                                        }
                                     }
                                 })}
                             </>

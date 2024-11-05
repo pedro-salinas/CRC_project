@@ -97,6 +97,8 @@ export const getAttentionsByDate = async (req, res) => {
             "client",
         ]);
 
+        console.log(attentions);
+
         res.json(attentions);
     } catch (error) {
         res.status(500).json({ message: error });
