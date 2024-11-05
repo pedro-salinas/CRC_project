@@ -79,8 +79,8 @@ export function HeadIcons() {
                             </div>
                             <div>
                                 <h5 className={`p-2 ${dynamicFontSize}`}>
-                                    1 Poniente 2 y 3 Norte 1258, piso 7 oficina
-                                    711, Talca
+                                    1 Poniente 1258, entre 2 y 3 Norte, piso 7
+                                    oficina 711, Talca
                                 </h5>
                             </div>
                         </Col>

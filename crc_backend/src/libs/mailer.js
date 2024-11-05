@@ -18,6 +18,7 @@ export async function sendAttentionEmail(data) {
         name: data.name,
         date: data.date,
         hour: data.hour,
+        specialty: data.specialty,
     };
 
     const source = await fs

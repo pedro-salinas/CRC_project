@@ -264,11 +264,14 @@ export const createAttentionByWeb = async (req, res) => {
             web_client,
             blocked,
             description,
+            specialty,
         } = req.body;
+
+        web_client.rut = rut;
+        web_client.email = email;
 
         const result = await Attention.findOne({
             "web_client.rut": web_client.rut,
-            client: { $exists: false },
             kine: { $exists: false },
         });
 
@@ -280,7 +283,6 @@ export const createAttentionByWeb = async (req, res) => {
 
         const result2 = await Attention.findOne({
             "web_client.email": web_client.email,
-            client: { $exists: false },
             kine: { $exists: false },
         });
 
@@ -295,7 +297,6 @@ export const createAttentionByWeb = async (req, res) => {
 
         const result3 = await Attention.findOne({
             "web_client.phone": web_client.phone,
-            client: { $exists: false },
             kine: { $exists: false },
         });
 
@@ -336,6 +337,7 @@ export const createAttentionByWeb = async (req, res) => {
             email: web_client.email,
             date: textDate,
             hour: textHour,
+            specialty: specialty,
         };
 
         const sendMail = await sendAttentionEmail(data);

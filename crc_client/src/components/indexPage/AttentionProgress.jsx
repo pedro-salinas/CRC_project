@@ -147,8 +147,6 @@ export function AttentionProgress() {
             setStage(2);
             localStorage.setItem("stage", 2);
 
-            console.log(programSelected.specialty);
-
             localStorage.setItem("program", JSON.stringify(programSelected));
             localStorage.setItem("specialty", programSelected.specialty);
             localStorage.setItem("price", price);
