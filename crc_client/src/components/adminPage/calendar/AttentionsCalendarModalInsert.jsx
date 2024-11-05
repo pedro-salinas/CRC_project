@@ -43,6 +43,7 @@ export function AttentionsCalendarModalInsert({
 
     // ID del kine (valor real del kine)
     const [kineID, setKineID] = useState("");
+    const [kineSpecialty, setKineSpecialty] = useState("");
 
     // ID del program (valor real del program)
     const [programID, setPogramID] = useState("");
@@ -191,6 +192,7 @@ export function AttentionsCalendarModalInsert({
 
     const onChangeKine = (event) => {
         setKineID(event.target.options[event.target.selectedIndex].id);
+        console.log(event.target.options[event.target.selectedIndex]);
     };
 
     useEffect(() => {
@@ -252,7 +254,7 @@ export function AttentionsCalendarModalInsert({
                         </span>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="kine">
-                        <Form.Label>Kinesiólogo</Form.Label>
+                        <Form.Label>Especialista</Form.Label>
                         <select
                             type="text"
                             className={
@@ -263,12 +265,14 @@ export function AttentionsCalendarModalInsert({
                             {...register("kine", {
                                 required: {
                                     value: true,
-                                    message: "Se requiere un kinesiólogo",
+                                    message: "Se requiere un especialista",
                                 },
                             })}
                             onChange={onChangeKine}
                         >
-                            <option value="">Seleccionar kinesiólogo...</option>
+                            <option value="">
+                                Seleccionar especialista...
+                            </option>
                             {kines.map((kine) => (
                                 <option
                                     key={kine._id}
@@ -493,10 +497,11 @@ export function AttentionsCalendarModalInsert({
                     <Form.Group className="mb-3" controlId="description">
                         <Form.Label>Descripción (opcional)</Form.Label>
                         <textarea
+                            rows="5"
                             className={
                                 errors.description
-                                    ? "form-control is-invalid"
-                                    : "form-control"
+                                    ? "form-control is-invalid attentions-rounded"
+                                    : "form-control attentions-rounded"
                             }
                             {...register("description")}
                         ></textarea>

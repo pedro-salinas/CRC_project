@@ -46,7 +46,7 @@ export function KinesTable() {
     // Seleccion de un solo elemento
     const singleSelection = true;
 
-    // Cargar tabla (tambien cargar los kines)
+    // Cargar tabla (tambien cargar los especialistas)
     const [loadingTable, setLoadingTable] = useState(true);
 
     function handleReload() {
@@ -100,7 +100,7 @@ export function KinesTable() {
         cleanAlert();
     };
 
-    // Valores default para cada kine
+    // Valores default para cada especialista
     const [defaultValues, setDefaultValues] = useState({});
 
     // Modal de modificar
@@ -139,7 +139,7 @@ export function KinesTable() {
     const [alertType, setAlertType] = useState("");
     const [alertText, setAlertText] = useState("");
 
-    // Obtener los kines
+    // Obtener los especialistas
     const getKinesBackend = async () => {
         try {
             const res = await getKines();
@@ -159,7 +159,7 @@ export function KinesTable() {
         }
     }, [tableData]);
 
-    // Obtener los kines al cargar el componente
+    // Obtener los especialistas al cargar el componente
     useEffect(() => {
         localStorage.removeItem("selectText");
         localStorage.removeItem("filterText");
@@ -169,7 +169,7 @@ export function KinesTable() {
     return (
         <Card className="m-4 card-form">
             <Card.Header className="card-form-header ">
-                Administración de kinesiólogos
+                Administración de especialistas
             </Card.Header>
 
             {showAlert && (
@@ -192,7 +192,7 @@ export function KinesTable() {
                             className="mr-1 button-center"
                         >
                             <strong className="p-1">
-                                Ingresar kinesiólogo
+                                Ingresar especialista
                             </strong>
                             <PersonAdd size={35} color="white" />
                         </Button>
@@ -259,7 +259,7 @@ export function KinesTable() {
                 )}
             </Card.Body>
 
-            {/* Modal de ingreso de kine */}
+            {/* Modal de ingreso de especialista */}
             <KinesModalInsert
                 show={showInsert}
                 handleClose={handleCloseInsert}
@@ -269,7 +269,7 @@ export function KinesTable() {
                 closeSession={closeSession}
             />
 
-            {/* Modal de modificación de kine */}
+            {/* Modal de modificación de especialista */}
             <KinesModalModify
                 show={showModify}
                 handleClose={handleCloseModify}
@@ -280,7 +280,7 @@ export function KinesTable() {
                 closeSession={closeSession}
             />
 
-            {/* Modal de eliminación de kine */}
+            {/* Modal de eliminación de especialista */}
             <KinesModalDelete
                 show={showDelete}
                 handleClose={handleCloseDelete}

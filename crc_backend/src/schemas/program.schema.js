@@ -1,5 +1,9 @@
 import { z } from "zod";
 
+const validSpecialty = z.enum(["Kinesiología", "Nutrición", "Psicología"], {
+    required_error: ["specialty", "Especialidad incorrecta"],
+});
+
 export const createProgramSchema = z.object({
     name: z
         .string({
@@ -57,4 +61,5 @@ export const createProgramSchema = z.object({
     agenda: z.boolean({
         required_error: "Se requiere saber si esta disponible para agendar",
     }),
+    specialty: validSpecialty,
 });

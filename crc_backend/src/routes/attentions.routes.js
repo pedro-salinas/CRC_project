@@ -9,10 +9,16 @@ import {
     updateAttention,
     deleteAttention,
 } from "../controllers/attentions.controller.js";
-import { authRequired, authStaff } from "../middlewares/validateUtils.js";
+import {
+    authRequired,
+    authStaff,
+    authRut,
+} from "../middlewares/validateUtils.js";
+import { normalizeRut, normalizeEmail } from "../middlewares/normalizeUtils.js";
 import { validateSchema } from "../middlewares/validateSchema.js";
 import {
     createAttentionSchema,
+    createAttentionSchemaWeb,
     getAttentionsByDateSchema,
 } from "../schemas/attention.schema.js";
 
@@ -57,15 +63,13 @@ router.put(
 router.delete("/attention/:_id", authRequired, authStaff, deleteAttention);
 
 // Ingresar una atencion por la pagina web y pagar
-
-// Falta aplica el envio dle correo y efectuar el pago
-
-/*****************************************************************/
-// router.post(
-//     "/attentionweb",
-//     validateSchema(createAttentionSchema),
-//     createAttentionByWeb
-// );
-/*****************************************************************/
+router.post(
+    "/attention_web",
+    normalizeRut,
+    authRut,
+    normalizeEmail,
+    validateSchema(createAttentionSchemaWeb),
+    createAttentionByWeb
+);
 
 export default router;

@@ -4,8 +4,9 @@ import { useState, useEffect } from "react";
 // Componentes
 import { CustomNavbar } from "../../components/indexPage/CustomNavbar";
 
-// import { HeadIcons } from "../../components/indexPage/HeadIcons";
+// import { HeadIcons } from "../../components/indexPage/...HeadIcons";
 import { HomeSection } from "../../components/indexPage/HomeSection";
+import { OurTeam } from "../../components/indexPage/OurTeam";
 import { InfoSection } from "../../components/indexPage/InfoSection";
 import { PricesSection } from "../../components/indexPage/PricesSection";
 import { ContactSection } from "../../components/indexPage/ContactSection";
@@ -19,6 +20,7 @@ import { MetaPixel } from "./MetaPixel";
 
 // Api
 import { getPrograms } from "../../api/program";
+import { getKines } from "../../api/kine";
 
 export function Index() {
     // Programas
@@ -27,11 +29,14 @@ export function Index() {
     // Programa para agendar
     const [program, setProgram] = useState("");
 
+    // Kines
+    const [kines, setKines] = useState([]);
+
     // Cargar programas
     const [loading, setLoading] = useState(true);
 
     // Obtener los programas
-    const getProgramsBackend = async () => {
+    const getBackedData = async () => {
         try {
             const res = await getPrograms();
 
@@ -53,6 +58,10 @@ export function Index() {
                 }
             });
 
+            const res2 = await getKines();
+
+            setKines(res2.data);
+
             setLoading(false);
         } catch (error) {
             console.log("Hubo un error inesperado");
@@ -61,7 +70,7 @@ export function Index() {
 
     function handleReload() {
         setTimeout(() => {
-            getProgramsBackend();
+            getBackedData();
         }, 500);
     }
 
@@ -75,10 +84,11 @@ export function Index() {
             <MetaPixel />
             <CustomNavbar />
             {/* <HeadIcons /> */}
-            <HomeSection program={program} loading={loading} />
+            <HomeSection />
+            {/* <OurTeam kines={kines} loading={loading} /> */}
             <InfoSection />
-            <AboutUs />
-            <ExampleCase />
+            {/* <AboutUs /> */}
+            {/* <ExampleCase /> */}
             <PricesSection
                 program={program}
                 programs={programs}

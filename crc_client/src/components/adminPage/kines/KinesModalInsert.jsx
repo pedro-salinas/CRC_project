@@ -45,7 +45,7 @@ export function KinesModalInsert({
                 setLoading(false);
 
                 setAlertType("success");
-                setAlertText("Kinesiólogo ingresado correctamente");
+                setAlertText("Especialista ingresado correctamente");
                 setShowAlert(true);
 
                 handleClose();
@@ -111,7 +111,7 @@ export function KinesModalInsert({
         <Modal show={show} onHide={handleClose}>
             <Form className="p-2" onSubmit={onSubmit}>
                 <Modal.Header closeButton disabled={loading}>
-                    <Modal.Title>Ingresar kinesiólogo</Modal.Title>
+                    <Modal.Title>Ingresar especialista</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Group className="mb-3" controlId="name">
@@ -132,6 +132,36 @@ export function KinesModalInsert({
                         />
                         <span className="text-danger">
                             {errors.name && errors.name.message}
+                        </span>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="specialty">
+                        <Form.Label>Especialidad</Form.Label>
+                        <select
+                            className={
+                                errors.specialty
+                                    ? "form-select is-invalid"
+                                    : "form-select"
+                            }
+                            {...register("specialty", {
+                                required: {
+                                    value: true,
+                                    message: "Se requiere una especialidad",
+                                },
+                            })}
+                        >
+                            <option value="">
+                                Seleccionar una especialidad...
+                            </option>
+                            {["Kinesiología", "Nutrición", "Psicología"].map(
+                                (option) => (
+                                    <option key={option} value={option}>
+                                        {option}
+                                    </option>
+                                )
+                            )}
+                        </select>
+                        <span className="text-danger">
+                            {errors.specialty && errors.specialty.message}
                         </span>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="color">

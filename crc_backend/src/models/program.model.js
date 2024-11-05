@@ -30,6 +30,10 @@ const userSchema = new mongoose.Schema(
             type: Boolean,
             required: true,
         },
+        specialty: {
+            type: String,
+            enum: ["Kinesiología", "Nutrición", "Psicología"],
+        },
     },
     {
         timestamps: true,

@@ -190,28 +190,9 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
     return (
         <Col className="pt-4 attention-height">
             <Row className="text-center">
-                {!loadingCalendar && (
-                    <Col className="text-center attention-loading">
-                        <h3 className="attention-today-button">
-                            Seleccione un día
-                        </h3>
-                    </Col>
-                )}
-                {loadingCalendar && (
-                    <Col className="text-center attention-loading">
-                        <Spinner
-                            animation="border"
-                            role="status"
-                            variant="primary"
-                        >
-                            <h3>
-                                <span className="visually-hidden">
-                                    Loading...
-                                </span>
-                            </h3>
-                        </Spinner>
-                    </Col>
-                )}
+                <Col className="text-center attention-loading">
+                    <h1 className="fw-bold ">Seleccione un día</h1>
+                </Col>
             </Row>
             <Row className="text-center attention-calendar">
                 <Col className="pt-2">
@@ -331,6 +312,7 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
                 })}
             </Row>
 
+            {/* Seleccionar horas */}
             {daySelected && (
                 <Row className="text-center pt-4 attention-calendar">
                     <Col>
@@ -358,13 +340,45 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
                                         (obj) => obj.hour === dayHourNumber
                                     );
 
-                                    if (!hourMatch) {
+                                    const dayName = daySelected.split(" ")[0];
+
+                                    if (!hourMatch && dayName != "Sabado") {
+                                        console.log("No es sabado perro nazhe");
                                         return (
                                             <Button
                                                 key={index}
                                                 variant="primary"
                                                 disabled={loadingCalendar}
                                                 className="m-1"
+                                                onClick={() =>
+                                                    goStage3(
+                                                        daySelected,
+                                                        dayHour
+                                                    )
+                                                }
+                                            >
+                                                <h6>{dayHour}</h6>
+                                            </Button>
+                                        );
+                                    }
+
+                                    if (
+                                        !hourMatch &&
+                                        dayName == "Sabado" &&
+                                        dayHourNumber <= 12
+                                    ) {
+                                        return (
+                                            <Button
+                                                key={index}
+                                                variant="primary"
+                                                disabled={loadingCalendar}
+                                                className="m-1"
+                                                onClick={() =>
+                                                    goStage4(
+                                                        daySelected,
+                                                        dayHour
+                                                    )
+                                                }
                                             >
                                                 <h6>{dayHour}</h6>
                                             </Button>
@@ -377,16 +391,33 @@ export function Stage2({ goStage1, goStage3, isMobile }) {
                 </Row>
             )}
             <Row className="text-center pt-4">
-                <Col>
-                    <Button
-                        variant="secondary"
-                        onClick={goStage1}
-                        disabled={loadingCalendar || loadingHours}
-                        className="m-1"
-                    >
-                        <h6>Volver</h6>
-                    </Button>
-                </Col>
+                {!loadingCalendar && (
+                    <Col>
+                        <Button
+                            variant="secondary"
+                            onClick={() => goStage1()}
+                            className="m-1"
+                        >
+                            <h6>Volver</h6>
+                        </Button>
+                    </Col>
+                )}
+
+                {loadingCalendar && (
+                    <Col>
+                        <Spinner
+                            animation="border"
+                            role="status"
+                            variant="primary"
+                        >
+                            <h3>
+                                <span className="visually-hidden">
+                                    Loading...
+                                </span>
+                            </h3>
+                        </Spinner>
+                    </Col>
+                )}
             </Row>
         </Col>
     );

@@ -278,8 +278,6 @@ export function Calendar() {
             hour: realHour,
         };
 
-        console.log(data);
-
         setDefaultValues(data);
 
         setShowInsert(true);
@@ -314,19 +312,46 @@ export function Calendar() {
 
         const date = `${year}-${month}-${day}`;
 
-        const newData = {
-            client: data.client.name,
-            clientID: data.client._id,
-            kine: data.kine.name,
-            kineID: data.kine._id,
-            program: data.program.name,
-            programID: data.program._id,
-            state: data.state,
-            _id: data._id,
-            date: date,
-            hour: hour,
-            description: data.description,
-        };
+        let newData = {};
+
+        if (data.web_client && !data.client && !data.kine) {
+            newData = {
+                program: data.program.name,
+                programID: data.program._id,
+                state: data.state,
+                _id: data._id,
+                date: date,
+                hour: hour,
+                description: data.description,
+            };
+        } else if (data.web_client && data.client && !data.kine) {
+            newData = {
+                program: data.program.name,
+                programID: data.program._id,
+                client: data.client.name,
+                clientID: data.client._id,
+                state: data.state,
+                _id: data._id,
+                date: date,
+                hour: hour,
+                description: data.description,
+            };
+        } else {
+            newData = {
+                client: data.client.name,
+                clientID: data.client._id,
+                kine: data.kine.name,
+                kineID: data.kine._id,
+                program: data.program.name,
+                programID: data.program._id,
+                state: data.state,
+                _id: data._id,
+                date: date,
+                hour: hour,
+                description: data.description,
+            };
+        }
+
         setDefaultValues(newData);
         setShowVer(true);
         cleanAlert();
@@ -356,19 +381,45 @@ export function Calendar() {
 
         const date = `${year}-${month}-${day}`;
 
-        const newData = {
-            client: data.client.name,
-            clientID: data.client._id,
-            kine: data.kine.name,
-            kineID: data.kine._id,
-            program: data.program.name,
-            programID: data.program._id,
-            state: data.state,
-            _id: data._id,
-            date: date,
-            hour: hour,
-            description: data.description,
-        };
+        let newData = {};
+        if (data.web_client && !data.client && !data.kine) {
+            newData = {
+                program: data.program.name,
+                programID: data.program._id,
+                state: data.state,
+                _id: data._id,
+                date: date,
+                hour: hour,
+                description: data.description,
+            };
+        } else if (data.web_client && data.client && !data.kine) {
+            newData = {
+                program: data.program.name,
+                programID: data.program._id,
+                client: data.client.name,
+                clientID: data.client._id,
+                state: data.state,
+                _id: data._id,
+                date: date,
+                hour: hour,
+                description: data.description,
+            };
+        } else {
+            newData = {
+                client: data.client.name,
+                clientID: data.client._id,
+                kine: data.kine.name,
+                kineID: data.kine._id,
+                program: data.program.name,
+                programID: data.program._id,
+                state: data.state,
+                _id: data._id,
+                date: date,
+                hour: hour,
+                description: data.description,
+            };
+        }
+
         setDefaultValues(newData);
         setShowModify(true);
         cleanAlert();
@@ -398,19 +449,45 @@ export function Calendar() {
 
         const date = `${year}-${month}-${day}`;
 
-        const newData = {
-            client: data.client.name,
-            clientID: data.client._id,
-            kine: data.kine.name,
-            kineID: data.kine._id,
-            program: data.program.name,
-            programID: data.program._id,
-            state: data.state,
-            _id: data._id,
-            date: date,
-            hour: hour,
-            description: data.description,
-        };
+        let newData = {};
+        if (data.web_client && !data.client && !data.kine) {
+            newData = {
+                program: data.program.name,
+                programID: data.program._id,
+                state: data.state,
+                _id: data._id,
+                date: date,
+                hour: hour,
+                description: data.description,
+            };
+        } else if (data.web_client && data.client && !data.kine) {
+            newData = {
+                program: data.program.name,
+                programID: data.program._id,
+                client: data.client.name,
+                clientID: data.client._id,
+                state: data.state,
+                _id: data._id,
+                date: date,
+                hour: hour,
+                description: data.description,
+            };
+        } else {
+            newData = {
+                client: data.client.name,
+                clientID: data.client._id,
+                kine: data.kine.name,
+                kineID: data.kine._id,
+                program: data.program.name,
+                programID: data.program._id,
+                state: data.state,
+                _id: data._id,
+                date: date,
+                hour: hour,
+                description: data.description,
+            };
+        }
+
         setDefaultValues(newData);
         setShowDelete(true);
         cleanAlert();
@@ -473,7 +550,7 @@ export function Calendar() {
         } catch (error) {
             setLoadingCalendar(false);
             setAlertType("danger");
-            setAlertText("No existe programa, kinesiólogo o paciente");
+            setAlertText("No existe programa, especialista o paciente");
             setShowAlert(true);
             handleReload();
         }
@@ -715,21 +792,63 @@ export function Calendar() {
                                                                             className="calendar-card-body"
                                                                             style={{
                                                                                 backgroundColor:
-                                                                                    attention
-                                                                                        .kine
-                                                                                        .color,
+                                                                                    attention.kine
+                                                                                        ? attention
+                                                                                              .kine
+                                                                                              .color
+                                                                                        : "#31b6ad",
                                                                             }}
                                                                         >
                                                                             <Card.Text>
-                                                                                Paciente:
-                                                                                {" " +
-                                                                                    attention
-                                                                                        .client
-                                                                                        .name}
+                                                                                {/* Verificar si es paciente online */}
+                                                                                {attention.web_client &&
+                                                                                !attention.client &&
+                                                                                !attention.kine ? (
+                                                                                    <>
+                                                                                        <strong>
+                                                                                            Paciente
+                                                                                            online
+                                                                                        </strong>{" "}
+                                                                                        <br />
+                                                                                        {/* Mostrar prevision, specialty y price */}
+                                                                                        {
+                                                                                            attention
+                                                                                                .web_client
+                                                                                                .prevision
+                                                                                        }{" "}
+                                                                                        -{" "}
+                                                                                        {
+                                                                                            attention
+                                                                                                .program
+                                                                                                .specialty
+                                                                                        }{" "}
+                                                                                        -{" "}
+                                                                                        {`$${attention.web_client.price.toLocaleString(
+                                                                                            "es-CL"
+                                                                                        )}`}
+                                                                                    </>
+                                                                                ) : (
+                                                                                    <>
+                                                                                        {/* Paciente normal */}
+                                                                                        <strong>
+                                                                                            Paciente
+                                                                                        </strong>{" "}
+                                                                                        -{" "}
+                                                                                        {attention.client
+                                                                                            ? attention
+                                                                                                  .client
+                                                                                                  .name
+                                                                                            : attention
+                                                                                                  .web_client
+                                                                                                  .name}
+                                                                                    </>
+                                                                                )}
                                                                                 <br />
-                                                                                Pago:
-                                                                                {" " +
-                                                                                    attention.state}
+                                                                                {/* Estado del pago */}
+                                                                                Pago:{" "}
+                                                                                {
+                                                                                    attention.state
+                                                                                }
                                                                             </Card.Text>
                                                                             <div className="text-center">
                                                                                 <ButtonGroup>

@@ -243,6 +243,16 @@ h3 {
 
 // ------------------------ Index InfoSection
 
+.ourteam-mobile-padding {
+    padding-top: 60px;
+}
+
+.ourteam-desktop-padding {
+    padding-top: 150px;
+}
+
+// ------------------------ Index InfoSection
+
 .info-mobile-padding {
     padding-top: 60px;
 }
@@ -302,6 +312,24 @@ h3 {
     padding-top: 150px;
 }
 
+// ------------------------ Index HeadIcons - Not used
+
+.head-icons-mobile-padding {
+    padding-top: 85px;
+}
+
+.head-icons-desktop-padding {
+    padding-top: 100px;
+}
+
+.head-icons-mobile-font {
+    font-size: 18px;
+}
+
+.head-icons-desktop-font {
+    font-size: 18px;
+}
+
 // ------------------------ Index HomeSection
 
 .home-mobile-padding {
@@ -309,7 +337,7 @@ h3 {
 }
 
 .home-desktop-padding {
-    padding-top: 150px;
+    padding-top: 200px;
 }
 
 .home-mobile-font {
@@ -430,14 +458,6 @@ h3 {
 
 .attention-red {
     color: red;
-}
-
-.attention-loading {
-    min-height: 56px;
-}
-
-.attention-today-button {
-    margin: 0px;
 }
 
 .attention-calendar {

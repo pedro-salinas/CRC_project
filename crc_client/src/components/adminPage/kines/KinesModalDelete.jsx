@@ -53,7 +53,7 @@ export function KinesModalDelete({
                 setLoading(false);
 
                 setAlertType("success");
-                setAlertText("Kinesiólogo eliminado correctamente");
+                setAlertText("Especialista eliminado correctamente");
                 setShowAlert(true);
 
                 handleClose();
@@ -141,6 +141,37 @@ export function KinesModalDelete({
                         />
                         <span className="text-danger">
                             {errors.name && errors.name.message}
+                        </span>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="specialty">
+                        <Form.Label>Especialidad</Form.Label>
+                        <select
+                            disabled
+                            className={
+                                errors.specialty
+                                    ? "form-select is-invalid"
+                                    : "form-select"
+                            }
+                            {...register("specialty", {
+                                required: {
+                                    value: true,
+                                    message: "Se requiere una especialidad",
+                                },
+                            })}
+                        >
+                            <option value="">
+                                Seleccionar una especialidad...
+                            </option>
+                            {["Kinesiología", "Nutrición", "Psicología"].map(
+                                (option) => (
+                                    <option key={option} value={option}>
+                                        {option}
+                                    </option>
+                                )
+                            )}
+                        </select>
+                        <span className="text-danger">
+                            {errors.specialty && errors.specialty.message}
                         </span>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="color">

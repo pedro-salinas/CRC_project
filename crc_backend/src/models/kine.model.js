@@ -7,6 +7,11 @@ const userSchema = new mongoose.Schema(
             required: true,
             unique: true,
         },
+        specialty: {
+            type: String,
+            enum: ["Kinesiología", "Nutrición", "Psicología"],
+            required: true,
+        },
         color: {
             type: String,
             required: true,

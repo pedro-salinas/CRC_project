@@ -26,12 +26,20 @@ const userSchema = new mongoose.Schema(
         kine: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Kine",
-            required: true,
         },
         client: {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Client",
-            required: true,
+        },
+        web_client: {
+            type: new mongoose.Schema({
+                name: { type: String },
+                rut: { type: String },
+                email: { type: String },
+                phone: { type: String },
+                price: { type: Number },
+                prevision: { type: String, enum: ["Fonasa", "Isapre"] },
+            }),
         },
         buy_code: {
             type: String,
@@ -39,6 +47,10 @@ const userSchema = new mongoose.Schema(
         token: {
             type: String,
         },
+        // price: {
+        //     type: Number,
+        //     required: true,
+        // },
         state: {
             type: String,
             enum: ["pendiente", "pagado", "pagando", "cancelado", "bloqueado"],
@@ -50,6 +62,13 @@ const userSchema = new mongoose.Schema(
         },
         description: {
             type: String,
+        },
+        token: {
+            type: String,
+        },
+        token: {
+            type: String,
+            enum: ["Isapre", "Fonasa"],
         },
     },
     {

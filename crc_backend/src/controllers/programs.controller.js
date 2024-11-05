@@ -21,6 +21,7 @@ export const createProgram = async (req, res) => {
             on_sale,
             visible,
             agenda,
+            specialty,
         } = req.body;
 
         const newProgram = new Program({
@@ -31,6 +32,7 @@ export const createProgram = async (req, res) => {
             on_sale,
             visible,
             agenda,
+            specialty,
         });
 
         const savedProgram = await newProgram.save();

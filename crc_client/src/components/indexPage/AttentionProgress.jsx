@@ -18,12 +18,45 @@ import { MobileHandler } from "../../utils/MobileHandler";
 
 // Api
 import { getPrograms } from "../../api/program";
+import { getKinesInfo } from "../../api/kine";
 
 // Importar etapas
 import { Stage1 } from "./Stage1";
 import { Stage2 } from "./Stage2";
+import { Stage3 } from "./Stage3";
+import { Stage4 } from "./Stage4";
 
 export function AttentionProgress() {
+    // Convertir fecha a formato de texto
+    const transformDate = (dateString, hourString) => {
+        // Split the string into parts
+        const fullSplit = dateString + " " + hourString;
+
+        const [dayOfWeek, dayOfMonth, month, year, time] = fullSplit.split(" ");
+
+        // Array with the names of the months
+        const months = [
+            "enero",
+            "febrero",
+            "marzo",
+            "abril",
+            "mayo",
+            "junio",
+            "julio",
+            "agosto",
+            "septiembre",
+            "octubre",
+            "noviembre",
+            "diciembre",
+        ];
+
+        // Convert the month number into the month name
+        const monthName = months[parseInt(month, 10) - 1];
+
+        // Format the final string
+        return `${dayOfWeek} ${dayOfMonth} de ${monthName} a las ${time} hrs.`;
+    };
+
     const { isMobile } = MobileHandler();
 
     // CSS movil
@@ -36,7 +69,9 @@ export function AttentionProgress() {
 
     // Programas
     const [programs, setPrograms] = useState();
-    const [program, setProgram] = useState();
+
+    // Especialidades
+    const [specialists, setSpecialists] = useState();
 
     // Etapa
     const [stage, setStage] = useState();
@@ -48,7 +83,11 @@ export function AttentionProgress() {
         try {
             const res = await getPrograms();
 
+            const res2 = await getKinesInfo();
+
             setPrograms(res.data);
+            setSpecialists(res2.data);
+
             setLoading(false);
         } catch (error) {
             console.log(error);
@@ -86,24 +125,58 @@ export function AttentionProgress() {
     }
 
     const goStage1 = () => {
-        localStorage.removeItem("program");
-        localStorage.removeItem("stage");
+        localStorage.setItem("stage", 1);
         setStage(1);
-        setProgram();
+
+        localStorage.removeItem("prevision");
+        localStorage.removeItem("price");
+        localStorage.removeItem("program");
+        localStorage.removeItem("specialty");
+        localStorage.removeItem("day");
+        localStorage.removeItem("hour");
+        localStorage.removeItem("fullHour");
+        localStorage.removeItem("rut");
+        localStorage.removeItem("email");
     };
 
-    const goStage2 = (programSelected) => {
-        localStorage.setItem("program", JSON.stringify(programSelected));
-        localStorage.setItem("stage", 2);
-        setStage(2);
-        setProgram(programSelected);
+    const goStage2 = (programSelected, price, prevision) => {
+        if (!programSelected || !price || !prevision) {
+            setStage(2);
+            localStorage.setItem("stage", 2);
+        } else {
+            setStage(2);
+            localStorage.setItem("stage", 2);
+
+            console.log(programSelected.specialty);
+
+            localStorage.setItem("program", JSON.stringify(programSelected));
+            localStorage.setItem("specialty", programSelected.specialty);
+            localStorage.setItem("price", price);
+            localStorage.setItem("prevision", prevision);
+        }
     };
 
-    const goStage3 = () => {
-        // localStorage.setItem("program", JSON.stringify(programSelected));
-        localStorage.setItem("stage", 3);
-        setStage(3);
-        // setProgram(programSelected);
+    const goStage3 = (daySelected, dayHour) => {
+        if (!daySelected || !dayHour) {
+            setStage(3);
+            localStorage.setItem("stage", 3);
+        } else {
+            setStage(3);
+            localStorage.setItem("stage", 3);
+
+            localStorage.setItem("day", daySelected);
+            localStorage.setItem("hour", dayHour);
+
+            localStorage.setItem(
+                "fullHour",
+                transformDate(daySelected, dayHour)
+            );
+        }
+    };
+
+    const goStage4 = () => {
+        setStage(4);
+        localStorage.setItem("stage", 4);
     };
 
     useEffect(() => {
@@ -128,6 +201,14 @@ export function AttentionProgress() {
                 <Stage1 programs={programs} goStage2={goStage2} />
             )}
 
+            {/* {stage === 2 && !loading && (
+                <Stage2
+                    specialists={specialists}
+                    goStage1={goStage1}
+                    goStage3={goStage3}
+                />
+            )} */}
+
             {stage === 2 && !loading && (
                 <Stage2
                     goStage1={goStage1}
@@ -136,9 +217,11 @@ export function AttentionProgress() {
                 />
             )}
 
-            {stage === 3 && !loading && <>stage 3</>}
+            {stage === 3 && !loading && (
+                <Stage3 goStage2={goStage2} goStage4={goStage4} />
+            )}
 
-            {stage === 4 && !loading && <>stage 4</>}
+            {stage === 4 && !loading && <Stage4 goStage1={goStage1} />}
 
             {loading && (
                 <Row

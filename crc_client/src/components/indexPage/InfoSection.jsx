@@ -19,69 +19,50 @@ export function InfoSection() {
 
     // CSS movil
     const dynamicPadding = isMobile
-        ? "info-mobile-padding"
-        : "info-desktop-padding";
+        ? "ourteam-mobile-padding"
+        : "ourteam-desktop-padding";
 
     return (
         <Container id="info" className={dynamicPadding}>
             <Row className="text-center" data-aos="fade-down">
-                <h4 className="info-subtitle-font">
-                    Lo sé... Estas frustrado(a) por tu dolor lumbar persistente
-                    y has agotado todas las opciones
-                    <strong> sin encontrar alivio.</strong>
-                </h4>
+                <h1 className="fw-bold">
+                    ¿Cansado de Tratamientos Ineficaces? Descubre una Evaluación
+                    Personalizada para tus problemas{" "}
+                </h1>
             </Row>
-            <Row className="pt-2 align-items-center" data-aos="fade-down">
-                <Col className="text-center align-items-center" sm={12} md={6}>
-                    <Row className="pt-4">
-                        <h1 className="fw-bold">
-                            De: Christopher Ramírez C., Fundador CRC
-                            Kinesiología Talca, Chile.{" "}
-                        </h1>
-                    </Row>
+            <Row className="align-items-center" data-aos="fade-down">
+                <Col
+                    className="text-center align-items-center order-md-1 order-sm-2"
+                    sm={12}
+                    md={6}
+                >
                     <Row className="p-4">
-                        <h5 className="text-start p-2">
-                            <strong>
-                                Querido/a paciente con dolor lumbar:
-                            </strong>
+                        <h5 className="text-center p-2 lead">
+                            <strong>Querido/a paciente:</strong>
                         </h5>
-                        <h5 className="text-start p-2">
-                            Es evidente que muchas personas que sufren de dolor
-                            no encuentran una solución efectiva, lo que
-                            contribuye al aumento del dolor crónico en la
-                            población. Esto se debe en gran parte a la calidad
-                            deficiente de los tratamientos disponibles en Chile,
-                            lo que puede ser tu situación actual.
-                        </h5>
-                        <h5 className="text-start p-2">
-                            ¿Has probado tratamientos costosos que incluyen
-                            medicamentos, exámenes y diversas terapias sin
-                            obtener resultados significativos? ¿O incluso te
-                            resulta difícil costear esos tratamientos?
-                        </h5>
-                        <h5 className="text-start p-2">
-                            Sé que estás buscando algo que funcione de manera
-                            efectiva y rápida, sin recurrir a los tratamientos
-                            convencionales que pueden no haber dado resultados
-                            en el pasado. Por eso, este sistema de evaluación
-                            está diseñado pensando en ti y en tus necesidades.
-                        </h5>
-                        <h5 className="text-start p-2">
-                            Detrás de este sistema de evaluación hay una razón
-                            sólida, no salió de la nada, fue desarrollado
-                            después de considerar diversos factores y
-                            necesidades de los pacientes como tú que me
-                            motivaron a crearlo.
+                        <h5 className="text-center p-2 lead">
+                            En CRC Kinesiología, entendemos que cada paciente es
+                            único. No creemos en soluciones genéricas para tus
+                            distintos problemas. Nuestro enfoque está basado en
+                            una evaluación personalizada que nos permite
+                            entender tu caso específico y diseñar un plan de
+                            tratamiento adaptado a tus necesidades. Al confiar
+                            en nosotros, recibirás un acompañamiento integral
+                            que busca no solo aliviar tu dolor, sino también
+                            brindarte herramientas para que puedas recuperar tu
+                            bienestar y calidad de vida. Miles de pacientes ya
+                            han experimentado resultados positivos con nuestro
+                            enfoque.
                         </h5>
                     </Row>
                 </Col>
 
-                <Col sm={12} md={6} className="pt-4">
-                    <Carousel data-bs-theme="">
+                <Col sm={12} md={6} className="pt-4 order-md-2 order-sm-1">
+                    <Carousel>
                         <Carousel.Item>
                             <Container>
                                 <Row className="pt-2 b-2 p-2">
-                                    <Card className="info-card">
+                                    <Card className="info-card lead">
                                         <Card.Body>
                                             <Card.Title>
                                                 José Ignacio Andrade Rojas
@@ -131,7 +112,7 @@ export function InfoSection() {
                         <Carousel.Item>
                             <Container>
                                 <Row className="pt-2 b-2 p-2">
-                                    <Card className="info-card">
+                                    <Card className="info-card lead">
                                         <Card.Body>
                                             <Card.Title>
                                                 Veronica Caceres Arias
@@ -180,7 +161,7 @@ export function InfoSection() {
                         <Carousel.Item>
                             <Container>
                                 <Row className="pt-2 b-2 p-2">
-                                    <Card className="info-card">
+                                    <Card className="info-card lead">
                                         <Card.Body>
                                             <Card.Title>
                                                 Pablo Vergara
@@ -228,7 +209,7 @@ export function InfoSection() {
                         <Carousel.Item>
                             <Container>
                                 <Row className="pt-2 b-2 p-2">
-                                    <Card className="info-card">
+                                    <Card className="info-card lead">
                                         <Card.Body>
                                             <Card.Title>
                                                 JAVIERA MONDACA
@@ -281,9 +262,6 @@ export function InfoSection() {
                         </Carousel.Item>
                     </Carousel>
                 </Col>
-            </Row>
-            <Row className="pt-4 text-center" data-aos="fade-down">
-                <h2>Te contaré aún más a continuación</h2>
             </Row>
         </Container>
     );

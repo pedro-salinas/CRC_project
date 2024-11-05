@@ -12,10 +12,10 @@ import Image from "react-bootstrap/Image";
 import { useState } from "react";
 
 // Router
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 // Bootstrap icons
-import { Whatsapp } from "react-bootstrap-icons";
+import { Laptop } from "react-bootstrap-icons";
 
 // Utilidad para saber si es que estamos en movil o no
 import { MobileHandler } from "../../utils/MobileHandler";
@@ -33,6 +33,10 @@ export function CustomNavbar() {
     };
 
     const { isMobile } = MobileHandler();
+
+    const location = useLocation();
+
+    const isIndex = location.pathname === "/";
 
     return (
         <Navbar
@@ -76,20 +80,20 @@ export function CustomNavbar() {
                     </Offcanvas.Header>
                     <Offcanvas.Body className="align-items-center">
                         <Nav className="justify-content-end flex-grow-1 pe-3 ">
-                            <Nav.Link href="#home" onClick={hideOffcanvas}>
+                            <Nav.Link href="/#home" onClick={hideOffcanvas}>
                                 <h6>Inicio</h6>
                             </Nav.Link>
-                            <Nav.Link href="#info" onClick={hideOffcanvas}>
-                                <h6>Sobre mí</h6>
+                            <Nav.Link href="/#info" onClick={hideOffcanvas}>
+                                <h6>Sobre nosotros</h6>
                             </Nav.Link>
-                            <Nav.Link href="#prices" onClick={hideOffcanvas}>
+                            <Nav.Link href="/#prices" onClick={hideOffcanvas}>
                                 <h6>Planes y precios</h6>
                             </Nav.Link>
-                            <Nav.Link href="#contact" onClick={hideOffcanvas}>
+                            <Nav.Link href="/#contact" onClick={hideOffcanvas}>
                                 <h6>Contacto</h6>
                             </Nav.Link>
                         </Nav>
-                        <Link to="https://wa.me/56966140265">
+                        {/* <Link to="https://wa.me/56966140265">
                             <Button
                                 variant="info"
                                 className="customnavbar-no-p-m-b"
@@ -103,12 +107,22 @@ export function CustomNavbar() {
                                     </Col>
                                 </Row>
                             </Button>
-                        </Link>
-                        {/* <Link to="/attention">
-                            <Button variant="primary">
-                                <h6>Agendar aquí mismo</h6>
-                            </Button>
                         </Link> */}
+                        <Link to="/attention">
+                            <Button
+                                variant="primary"
+                                className="customnavbar-no-p-m-b"
+                            >
+                                <Row className="p-2 align-items-center">
+                                    <Col sm={8} className="p-0">
+                                        <h6>Agenda por internet</h6>
+                                    </Col>
+                                    <Col sm={3} className="p-0">
+                                        <Laptop size={30} color="white" />
+                                    </Col>
+                                </Row>
+                            </Button>
+                        </Link>
                     </Offcanvas.Body>
                 </Navbar.Offcanvas>
             </Container>

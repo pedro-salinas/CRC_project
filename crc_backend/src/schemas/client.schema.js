@@ -32,7 +32,7 @@ export const createClientSchema = z.object({
             message: ["email", "Email muy largo"],
         })
         .min(5, {
-            message: "Email muy corto",
+            message: ["email", "Email muy corto"],
         }),
     phone: z
         .string({

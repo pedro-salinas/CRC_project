@@ -169,7 +169,7 @@ export function Table({
                 rowsPerPageText: "Filas por página:",
             }}
             wrap={true}
-            noDataComponent="No hay datos que mostrar"
+            noDataComponent=""
             defaultSortFieldId={"update"}
             defaultSortAsc={false}
             onSelectedRowsChange={handleRowSelected}

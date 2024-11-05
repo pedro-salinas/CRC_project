@@ -27,7 +27,7 @@ export const authRequired = (req, res, next) => {
 
 export const authRut = (req, res, next) => {
     try {
-        let { rut } = req.body;
+        let rut = req.body.rut || req.params.rut;
 
         if (!/^[0-9.]+[-]?[0-9kK]{1}/.test(rut)) {
             return res.status(400).json({ message: ["rut", "RUT incorrecto"] });

@@ -24,3 +24,11 @@ export function updateAttention(id, data) {
 export function deleteAttention(data) {
     return instance.delete("/attention/" + data);
 }
+
+export function askAttentionWeb(data) {
+    return instance.get("/ask_web/" + data);
+}
+
+export function insertAttentionWebRequest(data) {
+    return instance.post("/attention_web", data);
+}

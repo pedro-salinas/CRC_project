@@ -10,6 +10,12 @@ export const columns = [
         wrap: true,
     },
     {
+        name: "Especialidad",
+        selector: (row) => row.specialty,
+        sortable: true,
+        wrap: true,
+    },
+    {
         name: "Color",
         selector: (row) => <input type="color" value={row.color} disabled />,
         sortable: true,

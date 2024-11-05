@@ -267,7 +267,7 @@ export function AttentionsCalendarModalInsertMultipleSameDate({
                         </span>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="kine">
-                        <Form.Label>Kinesiólogo</Form.Label>
+                        <Form.Label>Especialista</Form.Label>
                         <select
                             type="text"
                             className={
@@ -278,12 +278,14 @@ export function AttentionsCalendarModalInsertMultipleSameDate({
                             {...register("kine", {
                                 required: {
                                     value: true,
-                                    message: "Se requiere un kinesiólogo",
+                                    message: "Se requiere un especialista",
                                 },
                             })}
                             onChange={onChangeKine}
                         >
-                            <option value="">Seleccionar kinesiólogo...</option>
+                            <option value="">
+                                Seleccionar especialista...
+                            </option>
                             {kines.map((kine) => (
                                 <option
                                     key={kine._id}
@@ -493,7 +495,8 @@ export function AttentionsCalendarModalInsertMultipleSameDate({
                                         "Se requiere el número de semanas a repetir",
                                 },
                                 validate: (value) => {
-                                    if (value >= 1 && value <= 20) {
+                                    // Restringir el número de repeticiones
+                                    if (value >= 1 && value <= 29) {
                                         return true;
                                     } else {
                                         return "Número no valido";
@@ -534,10 +537,11 @@ export function AttentionsCalendarModalInsertMultipleSameDate({
                     <Form.Group className="mb-3" controlId="description">
                         <Form.Label>Descripción (opcional)</Form.Label>
                         <textarea
+                            rows="5"
                             className={
                                 errors.description
-                                    ? "form-control is-invalid"
-                                    : "form-control"
+                                    ? "form-control is-invalid attentions-rounded"
+                                    : "form-control attentions-rounded"
                             }
                             {...register("description")}
                         ></textarea>

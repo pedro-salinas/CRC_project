@@ -1,16 +1,15 @@
 export const normalizeRut = (req, res, next) => {
     try {
-        const { rut } = req.body;
+        const rut = req.body.rut || req.params.rut;
 
         const cleanedRut = rut.replace(/[^0-9kK]/g, "").toLowerCase();
         const formattedRut = cleanedRut.replace(/^(.*)(.)$/, "$1-$2");
 
         req.body.rut = formattedRut;
 
-        console.log(rut);
         next();
     } catch (error) {
-        res.status(500).json({ message: ["email", error.message] });
+        res.status(500).json({ message: ["rut", error.message] });
     }
 };
 

@@ -254,7 +254,7 @@ export function AttentionsCalendarModalDelete({
                         </span>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="kine">
-                        <Form.Label>Kinesiólogo</Form.Label>
+                        <Form.Label>Especialista</Form.Label>
                         <select
                             disabled
                             type="text"
@@ -266,12 +266,14 @@ export function AttentionsCalendarModalDelete({
                             {...register("kine", {
                                 required: {
                                     value: true,
-                                    message: "Se requiere un kinesiólogo",
+                                    message: "Se requiere un especialista",
                                 },
                             })}
                             onChange={onChangeKine}
                         >
-                            <option value="">Seleccionar kinesiólogo...</option>
+                            <option value="">
+                                Seleccionar especialista...
+                            </option>
                             {kines.map((kine) => (
                                 <option
                                     key={kine._id}
@@ -484,6 +486,7 @@ export function AttentionsCalendarModalDelete({
                     <Form.Group className="mb-3" controlId="description">
                         <Form.Label>Descripción (opcional)</Form.Label>
                         <textarea
+                            rows="5"
                             disabled
                             className={
                                 errors.description

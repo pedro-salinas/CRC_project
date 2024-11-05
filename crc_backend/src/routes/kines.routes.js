@@ -1,5 +1,6 @@
 import { Router } from "express";
 import {
+    getKinesInfo,
     getKines,
     createKine,
     updateKine,
@@ -11,9 +12,11 @@ import { createKineSchema } from "../schemas/kine.schema.js";
 
 const router = Router();
 
-// Obtener todos los kines
+// Obtener todos los nombres de los especialistas
+router.get("/kines_info", getKinesInfo);
+// Obtener todos los especialistas
 router.get("/kines", authRequired, authStaff, getKines);
-// Ingresar un kine
+// Ingresar un especialista
 router.post(
     "/kine",
     authRequired,
@@ -21,7 +24,7 @@ router.post(
     validateSchema(createKineSchema),
     createKine
 );
-// Editar un kine
+// Editar un especialista
 router.put(
     "/kine/:_id",
     authRequired,
@@ -29,7 +32,7 @@ router.put(
     validateSchema(createKineSchema),
     updateKine
 );
-//Eliminar un kine
+//Eliminar un especialista
 router.delete("/kine/:_id", authRequired, authStaff, deleteKine);
 
 export default router;

@@ -5,6 +5,10 @@ export function getKines() {
     return instance.get("/kines");
 }
 
+export function getKinesInfo() {
+    return instance.get("/kines_info");
+}
+
 export function insertKineRequest(data) {
     return instance.post("/kine", data);
 }

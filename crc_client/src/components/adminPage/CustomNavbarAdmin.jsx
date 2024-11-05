@@ -115,7 +115,7 @@ export function CustomNavbarAdmin() {
                             <h6>Progamas</h6>
                         </Nav.Link>
                         <Nav.Link as={Link} to="/admin/kines">
-                            <h6>Kinesiólogos</h6>
+                            <h6>Especialistas</h6>
                         </Nav.Link>
                         <Nav.Link as={Link} to="/admin/clients">
                             <h6>Paciente</h6>

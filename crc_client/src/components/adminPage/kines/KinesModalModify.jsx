@@ -51,7 +51,7 @@ export function KinesModalModify({
                 setLoading(false);
 
                 setAlertType("success");
-                setAlertText("Kinesiólogo modificado correctamente");
+                setAlertText("Especialista modificado correctamente");
                 setShowAlert(true);
 
                 handleClose();
@@ -117,7 +117,7 @@ export function KinesModalModify({
             <Form className="p-2" onSubmit={onSubmit}>
                 <Modal.Header closeButton disabled={loading}>
                     <Modal.Title>
-                        Modificar kinesiólogo: {defaultValues.name}
+                        Modificar especialista: {defaultValues.name}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -139,6 +139,36 @@ export function KinesModalModify({
                         />
                         <span className="text-danger">
                             {errors.name && errors.name.message}
+                        </span>
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="specialty">
+                        <Form.Label>Especialidad</Form.Label>
+                        <select
+                            className={
+                                errors.specialty
+                                    ? "form-select is-invalid"
+                                    : "form-select"
+                            }
+                            {...register("specialty", {
+                                required: {
+                                    value: true,
+                                    message: "Se requiere una especialidad",
+                                },
+                            })}
+                        >
+                            <option value="">
+                                Seleccionar una especialidad...
+                            </option>
+                            {["Kinesiología", "Nutrición", "Psicología"].map(
+                                (option) => (
+                                    <option key={option} value={option}>
+                                        {option}
+                                    </option>
+                                )
+                            )}
+                        </select>
+                        <span className="text-danger">
+                            {errors.specialty && errors.specialty.message}
                         </span>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="color">

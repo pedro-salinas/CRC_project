@@ -1,5 +1,9 @@
 import { z } from "zod";
 
+const validState = z.enum(["Kinesiología", "Nutrición", "Psicología"], {
+    required_error: ["specialty", "Especialidad incorrecta"],
+});
+
 export const createKineSchema = z.object({
     name: z
         .string({
@@ -21,4 +25,5 @@ export const createKineSchema = z.object({
         .min(5, {
             message: ["color", "Color debe contener como mínimo 5 caracteres"],
         }),
+    specialty: validState,
 });

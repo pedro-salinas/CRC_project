@@ -62,8 +62,8 @@ export function ContactSection() {
                             </Row>
                             <Row>
                                 <h6>
-                                    2 Sur 2 Oriente 870, piso 11 oficina 1120,
-                                    Talca
+                                    1 Poniente 2 y 3 Norte 1258, piso 7 oficina
+                                    711, Talca
                                 </h6>
                             </Row>
                         </Col>

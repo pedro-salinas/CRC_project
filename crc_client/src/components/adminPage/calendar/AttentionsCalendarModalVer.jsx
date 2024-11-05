@@ -101,7 +101,7 @@ export function AttentionsCalendarModalVer({
         >
             <Form className="p-2">
                 <Modal.Header closeButton disabled={loading}>
-                    <Modal.Title>Eliminar atención</Modal.Title>
+                    <Modal.Title>Atención</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form.Group className="mb-3" controlId="program">
@@ -139,7 +139,7 @@ export function AttentionsCalendarModalVer({
                         </span>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="kine">
-                        <Form.Label>Kinesiólogo</Form.Label>
+                        <Form.Label>Especialista</Form.Label>
                         <select
                             disabled
                             type="text"
@@ -151,12 +151,14 @@ export function AttentionsCalendarModalVer({
                             {...register("kine", {
                                 required: {
                                     value: true,
-                                    message: "Se requiere un kinesiólogo",
+                                    message: "Se requiere un especialista",
                                 },
                             })}
                             onChange={onChangeKine}
                         >
-                            <option value="">Seleccionar kinesiólogo...</option>
+                            <option value="">
+                                Seleccionar especialista...
+                            </option>
                             {kines.map((kine) => (
                                 <option
                                     key={kine._id}
@@ -322,6 +324,7 @@ export function AttentionsCalendarModalVer({
                     <Form.Group className="mb-3" controlId="description">
                         <Form.Label>Descripción (opcional)</Form.Label>
                         <textarea
+                            rows="5"
                             disabled
                             className={
                                 errors.description

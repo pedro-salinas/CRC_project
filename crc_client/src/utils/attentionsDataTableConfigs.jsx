@@ -19,7 +19,7 @@ export const columns = [
         wrap: true,
     },
     {
-        name: "Kinesiólogo",
+        name: "Especialista",
         selector: (row) => row.kine.name,
         sortable: true,
         wrap: true,
@@ -83,7 +83,7 @@ export const columnsForSelect = [
         value: "program",
     },
     {
-        label: "Kinesiólogo",
+        label: "Especialista",
         value: "kine",
     },
     {
@@ -93,6 +93,10 @@ export const columnsForSelect = [
     {
         label: "Estado",
         value: "state",
+    },
+    {
+        label: "Descripción",
+        value: "description",
     },
     {
         label: "Última actualización",

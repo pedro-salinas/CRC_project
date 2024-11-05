@@ -228,7 +228,7 @@ export function AttentionsModalInsert({
                         </span>
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="kine">
-                        <Form.Label>Kinesiólogo</Form.Label>
+                        <Form.Label>Especialista</Form.Label>
                         <select
                             type="text"
                             className={
@@ -239,12 +239,14 @@ export function AttentionsModalInsert({
                             {...register("kine", {
                                 required: {
                                     value: true,
-                                    message: "Se requiere un kinesiólogo",
+                                    message: "Se requiere un especialista",
                                 },
                             })}
                             onChange={onChangeKine}
                         >
-                            <option value="">Seleccionar kinesiólogo...</option>
+                            <option value="">
+                                Seleccionar especialista...
+                            </option>
                             {kines.map((kine) => (
                                 <option
                                     key={kine._id}
@@ -467,6 +469,7 @@ export function AttentionsModalInsert({
                     <Form.Group className="mb-3" controlId="description">
                         <Form.Label>Descripción (opcional)</Form.Label>
                         <textarea
+                            rows="5"
                             className={
                                 errors.description
                                     ? "form-control is-invalid attentions-rounded"

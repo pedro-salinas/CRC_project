@@ -1,4 +1,16 @@
 import Attention from "../models/attention.model.js";
+import Client from "../models/client.model.js";
+import { sendAttentionEmail } from "../libs/mailer.js";
+
+function formatHourAndDate(hour, day, month, year) {
+    const textHour = `${String(hour).padStart(2, "0")}:00 hrs`;
+    const textDate = `${String(day).padStart(2, "0")}/${String(month).padStart(
+        2,
+        "0"
+    )}/${year}`;
+
+    return { textHour, textDate };
+}
 
 export const getAttentions = async (req, res) => {
     try {
@@ -220,21 +232,81 @@ export const createMultiplesAttentions = async (req, res) => {
     }
 };
 
-// DESACTUALIZADO
+// export const askAttentionWeb = async (req, res) => {
+//     try {
+//         const { rut } = req.params.rut;
+
+//         const result = await Attention.findOne({
+//             rut: rut,
+//         });
+
+//         if (result.web_client) {
+//             res.sendStatus(403);
+//         }
+
+//         res.sendStatus(200);
+//     } catch (error) {
+//         res.status(500).json({ message: error });
+//     }
+// };
+
 export const createAttentionByWeb = async (req, res) => {
     try {
         const {
+            rut,
+            email,
             hour,
             day,
             month,
             year,
             program,
-            kine,
-            client,
-            buy_code,
-            token,
             state,
+            web_client,
+            blocked,
+            description,
         } = req.body;
+
+        const result = await Attention.findOne({
+            "web_client.rut": web_client.rut,
+            client: { $exists: false },
+            kine: { $exists: false },
+        });
+
+        if (result) {
+            return res.status(400).json({
+                message: ["rut", "Ya existe una atención asociada a este RUT"],
+            });
+        }
+
+        const result2 = await Attention.findOne({
+            "web_client.email": web_client.email,
+            client: { $exists: false },
+            kine: { $exists: false },
+        });
+
+        if (result2) {
+            return res.status(400).json({
+                message: [
+                    "email",
+                    "Ya existe una atención asociada a este correo",
+                ],
+            });
+        }
+
+        const result3 = await Attention.findOne({
+            "web_client.phone": web_client.phone,
+            client: { $exists: false },
+            kine: { $exists: false },
+        });
+
+        if (result3) {
+            return res.status(400).json({
+                message: [
+                    "phone",
+                    "Ya existe una atención asociada a este teléfono",
+                ],
+            });
+        }
 
         const checkDate = await Attention.findOne({
             hour: req.body.hour,
@@ -247,10 +319,28 @@ export const createAttentionByWeb = async (req, res) => {
             return res.status(400).json({
                 message: [
                     "hour",
-                    "Ya existe una atención en la hora seleccionada",
+                    "Ya existe una atención en la hora seleccionada, vuelva atras y seleccione otra",
                 ],
             });
         }
+
+        const { textHour, textDate } = formatHourAndDate(
+            hour,
+            day,
+            month,
+            year
+        );
+
+        const data = {
+            name: web_client.name,
+            email: web_client.email,
+            date: textDate,
+            hour: textHour,
+        };
+
+        const sendMail = await sendAttentionEmail(data);
+
+        const client = await Client.findOne({ rut: rut });
 
         const newAttention = new Attention({
             hour,
@@ -258,11 +348,11 @@ export const createAttentionByWeb = async (req, res) => {
             month,
             year,
             program,
-            kine,
-            client,
-            buy_code,
-            token,
             state,
+            web_client,
+            blocked,
+            description,
+            client: client ? client._id : null,
         });
 
         const savedAttention = await newAttention.save();

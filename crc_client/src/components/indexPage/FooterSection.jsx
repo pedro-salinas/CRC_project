@@ -35,7 +35,7 @@ export function FooterSection() {
                     </Row>
                     <Row>
                         <h6>
-                            <strong>Telefono:</strong> +56 9 66140265
+                            <strong>Teléfono:</strong> +56 9 66140265
                         </h6>
                     </Row>
                     <Row>

@@ -32,7 +32,8 @@ import {
 } from "react-bootstrap-icons";
 
 // React data table
-import { Table } from "../DataTable";
+import { DataTableHugeData } from "../DataTableHugeData";
+import { HugeTableHeader } from "../HugeTableHeader";
 
 // React data table configs
 import {
@@ -46,6 +47,9 @@ import { AttentionsModalModify } from "./AttentionsModalModify";
 import { AttentionsModalMultipleModify } from "./AttentionsModalMultipleModify";
 import { AttentionsModalDelete } from "./AttentionsModalDelete";
 
+// Tiempo
+import { formatDate } from "../../../utils/dateUtils";
+
 export function AttentionsTable() {
     // Seleccion de un solo elemento
     const singleSelection = false;
@@ -58,7 +62,7 @@ export function AttentionsTable() {
 
         setTimeout(() => {
             getAttentionsBackend();
-        }, 500);
+        }, 100);
     }
 
     // Alerta en tabla y mensaje
@@ -73,6 +77,7 @@ export function AttentionsTable() {
     const [clients, setClients] = useState([]);
 
     // Datos de la tabla
+    const [originalData, setOriginalData] = useState([]);
     const [tableData, setTableData] = useState([]);
 
     // Datos seleccionados de la tabla
@@ -277,29 +282,79 @@ export function AttentionsTable() {
                 return (
                     !["bloqueado", "cancelado", "pagando"].includes(
                         item.state
-                    ) && !item.blocked
+                    ) &&
+                    !item.blocked &&
+                    item.client &&
+                    item.kine
                 );
             });
+
+            setOriginalData(filteredData);
             setTableData(filteredData);
 
             setPrograms(res2.data);
             setKines(res3.data);
             setClients(res4.data);
+
+            setLoadingTable(true);
         } catch (error) {
             closeSession();
         }
     };
 
-    useEffect(() => {
-        if (tableData) {
+    // Aplicación del filtro de datos
+    const [textFilter, setTextFilter] = useState("");
+    const [selectFilter, setSelectFilter] = useState("all");
+
+    const dataFilter = (items) => {
+        const filteredItems = items.filter((item) => {
+            return Object.entries(item).some(([key, value]) => {
+                if (key === "program" && value?.name) value = value.name;
+                if (key === "client" && value?.name) value = value.name;
+                if (key === "kine" && value?.name) value = value.name;
+
+                if (["_id", "__v", "password"].includes(key) || value == null)
+                    return false;
+
+                if (key === "is_staff" || key === "is_admin")
+                    value = value ? "Sí" : "No";
+
+                if (["updatedAt", "createdAt", "last_login"].includes(key)) {
+                    value = formatDate(value);
+                }
+
+                if (key !== selectFilter && selectFilter !== "all")
+                    return false;
+
+                return value
+                    .toString()
+                    .toLowerCase()
+                    .includes(textFilter.toLowerCase());
+            });
+        });
+
+        return filteredItems;
+    };
+
+    const applyFilter = () => {
+        setLoadingTable(false);
+
+        setTimeout(() => {
+            const filteredData = dataFilter(originalData);
+            setTableData(filteredData);
             setLoadingTable(true);
-        }
-    }, [tableData]);
+        }, 100);
+    };
+
+    // useEffect(() => {
+    //     const filteredData = dataFilter(originalData);
+    //     setTableData(filteredData);
+    //     setLoadingTable(true);
+    // }, [textFilter, selectFilter, originalData]);
 
     // Obtener las atenciones al cargar el componente
+
     useEffect(() => {
-        localStorage.removeItem("selectText");
-        localStorage.removeItem("filterText");
         handleReload();
     }, []);
 
@@ -323,7 +378,11 @@ export function AttentionsTable() {
             <Card.Body>
                 <Card.Title className="text-center">
                     <ButtonGroup className="m-2">
-                        <Button variant="primary" onClick={handleShowInsert}>
+                        <Button
+                            variant="primary"
+                            onClick={handleShowInsert}
+                            disabled={!loadingTable}
+                        >
                             <strong className="p-1">Ingresar atención</strong>
                             <PersonAdd size={35} color="white" />
                         </Button>
@@ -357,16 +416,25 @@ export function AttentionsTable() {
                     </ButtonGroup>
                 </Card.Title>
 
+                <HugeTableHeader
+                    columnsForSelect={columnsForSelect}
+                    loadingTable={loadingTable}
+                    setTextFilter={setTextFilter}
+                    setSelectFilter={setSelectFilter}
+                    applyFilter={applyFilter}
+                ></HugeTableHeader>
+
                 {loadingTable && (
                     <>
-                        {tableData.length > 0 && (
-                            <Table
+                        {tableData.length >= 0 && (
+                            <DataTableHugeData
                                 data={tableData}
                                 columns={columns}
                                 columnsForSelect={columnsForSelect}
                                 onRowSelected={handleRowSelection}
                                 singleSelection={singleSelection}
-                            ></Table>
+                                loadingTable={loadingTable}
+                            ></DataTableHugeData>
                         )}
                     </>
                 )}

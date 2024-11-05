@@ -1,123 +1,58 @@
-// React
-import { useState, useEffect } from "react";
-
 // Bootstrap
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
+import Image from "react-bootstrap/Image";
 
 // Utilidad para saber si es que estamos en movil o no
 import { MobileHandler } from "../../utils/MobileHandler";
 
-export function HomeSection({ program, loading }) {
-    // Contador fake de cupos
-    function getRandomNumberForWeek(week) {
-        switch (week) {
-            case 1:
-                return Math.floor(Math.random() * (7 - 6 + 1)) + 6; // 6 or 7
-            case 2:
-                return Math.floor(Math.random() * (5 - 4 + 1)) + 4; // 4 or 5
-            case 3:
-                return Math.floor(Math.random() * (3 - 2 + 1)) + 2; // 2 or 3
-            default:
-                return 2; // 2
-        }
-    }
+// Router
+import { Link } from "react-router-dom";
 
-    function getWeekOfMonth(date) {
-        const day = date.getDate();
-        return Math.ceil(day / 7);
-    }
+// Imagenes
+import chris from "../../assets/crc_chris.webp";
 
-    const [counter, setCounter] = useState();
-
+export function HomeSection({}) {
     const { isMobile } = MobileHandler();
-
-    const videoSize = {
-        height: isMobile ? "300px" : "500px",
-    };
 
     // CSS movil
     const dynamicPadding = isMobile
-        ? "home-mobile-padding"
-        : "home-desktop-padding";
+        ? "home-mobile-padding align-items-center"
+        : "home-desktop-padding align-items-center";
 
-    const dynamicFontSize = isMobile ? "home-mobile-font" : "home-desktop-font";
-
-    const dynamicHeight = isMobile ? "300" : "500";
-
-    useEffect(() => {
-        const today = new Date();
-        const weekOfMonth = getWeekOfMonth(today);
-        const number = getRandomNumberForWeek(weekOfMonth);
-        setCounter(number);
-    }, []);
+    // const dynamicFontSize = isMobile ? "home-mobile-font" : "home-desktop-font";
 
     return (
         <Container>
             <Row id="home" className={dynamicPadding}>
-                <Col
-                    className="text-center align-items-center"
-                    data-aos="fade-down"
-                >
-                    <Row>
-                        <h4>
-                            <span className="red-color">¡Atención!</span> Te
-                            presento...
-                        </h4>
-                        <h1 className={`pt-2 ${dynamicFontSize}`}>
-                            <strong>Supera al DOLOR LUMBAR</strong>
-                        </h1>
-                        <h4 className="pt-2">
-                            El sistema de evaluación paso a paso para encontrar
-                            la SOLUCIÓN a tu dolor
-                        </h4>
-                        <iframe
-                            height={dynamicHeight}
-                            className={`pt-2`}
-                            src="https://www.youtube.com/embed/ReuJnbJfkwo?si=emr6NMOsGxfa2qdy"
-                            title="CRC - Anuncio youtube"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin"
-                            allowfullscreen
-                        ></iframe>
-                    </Row>
-                    <Row className="pt-5" data-aos="fade-down">
-                        <Col>
-                            <Button variant="primary" className="home-home-box">
-                                <h4>¡Sí! Quiero solucionar mi dolor lumbar.</h4>
-
-                                <h4>
-                                    Dame acceso inmediato para saber cómo
-                                    aliviar mi dolor a solo{" "}
-                                    <strong>
-                                        {!loading && (
-                                            <span className="home-red-color">
-                                                {program}
-                                            </span>
-                                        )}
-                                        {loading && (
-                                            <span className="home-red-color">
-                                                ..............
-                                            </span>
-                                        )}
-                                    </strong>
-                                </h4>
-                            </Button>
-                        </Col>
-                    </Row>
-
-                    <Row className="pt-4" data-aos="fade-down">
-                        <h1 className={`pt-2 ${dynamicFontSize}`}>
-                            <strong>
-                                Últimos{" "}
-                                <span className="home-red-color">
-                                    {counter} cupos
-                                </span>
-                            </strong>
-                        </h1>
-                    </Row>
+                <Col md={6} className="text-center " data-aos="fade-right">
+                    <h1 className="fw-bold ">
+                        <strong>¿Necesitas ayuda?</strong>
+                    </h1>
+                    <h5 className="lead pt-2 lead">
+                        Ten calma, sabemos que esta condición es completamente
+                        incómoda, frustrante y que te está alejando de tus
+                        actividades. ¡¡Afortunadamente encontraste tu solución!!
+                    </h5>
+                    <p className="lead pt-2">
+                        En CRC Kinesiología crearemos en conjunto un plan de
+                        tratamiento totalmente especializado para que retomes el
+                        control de tu vida.
+                    </p>
+                    <Link to="/attention">
+                        <Button variant="primary" size="lg">
+                            Agendar aquí
+                        </Button>
+                    </Link>
+                </Col>
+                <Col md={6} className="text-center" data-aos="fade-left">
+                    {!isMobile ? (
+                        <Image src={chris} width="450px" />
+                    ) : (
+                        <Image src={chris} width="250px" />
+                    )}
                 </Col>
             </Row>
         </Container>
